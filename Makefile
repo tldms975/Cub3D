@@ -6,7 +6,7 @@
 #    By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 19:39:53 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/20 13:00:53 by sielee           ###   ########seoul.kr   #
+#    Updated: 2022/10/20 13:08:41 by sielee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 .DEFAULT_GOAL			:=	mandatory
 
 # CC						:=	/Users/hdoo/works/clang/bin/clang-14
-
+CC						:=	cc
 CFLAGS					:=	-Wall -Wextra -Werror -I. -MMD -g -fsanitize=address
 
 LDLIBS					:=	-lft -lmlx
@@ -26,6 +26,8 @@ NAME					:=	cub3D
 
 MINILIBX				:=	minilibx_mms_20210621/libmlx.dylib
 
+INC_DIR					:=	include
+SRCS_DIR				:=	srcs
 SRCS					:= $(addsuffix .c,$(addprefix $(SRCS_DIR)/,\
 						main))\
 
