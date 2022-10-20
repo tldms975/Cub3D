@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 19:39:53 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/19 22:54:01 by hdoo             ###   ########.fr        #
+#    Updated: 2022/10/20 13:00:53 by sielee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ NAME					:=	cub3D
 
 MINILIBX				:=	minilibx_mms_20210621/libmlx.dylib
 
-SRCS					:= 
+SRCS					:= $(addsuffix .c,$(addprefix $(SRCS_DIR)/,\
+						main))\
 
 DEPS					:=	$(MINILIBX:.dylib=.d) $(LIBFT:.a=.d) $(SRCS:.c=.d)
 OBJS					:=	$(SRCS:.c=.o)

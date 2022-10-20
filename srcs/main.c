@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/19 22:49:01 by hdoo             ###   ########.fr       */
+/*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
+/*   Updated: 2022/10/20 13:02:53 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "fcntl.h"
+#include "unistd.h"
+#include "cub3d.h"
 
-// every information of config
-typedef struct s_info
+int	main(int argc, char* argv[])
 {
 
-
-
-}	t_info;
-
-#endif // !CUB3D_H
+	return (0);
+}
