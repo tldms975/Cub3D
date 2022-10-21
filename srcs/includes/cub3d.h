@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/20 13:02:43 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/21 13:07:18 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // every information of config
 typedef struct s_info
 {
-
+	int **map;
 
 
 }	t_info;
