@@ -14,4 +14,6 @@
 
 $(EXECUTABLE_TARGETS): %: .cache/%$(SUFFIX).exe
 	$Qcp $< $@
+	@ps | grep -v grep | grep "spinning_icon.sh" | cut -c 1-5 | xargs kill
+	@printf "\b"
 	@echo $(NAME) created

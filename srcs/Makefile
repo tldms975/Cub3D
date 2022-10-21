@@ -6,7 +6,7 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 05:12:20 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/22 06:00:37 by hdoo             ###   ########.fr        #
+#    Updated: 2022/10/22 07:30:29 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,11 @@ LDFLAGS	+= -L.cache/mlx/minilibx_opengl_20191021 -lmlx -framework OpenGL -framew
 
 .PHONY	: all bonus clean fclean re test dev compile_commands.json run $(EXECUTABLE_TARGETS) 
 
-all		: $(NAME)
+
+all		: loading $(NAME)
+
+loading	:
+	@sh ../assets/spinning_icon.sh&
 bonus	: all
 clean	:
 	$Qfind . -type d -name .cache | xargs rm -rf
