@@ -5,4 +5,3 @@
 	$Qmv .cache/mlx.tmp .cache/mlx
 .cache/mlx/minilibx_opengl_20191021/libmlx.dylib: .cache/mlx
 	$Qmake -s -C .cache/mlx/minilibx_opengl_20191021 -j 1 $(if $(filter 1,$(V) $(VERBOSE)),,2> /dev/null)
-

@@ -6,7 +6,7 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 05:12:20 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/23 22:56:17 by hdoo             ###   ########.fr        #
+#    Updated: 2022/10/24 05:08:17 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,10 @@ include	config/common_variables.mk
 CFLAGS	+= -I.cache/mlx/minilibx_opengl_20191021
 LDFLAGS	+= -L.cache/mlx/minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
 
-.PHONY	: all bonus clean fclean re test dev compile_commands.json run $(EXECUTABLE_TARGETS) 
+.PHONY	: all bonus clean fclean re test dev compile_commands.json run $(EXECUTABLE_TARGETS) error_handler
 
-
-all		: loading error_handler $(NAME)
-
-loading	:
-	@sh ../assets/spinning_icon.sh&
+include	config/error_handler.mk
+all		: $(NAME)
 bonus	: all
 clean	:
 	@echo Remove intermediate files
@@ -40,7 +37,7 @@ fclean	:
 	$Qrm -f $(EXECUTABLE_TARGETS)
 re		:
 	$Q$(MAKE) NO_ADDITIONAL_J=1 fclean
-	$Q$(MAKE) NO_ADDITIONAL_J=1 all
+	$Q$(MAKE) NO_ADDITIONAL_J=1
 test	:
 	$Qfind . -type d -mindepth 1 -name "test" | xargs -L1 -I {} make -C {} test
 
@@ -49,7 +46,6 @@ include	config/make_mlx.mk
 include	config/options.mk
 include	config/common_rules.mk
 include	config/special_rules.mk
-include config/error_handler.mk
 
 # dependencies
 -include	$(patsubst ./%.c,.cache/%$(SUFFIX).d,$(SRCS))
