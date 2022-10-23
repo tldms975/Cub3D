@@ -6,9 +6,11 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 05:12:20 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/23 21:11:25 by hdoo             ###   ########.fr        #
+#    Updated: 2022/10/23 22:56:17 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.DELETE_ON_ERROR	:
 
 NAME 	:= cub3D
 
@@ -24,7 +26,7 @@ LDFLAGS	+= -L.cache/mlx/minilibx_opengl_20191021 -lmlx -framework OpenGL -framew
 .PHONY	: all bonus clean fclean re test dev compile_commands.json run $(EXECUTABLE_TARGETS) 
 
 
-all		: loading $(NAME)
+all		: loading error_handler $(NAME)
 
 loading	:
 	@sh ../assets/spinning_icon.sh&
@@ -47,6 +49,7 @@ include	config/make_mlx.mk
 include	config/options.mk
 include	config/common_rules.mk
 include	config/special_rules.mk
+include config/error_handler.mk
 
 # dependencies
 -include	$(patsubst ./%.c,.cache/%$(SUFFIX).d,$(SRCS))
