@@ -6,7 +6,7 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 05:12:20 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/22 07:30:29 by hdoo             ###   ########.fr        #
+#    Updated: 2022/10/23 21:11:25 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME 	:= cub3D
 
 # variables
 include	config/common_variables.mk
+
+#MAKEFLAGS		+=	--no-builtin-rules
 
 # mlx
 CFLAGS	+= -I.cache/mlx/minilibx_opengl_20191021
@@ -28,8 +30,10 @@ loading	:
 	@sh ../assets/spinning_icon.sh&
 bonus	: all
 clean	:
+	@echo Remove intermediate files
 	$Qfind . -type d -name .cache | xargs rm -rf
 fclean	:
+	@echo Remove primary build output
 	$Q$(MAKE) clean
 	$Qrm -f $(EXECUTABLE_TARGETS)
 re		:
