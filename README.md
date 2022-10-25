@@ -3,7 +3,7 @@
 ## 참조
 * (튜토리얼)https://github.com/l-yohai/cub3d
 * (백룸)https://github.com/cub3d-project-Backrooms/cub3d.git
-
+* (jayoon's recommandation)https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
 ## External functs.
 Program name :  cub3D
 Argument : a map in format \*.cub
