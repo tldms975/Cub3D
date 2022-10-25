@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/25 19:48:22 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/25 19:57:58 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_event_move(int keycode, t_cub3d *obj)
 		obj->origin.y -= 10;
 }
 
-int	ft_key_press(t_keycode keycode, t_cub3d *obj)
+int	ft_key_press(t_keycode keycode, t_world *obj)
 {
 	if (keycode == KEY_ESC)
 		ft_event_close(obj);
@@ -110,16 +110,16 @@ void	ft_init_mlx(t_mlx *tmlx)
 	&tmlx->timg.bits_per_pixel, &tmlx->timg.line_length, &tmlx->timg.endian);
 }
 
-void	ft_draw_world(t_ *cub)
+void	ft_draw_world(t_world *cub)
 {
 	
 }
 
-void	ft_on_screen(t_mlx *tmlx)
+void	ft_on_screen(t_mlx *tmlx, t_world	*world)
 {
-	ft_draw_world(obj);
+	ft_draw_world(world);
 	mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->timg.img, 0, 0);
-	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, obj);
+	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, world);
 	mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
-	mlx_loop(tmlx);
+	mlx_loop(tmlx, world);
 }
