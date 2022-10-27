@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/27 16:36:49 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/27 16:48:49 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef	enum{
 	SO,
 	WE,
 	EA
-};
+} t_dir;
 
 typedef struct	s_rgb
 {
@@ -72,3 +72,4 @@ typedef struct	s_world
 }				t_world;
 
 #endif
+
