@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:13:19 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 22:58:20 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_str_buf	*str_append_character(t_str_buf *buf, char c)
 	return (str_append_raw(buf, &c, sizeof(c)));
 }
 
-t_str_buf	*str_append_nullable(t_str_buf *buf, char *s, char *def)
+t_str_buf	*str_append_optional(t_str_buf *buf, char *s, char *def)
 {
 	if (!s)
 		s = def;
