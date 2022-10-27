@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:40:56 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/27 16:51:02 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:42:19 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct	s_image
 {
 	void	*img;
-	char	*addr;
+	int		addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

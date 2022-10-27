@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/27 17:20:30 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:43:54 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ typedef struct	s_vec
 	double	y;
 }				t_vec;
 
-typedef struct	s_camera
+typedef struct s_player
 {
-	t_vec				pos;
-	t_vec				dir;
-	t_vec				plane;
-}				t_camera;
+	double	speed;
+	t_vec	pos;
+	double	sight;
+}				t_player;
 
 typedef struct	s_world
 {
@@ -68,8 +68,7 @@ typedef struct	s_world
 	t_wall		wall;
 	t_floor		floor;
 	int			fd_texture[4];
-	t_camera	camera;
-	char		player_direction;
+	t_player	*player;
 }				t_world;
 
 #endif
