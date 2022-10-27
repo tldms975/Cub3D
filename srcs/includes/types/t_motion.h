@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:39:02 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/26 16:48:22 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/27 16:08:34 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,5 @@ typedef	enum	e_keycode
 	KEY_ARROW_L = 123,
 	KEY_ARROW_R = 124
 }		t_keycode;
-
-typedef struct	s_vec
-{
-	double	x;
-	double	y;
-}				t_vec;
-
-typedef struct	s_camera
-{
-	t_vec				pos;
-	t_vec				dir;
-	t_vec				plane;
-}				t_camera;
 
 #endif
