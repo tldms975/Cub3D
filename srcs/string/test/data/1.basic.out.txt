@@ -1,12 +1,4 @@
-
-
 llo
-
-
 hel
-
-
-llo_world
-
-
-hello_wo
+lo world
+hello wo
