@@ -6,46 +6,21 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/25 19:57:58 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/26 16:48:14 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "t_mlx.h"
+#include "t_motion.h"
+#include "t_world.h"
 # include <stdlib.h>
 
-typedef	enum	e_keycode
-{
-	X_EVENT_KEY_PRESS = 2,
-	X_EVENT_KEY_DESTROY_NOTIFY = 17,
-	KEY_W = 1,
-	KEY_A = 0,
-	KEY_S = 13,
-	KEY_D = 2,
-	KEY_ESC = 53,
-	KEY_ARROW_L = 123,
-	KEY_ARROW_R = 124
-}		t_keycode;
-
-typedef struct	s_image
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_image;
-
-typedef struct	s_mlx
-{
-	void	*mlx;
-	void	*win;
-	t_image	timg;
-}				t_mlx;
 
 typedef struct	s_vec
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_vec;
 
 typedef struct	s_camera
@@ -55,11 +30,7 @@ typedef struct	s_camera
 	t_vec				plane;
 }				t_camera;
 
-typedef struct	s_world
-{
-	t_info	*info;
 
-}				t_world;
 
 void	ft_event_close(t_mlx *obj)
 {
