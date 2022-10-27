@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/27 18:41:02 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 02:32:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,39 @@ int ft_open(t_str_buf *path, int oflag)
 	return (fd);
 }
 
+t_rgb	parse_color(t_str_buf *line)
+{
+	t_rgb	color;
+	char	*line_char;
+	char	**colors;
+
+	line_char = str_dispose(line);
+	colors = ft_split(line_char, ',');
+	color.r = ft_atoi(colors[0]);
+	color.g = ft_atoi(colors[1]);
+	color.b = ft_atoi(colors[2]);
+	ft_free_split(colors);
+	free_safe(line_char);
+	return (color);
+}
+
 int	init_info(t_info *info, t_str_buf *line)
 {
-
 	if (str_compare(line, "NO"))
 	{
-		str_cut(line, 3, 1);
-		info->core.world.fd_texture[NO] = ft_open(line, O_RDONLY);
+		info->core.world.txr[NO] = ft_open(str_cut(line, 3, FWD), O_RDONLY);
 	}
-
+	if (str_compare(line, "SO"))
+		info->core.world.txr[SO] = ft_open(str_cut(line, 3, FWD), O_RDONLY);
+	if (str_compare(line, "WE"))
+		info->core.world.txr[WE] = ft_open(str_cut(line, 3, FWD), O_RDONLY);
+	if (str_compare(line, "EA"))
+		info->core.world.txr[EA] = ft_open(str_cut(line, 3, FWD), O_RDONLY);
+	if (str_compare(line, "F"))
+		info->core.world.floor.rgb = parse_color(str_cut(line, 3, FWD));
+	if (str_compare(line, "C"))
+		info->core.world.ceiling.rgb = parse_color(str_cut(line, 3, FWD));
+	return ()
 }
 
 bool	read_color_and_texture(t_info *info)
@@ -72,9 +96,9 @@ bool	read_color_and_texture(t_info *info)
 	{
 		line = str_append(NULL, get_next_line(info->fd));
 		init_info(info, line);
+	
 
 	}
-
 	return ()
 }
 
