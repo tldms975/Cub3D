@@ -1,3 +1,84 @@
-.vscode/
-srcs/.cache/
-srcs/cub3D/
+.vscode
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+!Makefile
+.git
+Session.vim
+
+# part of comfile commands
+*.json.part
+compile_commands.json
+
+# Ignore Desktop Services Store
+.DS_Store
+
+# Prerequisites
+*.d
+
+# makefile log
+**/*.log
+
+# Lsp-cache files
+.ccls-cache/
+.cache/
+
+# for Test
+test
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
