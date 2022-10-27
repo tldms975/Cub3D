@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 18:01:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 22:58:45 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_str_buf	*str_append(t_str_buf *buf, const char *s);
 char		*str_dispose(t_str_buf *buf);
 t_str_buf	*str_append_number(t_str_buf *buf, int n);
 t_str_buf	*str_append_character(t_str_buf *buf, char c);
-t_str_buf	*str_append_nullable(t_str_buf *buf, char *s, char *def);
+t_str_buf	*str_append_optional(t_str_buf *buf, char *s, char *def);
 t_str_buf	*str_append_format(t_str_buf *buf, const char *format, ...);
 t_str_buf	*str_append_format_v(t_str_buf *buf, const char *format,
 				va_list *ap);

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 16:59:23 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:56:10 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 # include "types/t_engine.h"
 # include "types/t_mlx.h"
 # include "types/t_world.h"
+# include "types/t_engine.h"
 
 typedef struct s_core
 {
 	t_mlx		mlx;
 	t_world		world;
-	t_engine	engine;
+
 }	t_core;
 
 // every information of config
