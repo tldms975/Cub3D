@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:38:16 by hdoo              #+#    #+#             */
-/*   Updated: 2022/05/19 15:01:10 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/28 01:37:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void			ft_strdel(char **splited_str);
 unsigned int	ft_abs(int target);
 int				ft_aredigit(char *target);
 int				ft_pow(int base, int x);
+void			ft_free_split(char **words);
 
 #endif
