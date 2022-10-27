@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/24 04:45:39 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 16:40:18 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,77 @@
 #include <stdio.h>
 #include <sys/fcntl.h>
 #include "libft.h"
+#include "ft_string.h"
 // #include "cub3d.h"
 
 typedef struct s_info
 {
+	t_string path;
 	char	**map;
+	int		fd;
 }	t_info;
 
-char	*check_name(char *argv[])
+t_string	validate_path(char *argv[])
 {
-	char	*name;
+	t_string path;
+	int len;
 
-	name = argv[1];
-	return (name);
+	path.content = NULL;
+	len = strlen(argv[1]);
+	if (len - 2 > 0 && \
+		argv[1][len - 4] == '.' && \
+		argv[1][len - 3] == 'c' && \
+		argv[1][len - 2] == 'u' && \
+		argv[1][len - 1] == 'b')
+	{
+		path.content = strdup(argv[1]);
+		path.len = len;
+		path.size = len;
+	}
+	return (path);
 }
+
+int ft_open(t_string path, int oflag)
+{
+	int fd;
+
+	fd = open(path.content, oflag);
+	if (fd == -1)
+	{
+		perror("Error: fail to open with given path: ");
+		exit(2);
+	}
+}
+
+bool	read_info(t_info *info)
+{
+	char **line;
+
+	while (1)
+	{
+		line = ft_split(get_next_line(info->fd), ' ');
+		
+	}
+
+}
+
 
 bool	parse_info(t_info *info, char* argv[])
 {
-	int	fd;
 	bool	retval;
-	char	*name;
 
 	retval = false;
-	name = check_name(argv);
-	fd = open(name, 0644);
-	info->map[0] = get_next_line(fd);
+	info->path = validate_path(argv);
+	if (info->path.content != NULL)
+	{
+		info->fd = ft_open(info->path, O_RDONLY);
+		if (read_info(info) != -1 && \
+				)
+		{
+
+
+		}
+	}
 	return (retval);
 }
 
@@ -50,8 +96,10 @@ int	main(int argc, char* argv[])
 
 	if (argc == 2)
 	{
-		parse_info(&info, argv);
+		if (parse_info(&info, argv))
+		{
 
+		}
 	}
 	else
 	{

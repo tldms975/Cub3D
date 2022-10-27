@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/23 22:19:56 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 16:06:46 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "libft.h"
+#include "ft_string.h"
 
-typedef struct s_string
-{
-	char	*content;
-	size_t	len;
-	size_t	size;
-}	t_string;
-	
 t_string	new_str(char *target);
 
 t_string	new_str(char *target)
