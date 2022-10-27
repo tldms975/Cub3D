@@ -6,21 +6,22 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/27 16:48:49 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 17:20:30 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
 
-typedef	enum{
+typedef	enum
+{
 	NO,
 	SO,
 	WE,
 	EA
 } t_dir;
 
-typedef struct	s_rgb
+typedef struct s_rgb
 {
 	int	r;
 	int	g;
@@ -63,11 +64,11 @@ typedef struct	s_camera
 typedef struct	s_world
 {
 	char		**map;
-	t_ceiling	*ceiling;
-	t_wall		*wall;
-	t_floor		*floor;
+	t_ceiling	ceiling;
+	t_wall		wall;
+	t_floor		floor;
 	int			fd_texture[4];
-	t_camera	*camera;
+	t_camera	camera;
 	char		player_direction;
 }				t_world;
 

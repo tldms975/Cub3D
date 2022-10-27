@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/10/27 16:40:18 by sielee           ###   ########seoul.kr  */
-=======
-/*   Updated: 2022/10/27 16:40:56 by hdoo             ###   ########.fr       */
->>>>>>> 621225f76c7bc1ce732749c13a11445acc938d55
+/*   Created: 2022/10/27 16:57:51 by hdoo              #+#    #+#             */
+/*   Updated: 2022/10/27 18:06:43 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +17,7 @@
 #include <sys/fcntl.h>
 #include "libft.h"
 #include "string_buffer.h"
-// #include "cub3d.h"
-
-typedef struct s_info
-{
-	t_str_buf *path;
-	char	**map;
-	int		fd;
-}	t_info;
+#include "cub3d.h"
 
 t_str_buf	*validate_path(char *argv[])
 {
@@ -61,11 +50,40 @@ int ft_open(t_str_buf *path, int oflag)
 	return (fd);
 }
 
+int	init_info(t_info *info, t_str_buf *line)
+{
+
+	if (str_compare(line, "NO"))
+	{
+		str_cut(line, 3, 1);
+		info->core.world.fd_texture[NO] = ft_open(line, O_RDONLY);
+	}
+
+}
+
+bool	read_color_and_texture(t_info *info)
+{
+	bool		result;
+	int			component;
+	t_str_buf	*line;
+
+	component = 0;
+	while (component != 6)
+	{
+		line = str_append(NULL, get_next_line(info->fd));
+		init_info(info, line);
+
+	}
+
+	return ()
+}
+
 bool	read_info(t_info *info)
 {
-	while (1)
-	{
-	}
+	read_color_and_texture(info);
+	read_map(info);
+
+
 }
 
 bool	parse_info(t_info *info, char* argv[])
@@ -80,7 +98,6 @@ bool	parse_info(t_info *info, char* argv[])
 		if (read_info(info) != -1 && \
 
 				)
-
 		{
 
 

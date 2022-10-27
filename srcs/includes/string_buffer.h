@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:19:04 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:01:55 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRING_BUFFER_H
 
 #include "safe_mem.h"
+#include <stdbool.h>
 # include <stdlib.h>
 # include <stdarg.h>
 
@@ -41,5 +42,8 @@ t_str_buf	*str_append_nullable(t_str_buf *buf, char *s, char *def);
 t_str_buf	*str_append_format(t_str_buf *buf, const char *format, ...);
 t_str_buf	*str_append_format_v(t_str_buf *buf, const char *format,
 				va_list *ap);
+t_str_buf	*str_cut(t_str_buf *buf, size_t n, bool dir);
+int			str_compare(const t_str_buf *s1, const char *s2);
+void		str_free(t_str_buf *buf);
 
 #endif

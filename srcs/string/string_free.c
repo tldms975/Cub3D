@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.h                                        :+:      :+:    :+:   */
+/*   string_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 22:01:33 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 16:09:07 by hdoo             ###   ########.fr       */
+/*   Created: 2022/10/27 17:57:24 by hdoo              #+#    #+#             */
+/*   Updated: 2022/10/27 17:59:04 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING
-# define FT_STRING
+#include "safe_mem.h"
+#include "string_buffer.h"
 
-#include <stddef.h>
-
-typedef struct s_string
+void	str_free(t_str_buf *buf)
 {
-	char	*content;
-	size_t	len;
-	size_t	size;
-}	t_string;
-	
-#endif // !FT_STRING
+	free_safe(buf->str);
+	free_safe(buf);
+}

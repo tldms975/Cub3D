@@ -6,11 +6,12 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:26:26 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 17:58:34 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_buffer.h"
+#include "safe_mem.h"
 
 static void	*_memcpy(void *dst, const void *src, size_t n)
 {
@@ -50,7 +51,7 @@ static void	_resize_buffer(t_str_buf *buf, size_t n)
 		detach = buf->str;
 		_memcpy(attach, detach, buf->length * sizeof(*buf->str));
 		buf->str = attach;
-		free(detach);
+		free_safe(detach);
 		buf->capacity = capacity;
 	}
 }
@@ -89,8 +90,8 @@ char	*str_dispose(t_str_buf *buf)
 	if (buf)
 	{
 		_memcpy(result, buf->str, len * sizeof(*buf->str));
-		free(buf->str);
+		free_safe(buf->str);
 	}
-	free(buf);
+	free_safe(buf);
 	return (result);
 }
