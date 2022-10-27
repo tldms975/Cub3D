@@ -6,7 +6,11 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/27 16:40:18 by sielee           ###   ########seoul.kr  */
+=======
+/*   Updated: 2022/10/27 16:40:56 by hdoo             ###   ########.fr       */
+>>>>>>> 621225f76c7bc1ce732749c13a11445acc938d55
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +20,53 @@
 #include <stdio.h>
 #include <sys/fcntl.h>
 #include "libft.h"
-#include "ft_string.h"
+#include "string_buffer.h"
 // #include "cub3d.h"
 
 typedef struct s_info
 {
-	t_string path;
+	t_str_buf *path;
 	char	**map;
 	int		fd;
 }	t_info;
 
-t_string	validate_path(char *argv[])
+t_str_buf	*validate_path(char *argv[])
 {
-	t_string path;
-	int len;
+	t_str_buf	*path;
+	int			len;
 
-	path.content = NULL;
-	len = strlen(argv[1]);
-	if (len - 2 > 0 && \
+	path = NULL;
+	len = ft_strlen(argv[1]);
+	if (len >= 4 && \
 		argv[1][len - 4] == '.' && \
 		argv[1][len - 3] == 'c' && \
 		argv[1][len - 2] == 'u' && \
 		argv[1][len - 1] == 'b')
 	{
-		path.content = strdup(argv[1]);
-		path.len = len;
-		path.size = len;
+		path = str_append(NULL, argv[1]);
 	}
 	return (path);
 }
 
-int ft_open(t_string path, int oflag)
+int ft_open(t_str_buf *path, int oflag)
 {
 	int fd;
 
-	fd = open(path.content, oflag);
+	fd = open(path->str, oflag);
 	if (fd == -1)
 	{
 		perror("Error: fail to open with given path: ");
 		exit(2);
 	}
+	return (fd);
 }
 
 bool	read_info(t_info *info)
 {
-	char **line;
-
 	while (1)
 	{
-		line = ft_split(get_next_line(info->fd), ' ');
-		
 	}
-
 }
-
 
 bool	parse_info(t_info *info, char* argv[])
 {
@@ -77,11 +74,13 @@ bool	parse_info(t_info *info, char* argv[])
 
 	retval = false;
 	info->path = validate_path(argv);
-	if (info->path.content != NULL)
+	if (info->path->str != NULL)
 	{
 		info->fd = ft_open(info->path, O_RDONLY);
 		if (read_info(info) != -1 && \
+
 				)
+
 		{
 
 

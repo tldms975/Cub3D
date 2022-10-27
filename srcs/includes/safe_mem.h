@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.h                                        :+:      :+:    :+:   */
+/*   safe_mem.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 22:01:33 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 16:09:07 by hdoo             ###   ########.fr       */
+/*   Created: 2022/05/21 19:55:19 by jkong             #+#    #+#             */
+/*   Updated: 2022/10/27 16:16:36 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING
-# define FT_STRING
+#ifndef SAFE_MEM_H
+# define SAFE_MEM_H
 
-#include <stddef.h>
+# include <stdlib.h>
 
-typedef struct s_string
-{
-	char	*content;
-	size_t	len;
-	size_t	size;
-}	t_string;
-	
-#endif // !FT_STRING
+void	*malloc_safe(size_t size);
+void	*calloc_safe(size_t count, size_t size);
+int		free_safe(void *ptr);
+
+#endif

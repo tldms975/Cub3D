@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 16:06:46 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 16:21:17 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "ft_string.h"
+#include "string_buffer.h"
 
-t_string	new_str(char *target);
+t_str_buf	*new_str(char *target);
 
-t_string	new_str(char *target)
+t_str_buf	*new_str(char *target)
 {
-	t_string	new_string;
+	t_str_buf	*new_string = NULL;
 
-	new_string.len = ft_strlen(target);
-	new_string.content = malloc(new_string.len);
-
+	new_string->length = ft_strlen(target);
+	new_string->str = malloc(new_string->length);
+	new_string->capacity = new_string->length;
 	return (new_string);
 }
