@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 22:56:34 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 23:24:57 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * @param n number of character that cut from buf.
  * @return new buf that cutted
  */
-t_str_buf	*str_cut(t_str_buf *buf, size_t n, bool dir)
+t_str_buf	*str_cut(t_str_buf *buf, size_t n, t_cut_dir dir)
 {
 	t_str_buf	*new_str;
 

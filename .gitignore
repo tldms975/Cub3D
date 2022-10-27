@@ -31,7 +31,7 @@ compile_commands.json
 .cache/
 
 # for Test
-test
+# test
 
 # Object files
 *.o

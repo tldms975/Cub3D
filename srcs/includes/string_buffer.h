@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 22:58:45 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/27 23:25:06 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct s_str_buf
 	size_t	capacity;
 }	t_str_buf;
 
+typedef enum e_cut_dir
+{
+	FWD = 1,
+	BWD = 0
+} t_cut_dir;
+
 t_str_buf	*str_append_raw(t_str_buf *buf, const char *s, size_t n);
 t_str_buf	*str_append(t_str_buf *buf, const char *s);
 char		*str_dispose(t_str_buf *buf);
@@ -42,7 +48,7 @@ t_str_buf	*str_append_optional(t_str_buf *buf, char *s, char *def);
 t_str_buf	*str_append_format(t_str_buf *buf, const char *format, ...);
 t_str_buf	*str_append_format_v(t_str_buf *buf, const char *format,
 				va_list *ap);
-t_str_buf	*str_cut(t_str_buf *buf, size_t n, bool dir);
+t_str_buf	*str_cut(t_str_buf *buf, size_t n, t_cut_dir dir);
 int			str_compare(const t_str_buf *s1, const char *s2);
 int			str_ncompare(const t_str_buf *s1, const char *s2, int n);
 void		str_free(t_str_buf *buf);
