@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 02:11:20 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/29 04:40:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "types/t_mlx.h"
 # include "types/t_world.h"
 # include "types/t_engine.h"
+
+# define PUPLE "\x1b[38;2;172;146;235m"
+# define RED "\x1b[38;2;236;86;101m"
+# define BLUE "\x1b[38;2;114;191;228m"
+# define ORANGE "\x1b[38;2;248;145;76m"
+# define YELLOW "\x1b[38;2;254;206;83m"
+# define GREEN "\x1b[38;2;172;210;118m"
+# define NOCOLOR "\x1b[0;0m"
 
 typedef enum e_result {
 	FAILURE = 0,
