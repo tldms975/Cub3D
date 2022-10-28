@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/29 03:20:38 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/29 05:47:42 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,25 @@ void	*realloc_map_raw_data(t_info *info)
 	return (new_map);
 }
 
-void	print_map(t_info *info)
+void	print_map(t_info *info, size_t x, size_t y)
 {
+	(void)x;
 	for (size_t i = 0; i < info->map.height; i++)
 	{
-		write(1, info->map.raw_data[i]->str, info->map.raw_data[i]->length);
+		if (i == y)
+		{
+			for (size_t j = 0; j < info->map.raw_data[y]->length; j++)
+			{
+				if (j == x)
+				{
+					printf("%s%c%s", RED, 'X', NOCOLOR);
+				}
+				else
+					printf("%c", info->map.raw_data[y]->str[j]);
+			}
+		}
+		else
+			printf("%s", str_dispose(info->map.raw_data[i]));
 	}
 }
 
@@ -174,27 +188,18 @@ t_result	scan_map(t_info *info)
 		}
 		line = get_next_line(info->fd);
 	}
-	// print_map(info);
-	return (SUCCESS);
-}
-
-t_result	validate_map(t_info *info)
-{
-	if ()
-
-
-
+	// print_map(info, );
 	return (SUCCESS);
 }
 
 t_result	read_map(t_info *info)
 {
 	if (scan_map(info) == SUCCESS && \
-		validate_map(info) == SUCCESS)
+			validate_map(info) == SUCCESS)
 	{
-
+		return (SUCCESS);
 	}
-	return (SUCCESS);
+	return (FAILURE);
 }
 
 t_result	read_info(t_info *info)
