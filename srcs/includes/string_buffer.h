@@ -44,6 +44,7 @@ t_str_buf	*str_append_format_v(t_str_buf *buf, const char *format,
 				va_list *ap);
 t_str_buf	*str_cut(t_str_buf *buf, size_t n, bool dir);
 int			str_compare(const t_str_buf *s1, const char *s2);
+int			str_ncompare(const t_str_buf *s1, const char *s2, int n);
 void		str_free(t_str_buf *buf);
 
 #endif
