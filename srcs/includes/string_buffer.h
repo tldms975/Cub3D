@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 23:25:06 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/28 19:50:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # ifndef GROW_THRESHOLD
 #  define GROW_THRESHOLD 0x400
 # endif
+
+# ifndef MATCH
+#  define MATCH 0x00
+#endif // !MATCH
 
 typedef struct s_str_buf
 {
@@ -50,7 +54,7 @@ t_str_buf	*str_append_format_v(t_str_buf *buf, const char *format,
 				va_list *ap);
 t_str_buf	*str_cut(t_str_buf *buf, size_t n, t_cut_dir dir);
 int			str_compare(const t_str_buf *s1, const char *s2);
-int			str_ncompare(const t_str_buf *s1, const char *s2, int n);
+int			str_ncompare(const t_str_buf *s1, const char *s2, size_t n);
 void		str_free(t_str_buf *buf);
 
 #endif
