@@ -6,11 +6,11 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 21:25:54 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:16:08 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 01:13:01 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "safe_mem.h"
+#include "libft.h"
 
 static void	*_required_non_null(void *ptr)
 {

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 04:40:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 05:04:32 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_core
 
 typedef struct s_map
 {
-	t_str_buf		**raw_data;
+	t_str_buf	**raw;
 	size_t		width;
 	size_t		capacity;
 	size_t		height;

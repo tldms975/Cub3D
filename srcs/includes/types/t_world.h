@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/28 19:31:14 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 02:08:26 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,24 @@ typedef	enum
 	EA
 } t_dir;
 
-typedef struct s_rgb
-{
-	int	r;
-	int	g;
-	int	b;
-}				t_rgb;
-
 typedef struct	s_ceiling
 {
-	t_rgb	rgb;
+	int	rgb;
 }				t_ceiling;
 
 typedef struct	s_wall
 {
-	t_rgb	rgb;
+	int	rgb;
 }				t_wall;
 
 typedef struct	s_floor
 {
-	t_rgb	rgb;
+	int	rgb;
 }				t_floor;
 
 typedef struct	s_sprite
 {
-	t_rgb	rgb;
+	int	rgb;
 }				t_sprite;
 
 typedef struct	s_vec
@@ -63,7 +56,6 @@ typedef struct s_player
 
 typedef struct	s_world
 {
-	char		**map;
 	t_ceiling	ceiling;
 	t_wall		wall;
 	t_floor		floor;

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   string_fcntl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 01:00:35 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 01:01:04 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "string_buffer.h"
+#include "fcntl.h"
+#include "stdio.h"
 
-void	ft_free_split(char **words)
+int str_safe_open(t_str_buf *path, int oflag)
 {
-	int	i;
+	int fd;
 
-	i = 0;
-	while (words[i] != NULL)
+	fd = open(str_dispose(path), oflag);
+	if (fd == -1)
 	{
-		free_safe(words[i]);
-		i++;
+		perror("Error: fail to open with given path: \n");
+		exit(2);
 	}
-	free_safe(words);
+	return (fd);
 }

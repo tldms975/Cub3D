@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:38:16 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 01:51:29 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 00:52:13 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,10 @@ unsigned int	ft_abs(int target);
 int				ft_aredigit(char *target);
 int				ft_pow(int base, int x);
 void			ft_free_split(char **words);
+void			*ft_realloc(void *ptr, size_t size, \
+		const size_t old_size, size_t *size_ptr);
+void			*malloc_safe(size_t size);
+void			*calloc_safe(size_t count, size_t size);
+int				free_safe(void *ptr);
 
 #endif

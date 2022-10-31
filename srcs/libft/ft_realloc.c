@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 00:48:59 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 00:52:37 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_split(char **words)
+void	*ft_realloc(void *ptr, size_t size,\
+		const size_t old_size, size_t *size_ptr)
 {
-	int	i;
+	void	*new_ptr;
 
-	i = 0;
-	while (words[i] != NULL)
+	new_ptr = NULL;
+	if (size != 0)
 	{
-		free_safe(words[i]);
-		i++;
+		while (size < old_size)
+		{
+			size *= 2;
+		}
+		new_ptr = malloc_safe(size);
+		if (ptr != NULL)
+		{
+			ft_memcpy(new_ptr, ptr, old_size);
+			free_safe(ptr);
+		}
+		if (size_ptr != NULL)
+		{
+			*(size_t *)size_ptr = size;
+		}
 	}
-	free_safe(words);
+	return (new_ptr);
 }

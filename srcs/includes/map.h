@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_mem.h                                         :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 19:55:19 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:16:36 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 01:10:46 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 01:11:32 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SAFE_MEM_H
-# define SAFE_MEM_H
+#ifndef MAP_H
+# define MAP_H
 
-# include <stdlib.h>
+#include "cub3d.h"
 
-void	*malloc_safe(size_t size);
-void	*calloc_safe(size_t count, size_t size);
-int		free_safe(void *ptr);
+void		*realloc_map_raw_data(t_info *info);
+t_result	scan_map(t_info *info);
+t_result	read_map(t_info *info);
 
-#endif
+#endif // !MAP_H

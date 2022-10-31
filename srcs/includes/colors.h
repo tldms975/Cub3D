@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 00:25:36 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 00:55:07 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef COLORS_H
+# define COLORS_H
 
-void	ft_free_split(char **words)
-{
-	int	i;
+#include "cub3d.h"
 
-	i = 0;
-	while (words[i] != NULL)
-	{
-		free_safe(words[i]);
-		i++;
-	}
-	free_safe(words);
-}
+void			parse_color(int *color, t_str_buf *line);
+int				create_trgb(int t, int r, int g, int b);
+unsigned char	get_t(int trgb);
+unsigned char	get_r(int trgb);
+unsigned char	get_g(int trgb);
+unsigned char	get_b(int trgb);
+
+#endif /* COLORS_H */

@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 00:24:25 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 00:26:10 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_free_split(char **words)
+int	create_trgb(int t, int r, int g, int b)
 {
-	int	i;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-	i = 0;
-	while (words[i] != NULL)
-	{
-		free_safe(words[i]);
-		i++;
-	}
-	free_safe(words);
+unsigned char	get_t(int trgb)
+{
+	return (((unsigned char *)&trgb)[3]);
+}
+
+unsigned char	get_r(int trgb)
+{
+	return (((unsigned char *)&trgb)[2]);
+}
+
+unsigned char	get_g(int trgb)
+{
+	return (((unsigned char *)&trgb)[1]);
+}
+
+unsigned char	get_b(int trgb)
+{
+	return (((unsigned char *)&trgb)[0]);
 }

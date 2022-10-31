@@ -6,15 +6,16 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/28 19:50:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 01:15:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRING_BUFFER_H
 # define STRING_BUFFER_H
 
-#include "safe_mem.h"
-#include <stdbool.h>
+# include "libft.h"
+# include <sys/fcntl.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <stdarg.h>
 
@@ -56,5 +57,6 @@ t_str_buf	*str_cut(t_str_buf *buf, size_t n, t_cut_dir dir);
 int			str_compare(const t_str_buf *s1, const char *s2);
 int			str_ncompare(const t_str_buf *s1, const char *s2, size_t n);
 void		str_free(t_str_buf *buf);
+int			str_safe_open(t_str_buf *path, int oflag);
 
 #endif

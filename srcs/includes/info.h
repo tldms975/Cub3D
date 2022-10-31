@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 00:33:21 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 01:22:36 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef INFO_H
+# define INFO_H
 
-void	ft_free_split(char **words)
-{
-	int	i;
+#include "cub3d.h"
 
-	i = 0;
-	while (words[i] != NULL)
-	{
-		free_safe(words[i]);
-		i++;
-	}
-	free_safe(words);
-}
+int			init_texture_and_color(t_info *info, t_str_buf *line);
+bool		read_color_and_texture(t_info *info);
+t_result	read_info(t_info *info);
+bool		parse_dot_cub(t_info *info, char* argv[]);
+t_str_buf	*validate_path(char *argv[]);
+
+#endif // !INFO_H

@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 23:24:57 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 04:47:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "safe_mem.h"
 #include "string_buffer.h"
 #include "libft.h"
 

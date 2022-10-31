@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 01:32:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 02:03:54 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/01 00:58:34 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/01 04:48:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
+#include <stdio.h>
 
-void	ft_free_split(char **words)
+void	print_map(t_info *info, size_t x, size_t y)
 {
-	int	i;
-
-	i = 0;
-	while (words[i] != NULL)
+	(void)x;
+	for (size_t i = 0; i < info->map.height; i++)
 	{
-		free_safe(words[i]);
-		i++;
+		if (i == y)
+		{
+			for (size_t j = 0; j < info->map.raw[y]->length; j++)
+			{
+				if (j == x)
+				{
+					printf("%s%c%s", RED, 'X', NOCOLOR);
+				}
+				else
+					printf("%c", info->map.raw[y]->str[j]);
+			}
+		}
+		else
+			printf("%s", str_dispose(info->map.raw[i]));
 	}
-	free_safe(words);
 }
