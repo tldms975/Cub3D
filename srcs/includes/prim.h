@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 05:51:41 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 06:35:15 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 04:47:26 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ typedef struct s_edge
 
 typedef struct s_graph
 {
-	t_vertex *vertex_set;
-	t_edge *edge_set;
+	t_vertex	*vertex_set;
+	t_edge		*edge_set;
+	size_t		vertex_count;
+	size_t		vertex_capacity;
+	size_t		edge_count;
+	size_t		edge_capacity;
 }	t_graph;
 
 #endif // !PRIM_H

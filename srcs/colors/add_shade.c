@@ -6,9 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:22:56 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 01:26:11 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 01:41:02 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub3d.h"
 
 int	add_shade(double distance, int color)
 {

@@ -6,30 +6,19 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 01:18:04 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 05:10:35 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "libft.h"
 
-void	*realloc_map_raw_data(t_info *info)
+t_result	prim(t_info *info);
+void	print_map(t_info *info, size_t x, size_t y); // TODO - remove
+
+t_result	validate_map(t_info *info)
 {
-	t_str_buf	**new_map;
-	size_t		old_capacity;
-
-	new_map = info->map.raw_data;
-	old_capacity = info->map.capacity;
-	if (info->map.capacity <= info->map.height)
-	{
-		info->map.capacity *= 2;
-	}
-	new_map = malloc_safe(sizeof(t_str_buf *) * (info->map.capacity));
-	if (info->map.raw_data != NULL)
-	{
-		ft_memcpy(new_map, info->map.raw_data, sizeof(t_str_buf *) * old_capacity);
-		free_safe(info->map.raw_data);
-	}
-	return (new_map);
+	return (prim(info));
 }
 
 t_result	scan_map(t_info *info)
@@ -38,19 +27,21 @@ t_result	scan_map(t_info *info)
 	t_str_buf	*new_row;
 
 	line = get_next_line(info->fd);
-	info->map.capacity = 1;
+	info->map.capacity = sizeof(t_str_buf *);
 	while (line != NULL)
 	{
-		info->map.raw_data = (t_str_buf **)realloc_map_raw_data(info);
+		info->map.raw = ft_realloc(info->map.raw, \
+				sizeof(t_str_buf) * info->map.height + 1, \
+				info->map.capacity, &info->map.capacity);
 		new_row = str_append(NULL, line);
-		info->map.raw_data[info->map.height++] = new_row;
+		info->map.raw[info->map.height++] = new_row;
 		if (info->map.width < new_row->length)
 		{
 			info->map.width = new_row->length;
 		}
 		line = get_next_line(info->fd);
 	}
-	// print_map(info, );
+	// print_map(info, 0, 0);
 	return (SUCCESS);
 }
 
