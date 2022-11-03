@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 05:10:35 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/03 23:09:08 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	print_map(t_info *info, size_t x, size_t y); // TODO - remove
 
 t_result	validate_map(t_info *info)
 {
-	return (prim(info));
+	(void)info;
+	return (SUCCESS);
+	// return (prim(info));
 }
 
 t_result	scan_map(t_info *info)
@@ -27,6 +29,11 @@ t_result	scan_map(t_info *info)
 	t_str_buf	*new_row;
 
 	line = get_next_line(info->fd);
+	while (line != NULL && *line == '\n')
+	{
+		free_safe(line);
+		line = get_next_line(info->fd);
+	}
 	info->map.capacity = sizeof(t_str_buf *);
 	while (line != NULL)
 	{
@@ -41,7 +48,7 @@ t_result	scan_map(t_info *info)
 		}
 		line = get_next_line(info->fd);
 	}
-	// print_map(info, 0, 0);
+	print_map(info, 0, 0);
 	return (SUCCESS);
 }
 

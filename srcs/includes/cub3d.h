@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 20:31:37 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/03 23:23:12 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ typedef enum e_state
 	WALL = 0,
 	INSIDE = 1,
 	OUTSIDE = 2,
-	N = 3,
-	S = 4,
-	W = 5,
-	E = 6
 }	t_state;
 
 typedef enum e_result
@@ -49,13 +45,20 @@ typedef struct s_core
 	t_world		world;
 }	t_core;
 
+typedef struct s_coor
+{
+	size_t	x;
+	size_t	y;
+	char	c;
+}	t_coor;
+
 typedef struct s_map
 {
-	t_str_buf		**raw;
-	unsigned int	**state;
-	size_t			width;
-	size_t			capacity;
-	size_t			height;
+	t_str_buf	**raw;
+	size_t		width;
+	size_t		capacity;
+	size_t		height;
+	t_coor		start_point;
 }	t_map;
 
 // every information of config

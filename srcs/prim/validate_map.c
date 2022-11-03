@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prim.h                                             :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 05:51:41 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 23:13:11 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/03 23:21:24 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIM_H
-# define PRIM_H
+#include "cub3d.h"
+#include "libft.h"
 
-#include <stddef.h>
-
-typedef struct s_vertex
+t_coor	*find_start_point(t_info *info)
 {
 	size_t	x;
 	size_t	y;
-}	t_vertex;
 
-typedef struct s_edge
+	y = 0;
+	while (y < info->map.height)
+	{
+		x = 0;
+		while (x < info->map.raw[y]->length)
+		{
+			if (is_start_point(info, x, y))
+			{
+				add_start_point(info, x, y);
+			}
+			x++;
+		}
+		y++;
+	}
+	return ()
+}
+
+void	validate_map(t_info *info)
 {
-	t_vertex	*a;
-	t_vertex	*b;
-	int			weight;
-}	t_edge;
+}
 
-typedef struct s_graph
-{
-	t_vertex	*vertex_set;
-	t_edge		*edge_set;
-	size_t		vertex_count;
-	size_t		vertex_capacity;
-	size_t		edge_count;
-	size_t		edge_capacity;
-}	t_graph;
 
-#endif // !PRIM_H

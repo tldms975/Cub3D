@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 05:48:34 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 21:02:27 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/03 21:38:24 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define INITIAL_SIZE 0x400
 
 void	heap_sort_vertex(t_graph *target, size_t size);
+
 bool	is_vertex(t_info *info, size_t x, size_t y)
 {
 	const bool	lower_x_precheck = x > 1;
@@ -81,6 +82,5 @@ t_result	prim(t_info *info)
 	g.vertex_capacity = INITIAL_SIZE;
 	g.vertex_count = 0;
 	init_vertex(info, &g);
-	connect_vertex(&g);
 	return (SUCCESS);
 }
