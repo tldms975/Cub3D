@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 05:48:34 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 06:25:31 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/03 21:02:27 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #define INITIAL_SIZE 0x400
 
+void	heap_sort_vertex(t_graph *target, size_t size);
 bool	is_vertex(t_info *info, size_t x, size_t y)
 {
 	const bool	lower_x_precheck = x > 1;
@@ -38,12 +39,6 @@ bool	is_vertex(t_info *info, size_t x, size_t y)
 	}
 	return (false);
 }
-
-// t_result	connect_edge(t_graph *g)
-// {
-//
-//
-// }
 
 void	add_vertex(t_graph *g, size_t x, size_t y)
 {
@@ -75,7 +70,7 @@ t_result	init_vertex(t_info *info, t_graph *g)
 		}
 		y++;
 	}
-	printf("vertex count : %lu\n", g->vertex_count);
+	// printf("vertex count : %lu\n", g->vertex_count); TODO -- delete
 	return (SUCCESS);
 }
 
@@ -86,5 +81,6 @@ t_result	prim(t_info *info)
 	g.vertex_capacity = INITIAL_SIZE;
 	g.vertex_count = 0;
 	init_vertex(info, &g);
+	connect_vertex(&g);
 	return (SUCCESS);
 }

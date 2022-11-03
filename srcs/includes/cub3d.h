@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 05:04:32 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/03 20:31:37 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,19 @@
 # define GREEN "\x1b[38;2;172;210;118m"
 # define NOCOLOR "\x1b[0;0m"
 
-typedef enum e_result {
+typedef enum e_state
+{
+	WALL = 0,
+	INSIDE = 1,
+	OUTSIDE = 2,
+	N = 3,
+	S = 4,
+	W = 5,
+	E = 6
+}	t_state;
+
+typedef enum e_result
+{
 	FAILURE = 0,
 	SUCCESS = 1
 }	t_result;
@@ -39,10 +51,11 @@ typedef struct s_core
 
 typedef struct s_map
 {
-	t_str_buf	**raw;
-	size_t		width;
-	size_t		capacity;
-	size_t		height;
+	t_str_buf		**raw;
+	unsigned int	**state;
+	size_t			width;
+	size_t			capacity;
+	size_t			height;
 }	t_map;
 
 // every information of config
