@@ -14,14 +14,15 @@
 #include "libft.h"
 
 t_result	prim(t_info *info);
+t_result	validate_map(t_info *info);
 void	print_map(t_info *info, size_t x, size_t y); // TODO - remove
 
-t_result	validate_map(t_info *info)
-{
-	(void)info;
-	return (SUCCESS);
-	// return (prim(info));
-}
+// t_result	validate_map(t_info *info)
+// {
+// 	(void)info;
+// 	return (SUCCESS);
+// 	// return (prim(info));
+// }
 
 t_result	scan_map(t_info *info)
 {
@@ -48,7 +49,7 @@ t_result	scan_map(t_info *info)
 		}
 		line = get_next_line(info->fd);
 	}
-	print_map(info, 0, 0);
+	// print_map(info, 0, 0);
 	return (SUCCESS);
 }
 

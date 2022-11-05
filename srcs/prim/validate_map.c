@@ -6,82 +6,60 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/05 10:46:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/05 16:51:02 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
+#include "info.h"
+#include <stdio.h>
 
-void	add_start_point(t_info *info, size_t x, size_t y)
+void	print_map(t_info *info, size_t x, size_t y);
+
+
+typedef struct s_valid_path
 {
-	t_start_point	*st;
+	t_coor	*path;
+	
+}	t_valid_path;
 
-	st = &info->map.start_point;
-	ft_realloc(st->coor, st->count * sizeof(t_start_point), st->capacity, &st->capacity);
-	st->coor[st->count].c = info->map.raw[y]->str[x];
-	st->coor[st->count].x = x;
-	st->coor[st->count].y = y;
-	st->count++;
-}
-
-bool	is_start_point(t_info *info, size_t x, size_t y)
+t_coor	init_vertex(t_info *info)
 {
-	bool	retval;
+	size_t	i;
+	size_t	j;
+	t_coor	result;
 
-	retval = false;
-	if (info->map.raw[y]->str[x] == 'N'
-			|| info->map.raw[y]->str[x] == 'S'
-			|| info->map.raw[y]->str[x] == 'E'
-			|| info->map.raw[y]->str[x] == 'W')
-	{
-		retval = true;
-	}
-	return (retval);
-}
-
-size_t	validate_char(t_info *info, size_t x, size_t y)
-{
-	char	target;
-	char	valid_char[NUM_OF_VALID_CHAR] = {' ', '0', '1', 'N', 'S', 'E', 'W'};
-	size_t		i;
-
-	target = info->map.raw[y]->str[x];
 	i = 0;
-	while (i < NUM_OF_VALID_CHAR && target != valid_char[i])
+	ft_memset(&result, 0, sizeof(t_coor));
+	while (i < info->map.height)
 	{
+		j = 0;
+		while (j < info->map.raw[i]->length)
+		{
+			if (info->map.raw[i]->str[j] == '1')
+			{
+				result.x = j;
+				result.y = i;
+				result.c = info->map.raw[i]->str[j];
+				return (result);
+			}
+			j++;
+		}
 		i++;
 	}
-	return (i);
+	return (result);
 }
 
-t_result	find_start_point(t_info *info)
+bool	is_surrounded(t_info *info)
 {
-	size_t		x;
-	size_t		y;
-	t_result	result;
+	bool	result;
 
-	y = 0;
-	result = true;
-	while (y < info->map.height)
-	{
-		x = 0;
-		while (x < info->map.raw[y]->length)
-		{
+	result = false;
+	init_vertex(info);
 
+		
 
-			if (validate_char(info, x, y) != NUM_OF_VALID_CHAR
-					&& is_start_point(info, x, y))
-			{
-
-				{
-					add_start_point(info, x, y);
-				}
-			}
-			x++;
-		}
-		y++;
-	}
 	return (result);
 }
 
@@ -90,11 +68,10 @@ t_result	validate_map(t_info *info)
 	t_result	retval;
 
 	retval = FAILURE;
-	if (find_start_point(info) == SUCCESS
-			&& is_surrounded(info) == true)
+
+	if (is_surrounded(info) == true
+			&& gether_start_point(info) == SUCCESS)
 	{
-
-
 	}
 	return (retval);
 }
