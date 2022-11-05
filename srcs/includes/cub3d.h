@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 23:23:12 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/05 10:31:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define YELLOW "\x1b[38;2;254;206;83m"
 # define GREEN "\x1b[38;2;172;210;118m"
 # define NOCOLOR "\x1b[0;0m"
+# define NUM_OF_VALID_CHAR 7
 
 typedef enum e_state
 {
@@ -52,13 +53,20 @@ typedef struct s_coor
 	char	c;
 }	t_coor;
 
+typedef struct s_start_point
+{
+	t_coor		*coor;
+	size_t		capacity;
+	size_t		count;
+}	t_start_point;
+
 typedef struct s_map
 {
-	t_str_buf	**raw;
-	size_t		width;
-	size_t		capacity;
-	size_t		height;
-	t_coor		start_point;
+	t_str_buf		**raw;
+	size_t			width;
+	size_t			capacity;
+	size_t			height;
+	t_start_point	start_point;
 }	t_map;
 
 // every information of config
