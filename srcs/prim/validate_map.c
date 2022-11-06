@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/05 16:51:02 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/06 21:15:29 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,44 @@ t_coor	init_vertex(t_info *info)
 	return (result);
 }
 
+bool	is_same(t_coor first, t_coor next)
+{
+	return (first.x == next.x && first.y == next.y);
+}
+
+bool	find_wall_not_visited(t_info *info, t_coor curr)
+{
+	const bool	lower_x_precheck = curr.x > 1;
+	const bool	upper_x_precheck = curr.x + 1 < info->map.raw[curr.y]->length;
+	const bool	lower_y_precheck = (curr.y > 1 && curr.x < info->map.raw[curr.y - 1]->length);
+	const bool	upper_y_precheck = (curr.y + 1 < info->map.height
+			&& curr.x < info->map.raw[curr.y + 1]->length);
+
+	return (false);
+}
+
+size_t	release_path(t_info *info, t_coor curr)
+{
+
+
+
+}
+
 bool	is_surrounded(t_info *info)
 {
 	bool	result;
+	t_coor	first_node;
+	t_coor	curr_node;
 
 	result = false;
-	init_vertex(info);
+	first_node = init_vertex(info);
+
+	info->map.opened.path = malloc_safe(sizeof(t_coor) * 100);
+	while (is_same(first_node, curr_node) != true)
+	{
+		release_path(info, curr_node);
+
+	}
 
 		
 

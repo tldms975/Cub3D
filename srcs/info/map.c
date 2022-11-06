@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 23:09:08 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/06 20:55:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ t_result	scan_map(t_info *info)
 		}
 		line = get_next_line(info->fd);
 	}
-	// print_map(info, 0, 0);
+	info->map.visited = 
+		malloc_safe(sizeof(bool) * (info->map.height* info->map.width));
 	return (SUCCESS);
 }
 
