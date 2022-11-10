@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:48:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 00:52:37 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 06:24:32 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_realloc(void *ptr, size_t size,\
 		}
 		if (size_ptr != NULL)
 		{
-			*(size_t *)size_ptr = size;
+			*size_ptr = size;
 		}
 	}
 	return (new_ptr);

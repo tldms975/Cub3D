@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/10 18:38:28 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 03:14:54 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		ft_bzero(&info, sizeof(info));
-		if (parse_dot_cub(&info, argv[1]) == SUCCESS)
+		if (parse_dot_cub(&info, argv[1]) == FAILURE)
 		{
-			printf("failed: parse_dot_cub\n");
+			printf("Error: parse_dot_cub\n");
+		}
+		else
+		{
+			printf("SUCCESS: parse_dot_cub\n");
 		}
 	}
 	else
 	{
-		printf("Wrong number of arguments: expected 1, but get %d\n", (argc - 1));
+		printf("Error: Wrong number of arguments: expected 1, but get %d\n", (argc - 1));
 	}
 	return (0);
 }

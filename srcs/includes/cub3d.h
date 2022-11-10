@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/08 23:12:40 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 05:31:23 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define YELLOW "\x1b[38;2;254;206;83m"
 # define GREEN "\x1b[38;2;172;210;118m"
 # define NOCOLOR "\x1b[0;0m"
-# define VALID_C_NUM 8 
+# define VALID_C_NUM 9
 
 typedef enum e_state
 {
@@ -37,7 +37,8 @@ typedef enum e_state
 typedef enum e_result
 {
 	FAILURE = 0,
-	SUCCESS = 1
+	SUCCESS = 1,
+	ERROR = 2
 }	t_result;
 
 typedef struct s_core
@@ -62,8 +63,8 @@ typedef struct s_start_point
 
 typedef struct s_path
 {
-	t_coor	*path;
-	size_t	i;
+	t_coor	*coor;
+	size_t	count;
 	size_t	capacity;
 }	t_path;
 

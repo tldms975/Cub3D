@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/10 15:06:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 02:55:08 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_world
 	t_wall		wall;
 	t_floor		floor;
 	char		*txr[4];
-	t_player	*player;
+	t_player	player;
 }				t_world;
 
 #endif

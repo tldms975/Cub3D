@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:30:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/10 18:58:47 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 03:12:26 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "colors.h"
 #include "map.h"
 #include "string_buffer.h"
+#include <stdbool.h>
 #include <stdio.h> // TOOD - remove
 #include <sys/fcntl.h>
 
@@ -64,16 +65,19 @@ bool	read_config(t_info *info)
 
 t_result	read_info(t_info *info)
 {
-	if (read_config(info) == true)
+	t_result result;
+
+	result = FAILURE;
+	if (read_config(info) == true
+			&& map__read(info) == SUCCESS)
 	{
-		read_map(info);
+		result = SUCCESS;
 	}
 	else
 	{
-		printf("failed: read_color_and_texture\n");
-		return (FAILURE);
+		printf("Error: read_color_and_texture\n");
 	}
-	return (SUCCESS);
+	return (result);
 }
 
 static t_str_buf	*validate_path(char *arg)
@@ -93,7 +97,7 @@ static t_str_buf	*validate_path(char *arg)
 	}
 	else
 	{
-		printf("failed: invalid file format\n");
+		printf("Error: invalid file format\n");
 	}
 	return (path);
 }
@@ -113,7 +117,7 @@ bool	parse_dot_cub(t_info *info, char* arg)
 		}
 		else
 		{
-			printf("failed: read_info\n");
+			printf("Error: read_info\n");
 		}
 	}
 	return (retval);
