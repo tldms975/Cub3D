@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/01 02:08:26 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/10 15:06:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_player
 	double	speed;
 	t_vec	pos;
 	double	sight;
+	char	cardinal;
 }				t_player;
 
 typedef struct	s_world

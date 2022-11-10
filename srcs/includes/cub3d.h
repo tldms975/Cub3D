@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/06 21:12:57 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/08 23:12:40 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define YELLOW "\x1b[38;2;254;206;83m"
 # define GREEN "\x1b[38;2;172;210;118m"
 # define NOCOLOR "\x1b[0;0m"
-# define NUM_OF_VALID_CHAR 7
+# define VALID_C_NUM 8 
 
 typedef enum e_state
 {

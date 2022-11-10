@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/06 21:15:29 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/10 15:41:37 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,82 +17,70 @@
 
 void	print_map(t_info *info, size_t x, size_t y);
 
-
-typedef struct s_valid_path
+char	find_valid_char(char target)
 {
-	t_coor	*path;
-	
-}	t_valid_path;
-
-t_coor	init_vertex(t_info *info)
-{
-	size_t	i;
-	size_t	j;
-	t_coor	result;
+	const char	valid_char[VALID_C_NUM] = {' ', '0', '1', 'D', 'N', 'S', 'W', 'E'};
+	int			i;
 
 	i = 0;
-	ft_memset(&result, 0, sizeof(t_coor));
+	while (valid_char[i] != target)
+	{
+		i++;
+	}
+	if (i < VALID_C_NUM)
+	{
+		return (valid_char[i]);
+	}
+	return (0);
+}
+
+bool	add_start_point(t_info *info, char target)
+{
+	if (target != 0 && target > 'D')
+	{
+		if (info->core.world.player->cardinal != 0)
+		{
+			info->core.world.player->cardinal = target;
+		}
+		else
+		{
+			ft_putstr_fd("Error: Multiple start point founded\n", 2);
+			return (false);
+		}
+	}
+	return (true);
+}
+
+bool	find_start_point(t_info *info)
+{
+	size_t		i;
+	size_t		j;
+	int			target;
+
+	i = 0;
 	while (i < info->map.height)
 	{
 		j = 0;
-		while (j < info->map.raw[i]->length)
+		while (j < info->map.width)
 		{
-			if (info->map.raw[i]->str[j] == '1')
-			{
-				result.x = j;
-				result.y = i;
-				result.c = info->map.raw[i]->str[j];
-				return (result);
-			}
-			j++;
+			target = find_valid_char(info->map.raw[i]->str[j]);
+			return (add_start_point(info, target));
 		}
 		i++;
 	}
-	return (result);
-}
-
-bool	is_same(t_coor first, t_coor next)
-{
-	return (first.x == next.x && first.y == next.y);
-}
-
-bool	find_wall_not_visited(t_info *info, t_coor curr)
-{
-	const bool	lower_x_precheck = curr.x > 1;
-	const bool	upper_x_precheck = curr.x + 1 < info->map.raw[curr.y]->length;
-	const bool	lower_y_precheck = (curr.y > 1 && curr.x < info->map.raw[curr.y - 1]->length);
-	const bool	upper_y_precheck = (curr.y + 1 < info->map.height
-			&& curr.x < info->map.raw[curr.y + 1]->length);
-
+	ft_putstr_fd("Error: No start point\n", 2);
 	return (false);
 }
 
-size_t	release_path(t_info *info, t_coor curr)
+
+bool	precheck_map(t_info *info)
 {
+	if (find_start_point(info) == true
+			&& 
 
 
 
-}
-
-bool	is_surrounded(t_info *info)
-{
-	bool	result;
-	t_coor	first_node;
-	t_coor	curr_node;
-
-	result = false;
-	first_node = init_vertex(info);
-
-	info->map.opened.path = malloc_safe(sizeof(t_coor) * 100);
-	while (is_same(first_node, curr_node) != true)
-	{
-		release_path(info, curr_node);
-
-	}
-
-		
-
-	return (result);
+	return (true);
 }
 
 t_result	validate_map(t_info *info)
@@ -101,8 +89,7 @@ t_result	validate_map(t_info *info)
 
 	retval = FAILURE;
 
-	if (is_surrounded(info) == true
-			&& gether_start_point(info) == SUCCESS)
+	if (precheck_map(info) == true)
 	{
 	}
 	return (retval);
