@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/12 05:31:23 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/13 07:56:31 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_start_point
 
 typedef struct s_path
 {
-	t_coor	*coor;
+	t_coor	*path;
 	size_t	count;
 	size_t	capacity;
 }	t_path;
@@ -72,6 +72,7 @@ typedef struct s_map
 {
 	t_str_buf		**raw;
 	bool			**visited;
+	bool			**redzone;
 	t_path			opened;
 	size_t			width;
 	size_t			capacity;

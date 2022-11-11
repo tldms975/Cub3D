@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/12 06:54:46 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 07:29:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_result	map__scan(t_info *info)
 
 	info->map.capacity = sizeof(t_str_buf *);
 	line = map__skip_newline(info);
-	while (line != NULL)
+	while (line != NULL && *line != '\n')
 	{
 		info->map.raw = ft_realloc(info->map.raw,
 				sizeof(t_str_buf) * info->map.height + 1,

@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/11/01 01:15:52 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 07:47:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 
 typedef struct s_str_buf
 {
-	char	*str;
 	size_t	length;
 	size_t	capacity;
+	char	*str;
 }	t_str_buf;
 
 typedef enum e_cut_dir
