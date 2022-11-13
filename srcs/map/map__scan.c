@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map__scan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/12 07:29:52 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/13 11:19:23 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "libft.h"
+#include "map.h"
 
-t_result	prim(t_info *info);
-t_result	map__validate(t_info *info);
-void		print_map(t_info *info, size_t x, size_t y); // TODO - remove
-
-// t_result	validate_map(t_info *info)
-// {
-// 	(void)info;
-// 	return (SUCCESS);
-// 	// return (prim(info));
-// }
 static char	*map__skip_newline(t_info *info)
 {
 	char	*line;
