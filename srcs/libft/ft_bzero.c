@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 06:26:54 by hdoo              #+#    #+#             */
-/*   Updated: 2021/11/22 13:49:26 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/12 04:12:56 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	i;
-
-	i = 0;
-	while (i < n)
-		*((char *)s + i++) = 0;
+	ft_memset(s, 0, n);
 }

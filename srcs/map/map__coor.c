@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_mem.h                                         :+:      :+:    :+:   */
+/*   map__coor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 19:55:19 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 16:16:36 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/13 11:20:02 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SAFE_MEM_H
-# define SAFE_MEM_H
+#include "map.h"
 
-# include <stdlib.h>
-
-void	*malloc_safe(size_t size);
-void	*calloc_safe(size_t count, size_t size);
-int		free_safe(void *ptr);
-
-#endif
+void	map__coor__add(t_coor *result, size_t y, size_t x, int c)
+{
+	result->x = x;
+	result->y = y;
+	result->c = c;
+}

@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 12:19:50 by hdoo              #+#    #+#             */
-/*   Updated: 2022/05/03 22:29:16 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/29 01:55:23 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_file	*init_fd(int fd)
 
 int	addback_seg(t_file *curr)
 {
-	t_list	**new_list;
+	t_segment	**new_list;
 
 	if (curr->last_list)
 	{
@@ -48,7 +48,7 @@ int	addback_seg(t_file *curr)
 	{
 		new_list = &(curr->list);
 	}
-	*new_list = malloc(sizeof(t_list));
+	*new_list = malloc(sizeof(t_segment));
 	if (*new_list)
 	{
 		(*new_list)->segment = malloc(sizeof(char) * (BUFFER_SIZE));
@@ -61,7 +61,7 @@ int	addback_seg(t_file *curr)
 int	link_lines(t_file **curr, char **result)
 {
 	const int	line_size = ((*curr)->line_end - (*curr)->line_stt);
-	t_list		*cursor;
+	t_segment		*cursor;
 	int			i;
 
 	*result = malloc(sizeof(char) * (line_size + 1));
@@ -86,7 +86,7 @@ int	link_lines(t_file **curr, char **result)
 
 void	free_used_segment(t_file *curr)
 {
-	t_list		*will_free;
+	t_segment		*will_free;
 	const int	need_to_clean_last_segment = (curr->is_eof \
 			|| curr->line_end == curr->rd_size);
 

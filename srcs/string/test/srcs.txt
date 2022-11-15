@@ -1,6 +1,0 @@
-main.c
-../string_buffer_modify.c
-../string_free.c
-../../utils/safe_mem.c
-../string_buffer.c
-../../libft/ft_memcpy.c

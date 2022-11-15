@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 12:21:50 by hdoo              #+#    #+#             */
-/*   Updated: 2022/05/11 09:29:52 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/10/29 01:21:05 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ typedef unsigned int	t_size;
 #  define FALSE 0
 # endif // !FALSE
 
-typedef struct s_list
+typedef struct s_segment
 {
 	char			*segment;
-	struct s_list	*next;
-}	t_list;
+	struct s_segment	*next;
+}	t_segment;
 
 typedef struct s_file
 {
@@ -52,8 +52,8 @@ typedef struct s_file
 	t_size			rd_size;
 	long			line_end;
 	long			line_stt;
-	t_list			*list;
-	t_list			*last_list;
+	t_segment			*list;
+	t_segment			*last_list;
 }	t_file;
 
 char	*get_next_line(int fd);

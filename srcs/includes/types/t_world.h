@@ -17,20 +17,13 @@
 #define DARKER 8355711
 typedef	enum
 {
-	NO,
+	NO = 0,
 	SO,
 	WE,
 	EA,
 	F,
 	C
 } t_dir;
-
-typedef struct s_rgb
-{
-	int	r;
-	int	g;
-	int	b;
-}				t_rgb;
 
 typedef struct	s_ceiling
 {
@@ -49,7 +42,7 @@ typedef struct	s_floor
 
 typedef struct	s_sprite
 {
-	t_rgb	rgb;
+	int	rgb;
 }				t_sprite;
 
 typedef struct	s_vec
@@ -67,6 +60,8 @@ typedef struct	s_ivec
 typedef struct s_player
 {
 	t_vec	pos;
+	double	sight;
+	char	cardinal;
 	t_vec	dir;
 	t_vec	plane;
 	double	move_speed;
@@ -108,7 +103,7 @@ typedef struct	s_world
 	int			**map;
 	int			buf[WIN_H][WIN_W];
 	int			**texture;
-	///char		**tex_path;
+	char		**tex_path;
 	t_ceiling	ceiling;
 	t_wall		wall;
 	t_floor		floor;

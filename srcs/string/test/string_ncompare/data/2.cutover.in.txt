@@ -1,0 +1,4 @@
+EO	EOO	3
+EOO	EO	3
+F	FL	1
+FLOOR	F	1

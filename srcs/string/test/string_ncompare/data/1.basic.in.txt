@@ -1,0 +1,5 @@
+NO	NO	2
+EO	EO	2
+EOLLO	EO	2
+NO ./1.basic.in.txt	NO	2
+SO ./1.basic.in.txt	NO	2

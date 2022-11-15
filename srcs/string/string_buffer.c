@@ -6,12 +6,11 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/10/27 17:58:34 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 04:47:12 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_buffer.h"
-#include "safe_mem.h"
 
 static void	*_memcpy(void *dst, const void *src, size_t n)
 {

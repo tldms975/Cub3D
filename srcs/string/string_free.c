@@ -6,11 +6,10 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:57:24 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 17:59:04 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/01 04:47:48 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "safe_mem.h"
 #include "string_buffer.h"
 
 void	str_free(t_str_buf *buf)
