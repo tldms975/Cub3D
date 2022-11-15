@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/07 21:24:22 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/15 18:36:26 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,11 @@ typedef	enum
 	C
 } t_dir;
 
-typedef struct	s_ceiling
+typedef struct	s_rgb
 {
-	int	rgb;
-}				t_ceiling;
-
-typedef struct	s_wall
-{
-	int	rgb;
-}				t_wall;
-
-typedef struct	s_floor
-{
-	int	rgb;
-}				t_floor;
-
-typedef struct	s_sprite
-{
-	int	rgb;
-}				t_sprite;
+	int	ceiling;
+	int	floor;
+}				t_rgb;
 
 typedef struct	s_vec
 {
@@ -60,10 +46,9 @@ typedef struct	s_ivec
 typedef struct s_player
 {
 	t_vec	pos;
-	double	sight;
-	char	cardinal;
 	t_vec	dir;
 	t_vec	plane;
+	char	cardinal;
 	double	move_speed;
 	double	rot_speed;
 }				t_player;
@@ -104,10 +89,7 @@ typedef struct	s_world
 	int			buf[WIN_H][WIN_W];
 	int			**texture;
 	char		**tex_path;
-	t_ceiling	ceiling;
-	t_wall		wall;
-	t_floor		floor;
-	t_sprite	*sprites;
+	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;
 	int			re;
