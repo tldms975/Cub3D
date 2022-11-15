@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_engine.h                                         :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:48:19 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/27 18:43:25 by sielee           ###   ########seoul.kr  */
+/*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
+/*   Updated: 2022/11/15 23:23:21 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_ENGINE_H
-# define T_ENGINE_H
-# include "t_world.h"
-# include "t_mlx.h"
+#include "render.h"
+extern int map[MAP_W][MAP_H];
 
-typedef struct s_render
+void	ft_set_minimap(t_world *world)
 {
-	t_world	*world;
-	t_mlx	*mlx;
-}				t_render;
+	int	w;
+	int	h;
+	int	size;
 
-#endif
-
+	(void)world;
+	w = 0;
+	while (w < MAP_W)
+	{
+		h = 0;
+		size = 0;
+		while (h < MAP_H)
+		{
+			if (map[w][h])
+				world->minimap_buf[w][h] == 0x9966FF;
+			else
+				world->minimap_buf[w][h] == 0x996633;
+			h++;
+			size++;
+		}
+		w++;
+	}
+}

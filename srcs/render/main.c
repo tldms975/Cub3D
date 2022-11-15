@@ -11,58 +11,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-#include <stdio.h>
+#include "render.h"
 #include <math.h>
 
-int map[mapWidth][mapHeight] =
-	{
-		{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 7, 7, 7, 7},
-		{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7},
-		{4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
-		{4, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
-		{4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7},
-		{4, 0, 4, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 7, 0, 7, 7, 7, 7, 7},
-		{4, 0, 5, 0, 0, 0, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 7, 0, 0, 0, 7, 7, 7, 1},
-		{4, 0, 6, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 7, 0, 0, 0, 0, 0, 0, 8},
-		{4, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 1},
-		{4, 0, 8, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 7, 0, 0, 0, 0, 0, 0, 8},
-		{4, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 7, 0, 0, 0, 7, 7, 7, 1},
-		{4, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, 1},
-		{6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
-		{8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
-		{6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
-		{4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 6, 0, 6, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3},
-		{4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2},
-		{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 2, 0, 0, 5, 0, 0, 2, 0, 0, 0, 2},
-		{4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2},
-		{4, 0, 6, 0, 6, 0, 0, 0, 0, 4, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2},
-		{4, 0, 0, 5, 0, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2},
-		{4, 0, 6, 0, 6, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 5, 0, 0, 2, 0, 0, 0, 2},
-		{4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2},
-		{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}};
-
-int	*ft_load_image(char *path, t_mlx *tmlx)
-{
-	int		*res;
-
-	tmlx->timg.img = mlx_xpm_file_to_image(tmlx->mlx, path, &tmlx->timg.w, \
-	&tmlx->timg.h);
-	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
-	&tmlx->timg.bpp, &tmlx->timg.line_len, &tmlx->timg.endian);
-
-	res = (int *)malloc(sizeof(int) * (tmlx->timg.w * tmlx->timg.h));
-	for (int y = 0; y < tmlx->timg.h; y++)
-	{
-		for (int x = 0; x < tmlx->timg.w; x++)
-		{
-			res[tmlx->timg.w * y + x] = tmlx->timg.data[tmlx->timg.w * y + x];
-		}
-	}
-	mlx_destroy_image(tmlx->mlx, &tmlx->timg.img);
-	return (res);
-}
+extern int map[MAP_W][MAP_H];
 
 void	ft_background(t_world *world)
 {
@@ -75,8 +27,8 @@ void	ft_background(t_world *world)
 		x = 0;
 		while (x < WIN_W)
 		{
-			world->buf[y][x] = world->ceiling.rgb;
-			world->buf[WIN_H - y - 1][x] = world->floor.rgb;
+			world->screen_buf[y][x] = world->rgb.ceiling;
+			world->screen_buf[WIN_H - y - 1][x] = world->rgb.floor;
 			x++;
 		}
 		y++;
@@ -92,7 +44,6 @@ void	ft_init_rc(t_player *p, t_raycast *rc, int x)
 	rc->block.y = (int)p->pos.y;
 	rc->delta.x = fabs(1 / rc->ray.x);
 	rc->delta.y = fabs(1 / rc->ray.y);
-	//printf("%f | %f %f | %d %d | %f %f\n", rc->cam_x, rc->ray.x, rc->ray.y, rc->block.x, rc->block.y, rc->delta.x, rc->delta.y);
 }
 
 void	ft_step_dir(t_player *p,t_raycast *rc)
@@ -150,7 +101,6 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / 2) / rc->ray.y;
 }
 
-
 int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 {
 	int	color;
@@ -195,7 +145,7 @@ void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, int x)
 	y = dr.start;
 	while (y < dr.end)
 	{
-		world->buf[y][x] = ft_get_color(world, rc, tex, &dr);
+		world->screen_buf[y][x] = ft_get_color(world, rc, tex, &dr);
 		world->re = 1;
 		y++;
 	}
@@ -209,7 +159,7 @@ void	ft_set_world(t_world *world)
 
 	x = 0;
 	if (world->re)
-		ft_init_buf(&world->buf);
+		ft_init_buf(&world->screen_buf);
 	ft_background(world);
 	while (x < WIN_W)
 	{
@@ -219,73 +169,4 @@ void	ft_set_world(t_world *world)
 		ft_fill_buf(world, &rc, &tex, x);
 		x++;
 	}
-}
-
-void	ft_world_on_screen(t_world *world, t_mlx *tmlx)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < WIN_H)
-	{
-		x = 0;
-		while (x < WIN_W)
-		{
-			tmlx->timg.data[y * WIN_W + x] = world->buf[y][x];
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->timg.img, 0, 0);
-}
-
-void	ft_minimap_on_screen(t_world *world, t_mlx *tmlx)
-{
-	const int	player_color = 0xFF66FF;
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < MINI_H)
-	{
-		x = 0;
-		while (x < MINI_W)
-		{
-			world->mini.data[(int)world->player.pos.y * MINI_W + (int)world->player.pos.x] = player_color;
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(tmlx->mlx, tmlx->win, world->mini.img, 0, 0);
-}
-
-int	ft_next_frame(t_world *world)
-{
-	ft_set_world(world);
-	ft_world_on_screen(world, world->tmlx);
-	ft_minimap_on_screen(world, world->tmlx);
-	return (EXIT_SUCCESS);
-}
-
-void	ft_render(t_world *world)
-{
-	t_mlx	*tmlx;
-
-	tmlx = world->tmlx;
-	ft_next_frame(world);
-	mlx_loop_hook(tmlx->mlx, &ft_next_frame, world);
-	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 1L << 0, &ft_key_press, world);
-	mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
-	mlx_loop(tmlx->mlx);
-}
-
-int main(void)
-{
-	t_mlx	tmlx;
-	t_world	world;
-
-	if (ft_init(&tmlx, &world))
-		ft_render(&world);
-	return (0);
 }

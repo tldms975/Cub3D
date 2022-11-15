@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_mlx.h                                            :+:      :+:    :+:   */
+/*   t_keycode.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 16:40:56 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 21:22:49 by sielee           ###   ########seoul.kr  */
+/*   Created: 2022/10/26 16:39:02 by sielee            #+#    #+#             */
+/*   Updated: 2022/11/15 21:28:23 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_MLX_H
-# define T_MLX_H
+#ifndef T_KEYCODE_H
+# define T_KEYCODE_H
 
-typedef struct s_image
+typedef enum e_keycode
 {
-	void	*img;
-	int		*data;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		w;
-	int		h;
-}				t_image;
+	X_EVENT_KEY_PRESS = 2,
+	X_EVENT_KEY_DESTROY_NOTIFY = 17,
+	KEY_W = 1,
+	KEY_A = 0,
+	KEY_S = 13,
+	KEY_D = 2,
+	KEY_ESC = 53,
+	KEY_ARROW_L = 123,
+	KEY_ARROW_R = 124
+}		t_keycode;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	t_image	timg;
-}				t_mlx;
 #endif

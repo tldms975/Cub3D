@@ -6,13 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:11:16 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/12 17:30:50 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/15 21:24:31 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "render.h"
 #include <math.h>
-extern int map[mapWidth][mapHeight];
+extern int map[MAP_W][MAP_H];
 
 void	ft_move_left(t_player *p)
 {
@@ -56,27 +56,4 @@ void	ft_move_player(int keycode, t_player *p)
 		ft_move_left(p);
 	else if (keycode == KEY_D)
 		ft_move_right(p);
-}
-
-void	ft_move_sight(int keycode, t_player *p)
-{
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = p->dir.x;
-	old_plane_x = p->plane.x;
-	if (keycode == KEY_ARROW_R)
-	{
-		p->dir.x = p->dir.x * cos(-p->rot_speed) - p->dir.y * sin(-p->rot_speed);
-		p->dir.y = old_dir_x * sin(-p->rot_speed) + p->dir.y * cos(-p->rot_speed);
-		p->plane.x = p->plane.x * cos(-p->rot_speed) - p->plane.y * sin(-p->rot_speed);
-		p->plane.y = old_plane_x * sin(-p->rot_speed) + p->plane.y * cos(-p->rot_speed);
-	}
-	else if (keycode == KEY_ARROW_L)
-	{
-		p->dir.x = p->dir.x * cos(p->rot_speed) - p->dir.y * sin(p->rot_speed);
-		p->dir.y = old_dir_x * sin(p->rot_speed) + p->dir.y * cos(p->rot_speed);
-		p->plane.x = p->plane.x * cos(p->rot_speed) - p->plane.y * sin(p->rot_speed);
-		p->plane.y = old_plane_x * sin(p->rot_speed) + p->plane.y * cos(p->rot_speed);
-	}
 }

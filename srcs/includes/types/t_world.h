@@ -6,16 +6,24 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 18:36:26 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/15 23:02:02 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
-#define WIN_W 640//1200
-#define WIN_H 480//700
-#define DARKER 8355711
-typedef	enum
+# include "t_vector.h"
+# define WIN_W 640
+# define WIN_H 480
+# define TEX_H 64
+# define TEX_W 64
+# define MAP_W 24//tmp
+# define MAP_H 24//tmp
+# define MINI_W 240
+# define MINI_H 160
+# define DARKER 8355711
+
+typedef enum e_parsing_element
 {
 	NO = 0,
 	SO,
@@ -23,25 +31,13 @@ typedef	enum
 	EA,
 	F,
 	C
-} t_dir;
+}			t_parsing_element;
 
-typedef struct	s_rgb
+typedef struct s_rgb
 {
 	int	ceiling;
 	int	floor;
 }				t_rgb;
-
-typedef struct	s_vec
-{
-	double	x;
-	double	y;
-}				t_vec;
-
-typedef struct	s_ivec
-{
-	int	x;
-	int	y;
-}				t_ivec;
 
 typedef struct s_player
 {
@@ -69,8 +65,7 @@ typedef struct s_draw
 	t_ivec	tex;
 }				t_draw;
 
-
-typedef struct	s_raycast
+typedef struct s_raycast
 {
 	t_vec		ray;
 	t_ivec		block;
@@ -82,11 +77,13 @@ typedef struct	s_raycast
 	double		d;
 }				t_raycast;
 
-typedef struct	s_world
+typedef struct s_world
 {
 	t_mlx		*tmlx;
+	t_image		minimap;
+	int			minimap_buf[MINI_H][MINI_W];
 	int			**map;
-	int			buf[WIN_H][WIN_W];
+	int			screen_buf[WIN_H][WIN_W];
 	int			**texture;
 	char		**tex_path;
 	t_rgb		rgb;
@@ -96,4 +93,3 @@ typedef struct	s_world
 }				t_world;
 
 #endif
-

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_mlx.h                                            :+:      :+:    :+:   */
+/*   t_vector.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 16:40:56 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 21:22:49 by sielee           ###   ########seoul.kr  */
+/*   Created: 2022/11/15 21:31:51 by sielee            #+#    #+#             */
+/*   Updated: 2022/11/15 21:32:57 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_MLX_H
-# define T_MLX_H
+#ifndef T_VECTOR_H
+# define T_VECTOR_H
 
-typedef struct s_image
+typedef struct s_vec
 {
-	void	*img;
-	int		*data;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		w;
-	int		h;
-}				t_image;
+	double	x;
+	double	y;
+}				t_vec;
 
-typedef struct s_mlx
+typedef struct s_ivec
 {
-	void	*mlx;
-	void	*win;
-	t_image	timg;
-}				t_mlx;
-#endif
+	int	x;
+	int	y;
+}				t_ivec;
+
+#endif // T_VECTOR_H

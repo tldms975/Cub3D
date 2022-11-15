@@ -6,11 +6,11 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/09 21:40:29 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/15 21:03:22 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "render.h"
 
 void	ft_event_close(t_mlx *tmlx)
 {
