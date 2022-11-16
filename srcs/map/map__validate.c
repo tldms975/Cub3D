@@ -6,13 +6,14 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:27:05 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 19:28:36 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "maps.h"
+#include <stdio.h>
 
-static t_result	map__visit_zero(t_info *info)
+static t_result	map__dij__visit_zero(t_info *info)
 {
 	t_result	result;
 	t_path		open;
@@ -27,6 +28,7 @@ static t_result	map__visit_zero(t_info *info)
 			break ;
 		}
 	}
+	map__free_open_path(&open);
 	print_visited(info);
 	print_raw(info);
 	return (result);
@@ -34,18 +36,23 @@ static t_result	map__visit_zero(t_info *info)
 
 static bool	map__precheck(t_info *info)
 {
+	bool	result;
+
 	map__visited_create(info);
 	map__redzone_create(info);
 	if (map__start_point__find(info) == true
-		&& map__visit_zero(info) == SUCCESS)
+		&& map__dij__visit_zero(info) == SUCCESS)
 	{
-		return (true);
+		result = true;
 	}
 	else
 	{
 		ft_putstr_fd("Error: Map precheck failed\n", 2);
-		return (false);
+		result = false;
 	}
+	map__free_redzone(info);
+	map__free_visited(info);
+	return (result);
 }
 
 t_result	map__validate(t_info *info)

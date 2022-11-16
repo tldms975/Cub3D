@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 04:47:52 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 16:56:42 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include "libft.h"
 
 /**
- * @brief cut string by given int n, if positive, cut from begin. if negative, cut from end.
+ * @brief cut string by given int n, if positive, 
+ * cut from begin. if negative, cut from end.
  *
  * @param buf buffer that will be cutted.
  * @param n number of character that cut from buf.

@@ -6,11 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:19:10 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:59:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "maps.h"
 #include <stdio.h>
 
 void	print_redzone(t_info *info)

@@ -6,40 +6,75 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:30:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/12 03:12:26 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 21:39:22 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
 #include "colors.h"
-#include "map.h"
+#include "maps.h"
 #include "string_buffer.h"
+#include "info.h"
 #include <stdbool.h>
-#include <stdio.h> // TOOD - remove
+#include <stdio.h>
 #include <sys/fcntl.h>
+#include <unistd.h>
+#define CONFIG_NUM 4
 
-int	init_config(t_info *info, t_str_buf *line)
+t_result	validate_tex_path(char *path_ptr, t_str_buf *tex_path)
 {
-	// TODO -- change cut to split to handle spaces
-	if (str_ncompare(line, "NO", 2) == MATCH)
-		info->core.world.txr[NO] = str_dispose(str_cut(line, 3, FWD));
-	else if (str_ncompare(line, "SO", 2) == MATCH)
-		info->core.world.txr[SO] = str_dispose(str_cut(line, 3, FWD));
-	else if (str_ncompare(line, "WE", 2) == MATCH)
-		info->core.world.txr[WE] = str_dispose(str_cut(line, 3, FWD));
-	else if (str_ncompare(line, "EA", 2) == MATCH)
-		info->core.world.txr[EA] = str_dispose(str_cut(line, 3, FWD));
-	else if (str_ncompare(line, "F", 1) == MATCH)
-		parse_color(&info->core.world.floor.rgb, str_cut(line, 2, FWD));
-	else if (str_ncompare(line, "C", 1) == MATCH)
-		parse_color(&info->core.world.ceiling.rgb, str_cut(line, 2, FWD));
-	else
+	int			fd;
+	char		*path_raw;
+	t_result	result;
+
+	result = FAILURE;
+	if (tex_path != NULL && path_ptr == NULL)
 	{
-		free_safe(str_dispose(line));
-		return (0);
+		path_raw = str_dispose(str_cut(str_split(tex_path, ' ', 1), 1, BWD));
+		fd = open(path_raw, O_RDONLY);
+		if (fd == -1)
+		{
+			perror("Error: Invalid texture path");
+		}
+		else
+		{
+			path_ptr = path_raw;
+			result = SUCCESS;
+		}
+		close(fd);
+		free_safe(path_raw);
 	}
-	return (1);
+	return (result);
+}
+
+t_result	
+
+t_result	init_config(t_info *info, t_str_buf *line)
+{
+	const char	*cardinal[CONFIG_NUM] = {"NO", "SO", "WE", "EA"};
+	size_t		i;
+	t_result	result;
+
+	result = FAILURE;
+	i = 0;
+	while (i < CONFIG_NUM)
+	{
+		if (str_ncompare(line, cardinal[i], 2) == MATCH)
+		{
+			return (validate_tex_path(info->core.world.tex_path[i], line));
+		}
+		i++;
+	}
+	if (str_ncompare(line, "F", 1) == MATCH)
+		return (parse_color(&info->core.world.rgb.floor, str_cut(line, 2, FWD)));
+	else if (str_ncompare(line, "C", 1) == MATCH)
+		return (parse_color(&info->core.world.rgb.ceiling, str_cut(line, 2, FWD)));
+	if (result != SUCCESS)
+	{
+		str_free(line);
+	}
+	return (result);
 }
 
 bool	read_config(t_info *info)
@@ -60,16 +95,17 @@ bool	read_config(t_info *info)
 		free_safe(line);
 		component += init_config(info, str);
 	}
+	printf("component: %d\n", component);
 	return (component == 6);
 }
 
 t_result	read_info(t_info *info)
 {
-	t_result result;
+	t_result	result;
 
 	result = FAILURE;
 	if (read_config(info) == true
-			&& map__read(info) == SUCCESS)
+		&& map__read(info) == SUCCESS)
 	{
 		result = SUCCESS;
 	}
@@ -77,6 +113,7 @@ t_result	read_info(t_info *info)
 	{
 		printf("Error: read_color_and_texture\n");
 	}
+	free_config(info);
 	return (result);
 }
 
@@ -102,15 +139,15 @@ static t_str_buf	*validate_path(char *arg)
 	return (path);
 }
 
-bool	parse_dot_cub(t_info *info, char* arg)
+bool	parse_dot_cub(t_info *info, char *arg)
 {
 	bool	retval;
 
 	retval = FAILURE;
-	info->path = validate_path(arg);
-	if (info->path->str != NULL)
+	info->cub_path = validate_path(arg);
+	if (info->cub_path->str != NULL)
 	{
-		info->fd = str_safe_open(info->path, O_RDONLY);
+		info->fd = str_safe_open(info->cub_path, O_RDONLY);
 		if (read_info(info) == SUCCESS)
 		{
 			retval = true;

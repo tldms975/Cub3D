@@ -6,11 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:29:59 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:27:02 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "maps.h"
 
 static int	_offset(size_t i)
 {
@@ -103,13 +103,12 @@ t_result	map__dij__path__release(t_info *info, t_path *open)
 			break ;
 		}
 		path_n = map__dij__visit_neighbor(info, curr, new_visited_path);
-		if (path_n == 5)
+		if (path_n == 5
+			|| map__dij__path__add(open, new_visited_path, path_n) == ERROR)
 		{
 			return (ERROR);
 			break ;
 		}
-		map__dij__path__remove(open, curr);
-		map__dij__path__add(open, new_visited_path, path_n);
 		path_total_n += path_n;
 	}
 	open->count = path_total_n;

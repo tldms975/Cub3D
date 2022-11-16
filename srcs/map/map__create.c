@@ -6,14 +6,14 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:10:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:59:29 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
 #include "info.h"
-#include "map.h"
+#include "maps.h"
 #include <stdbool.h>
 #include <stdio.h>
 

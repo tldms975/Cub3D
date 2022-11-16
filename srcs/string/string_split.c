@@ -6,32 +6,39 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:45:02 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/10 18:56:45 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 19:16:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_buffer.h"
 
-char **str_split(const char *target, const char del, const int delcount)
+void	skip_delimiter(size_t *i, char *str, char delimiter)
 {
-	int		word_i;
-	int		char_i;
-	char	**result;
+	while (str[*i] == delimiter)
+		(*i)++;
+}
 
-	result = malloc_safe(sizeof(char *) * (delcount + 1));
-	word_i = 0;
-	while (word_i < delcount)
+t_str_buf	*str_split(t_str_buf *target, const char del, const int field)
+{
+	t_str_buf	*result;
+	size_t		i;
+	int			field_i;
+
+	result = NULL;
+	i = 0;
+	field_i = 1;
+	while (i < target->length)
 	{
-		char_i = 0;
-		while (target[char_i] != '\0' && target[char_i] != del)
+		if (target->str[i] == del)
 		{
-			char_i++;
+			skip_delimiter(&i, target->str, del);
+			if (field_i == field)
+				return (result = str_cut(target, i, FWD));
+			field_i++;
+			if (field_i == field)
+				return (result = str_cut(target, target->length - i, BWD));
 		}
-		if (target[char_i] )
-		{
-
-		}
-		word_i++;
+		i++;
 	}
 	return (result);
 }
