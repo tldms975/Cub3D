@@ -66,6 +66,25 @@ void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, int x)
 	}
 }
 
+void	ft_world_on_screen(t_world *world, t_mlx *tmlx)
+{
+	int	w;
+	int	h;
+
+	h = 0;
+	while (h < WIN_H)
+	{
+		w = 0;
+		while (w < WIN_W)
+		{
+			tmlx->timg.data[h * WIN_W + w] = world->screen_buf[h][w];
+			w++;
+		}
+		h++;
+	}
+	mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->timg.img, 0, 0);
+}
+
 void	ft_set_world(t_world *world)
 {
 	t_raycast	rc;

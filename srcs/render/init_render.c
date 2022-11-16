@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 14:08:03 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 15:05:51 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_init_mlx(t_mlx *tmlx, t_world *world)
 	tmlx->timg.img = mlx_new_image(tmlx->mlx, WIN_W, WIN_H);
 	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
 	&tmlx->timg.bpp, &tmlx->timg.line_len, &tmlx->timg.endian);
-	//
-	// world->mini.img = mlx_new_image(tmlx->mlx, MINI_W, MINI_H);
-	// world->mini.data =  (int *)mlx_get_data_addr(world->mini.img, \
-	// &world->mini.bpp, &world->mini.line_len, &world->mini.endian);
-	//
+	
+	world->minimap.img = mlx_new_image(tmlx->mlx, MINI_W, MINI_H);
+	world->minimap.data =  (int *)mlx_get_data_addr(world->minimap.img, \
+	&world->minimap.bpp, &world->minimap.line_len, &world->minimap.endian);
+	
 	world->tmlx = tmlx;
 }
 
