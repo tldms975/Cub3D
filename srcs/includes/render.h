@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 01:20:33 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 16:01:17 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define RENDER_H
 
 # include <stdlib.h>
-# include "t_world.h"
-# include "t_mlx.h"
-# include "t_keycode.h"
-# include "../libft/libft.h"
+# include "types/t_world.h"
+# include "types/t_mlx.h"
+# include "types/t_keycode.h"
+# include "libft.h"
 
 void	ft_init_buf(int (*buf)[WIN_H][WIN_W]);
 int		ft_init_render(t_mlx *tmlx, t_world *world);
@@ -35,3 +35,4 @@ void	tmp_load_texture(t_world *world);
 int		**ft_init_texture(void);
 
 #endif
+

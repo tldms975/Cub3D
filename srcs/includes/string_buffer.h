@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/11/12 07:47:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 16:51:44 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ int			str_compare(const t_str_buf *s1, const char *s2);
 int			str_ncompare(const t_str_buf *s1, const char *s2, size_t n);
 void		str_free(t_str_buf *buf);
 int			str_safe_open(t_str_buf *path, int oflag);
+t_str_buf	*str_split(t_str_buf *target, const char del, const int field);
 
 #endif
