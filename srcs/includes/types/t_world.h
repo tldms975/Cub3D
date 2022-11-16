@@ -6,12 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 23:02:02 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 16:23:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
+# include "t_mlx.h"
 # include "t_vector.h"
 # define WIN_W 640
 # define WIN_H 480
@@ -85,7 +86,7 @@ typedef struct s_world
 	int			**map;
 	int			screen_buf[WIN_H][WIN_W];
 	int			**texture;
-	char		**tex_path;
+	char		*tex_path[4];
 	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;
@@ -93,3 +94,4 @@ typedef struct s_world
 }				t_world;
 
 #endif
+
