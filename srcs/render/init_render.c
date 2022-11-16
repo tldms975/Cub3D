@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 01:21:15 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 14:08:03 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	ft_set_player_cardinal(t_player *p)
 
 void	ft_init_player(t_player *p)
 {
-	p->pos.x =22.5;
-	p->pos.y =22.5;
+	p->pos.x =22.5;//in parse
+	p->pos.y =22.5;//in parse
 	p->dir.x = -0.9543;
 	p->dir.y = 0.0;
 	p->plane.x = 0.0;
