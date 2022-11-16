@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 01:00:28 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 14:38:06 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,45 +39,6 @@ int map[MAP_W][MAP_H] =
 		{4, 0, 6, 0, 6, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 5, 0, 0, 2, 0, 0, 0, 2},
 		{4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 0, 6, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2},
 		{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}};
-
-void	ft_world_on_screen(t_world *world, t_mlx *tmlx)
-{
-	int	w;
-	int	h;
-
-	h = 0;
-	while (h < WIN_H)
-	{
-		w = 0;
-		while (w < WIN_W)
-		{
-			tmlx->timg.data[h * WIN_W + w] = world->screen_buf[h][w];
-			w++;
-		}
-		h++;
-	}
-	mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->timg.img, 0, 0);
-}
-
-void	ft_minimap_on_screen(t_world *world, t_mlx *tmlx)
-{
-	const int	player_color = 0xFF66FF;
-	int	w;
-	int	h;
-
-	h = 0;
-	while (h < MINI_H)
-	{
-		w = 0;
-		while (w < MINI_W)
-		{
-			world->minimap.data[h * MINI_W + w] = world->minimap_buf[h][w];
-			w++;
-		}
-		h++;
-	}
-	mlx_put_image_to_window(tmlx->mlx, tmlx->win, world->minimap.img, 0, 0);
-}
 
 int	ft_next_frame(t_world *world)
 {

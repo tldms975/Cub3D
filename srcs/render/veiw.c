@@ -6,11 +6,12 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:16:55 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 21:40:07 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 14:59:18 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include <math.h>
 
 extern int map[MAP_W][MAP_H];
 
