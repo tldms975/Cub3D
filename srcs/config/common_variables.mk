@@ -8,7 +8,8 @@ ARFLAGS		:= cr$(if $(filter 1,$(V) $(VERBOSE)),v,)
 CPPFLAGS	:= $(shell find . -type d -mindepth 1 | grep -v .git | sed "s/^/-I /" | xargs)
 CFLAGS		:= -Wall -Wextra -Werror -std=c99 -pedantic $(CPPFLAGS)
 
-SRCS		:= $(shell find . -name "*.c" | grep -v .cache | grep -v test | xargs)
+SRCS		:= $(shell find . -name "*.c" | grep -v .cache | grep -v test | grep -v bonus | xargs)
 SRCS_LIBFT	:= $(shell find . -name "ft_*.c" | grep -v .cache  | grep -v test | xargs)
+SRCS_BONUS	:= $(shell find . -name "*_bonus.c" | grep -v .cache | grep -v test | xargs)
 
 EXECUTABLE_TARGETS := $(NAME)
