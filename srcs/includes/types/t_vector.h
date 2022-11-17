@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:31:51 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 21:32:57 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 02:06:15 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ typedef struct s_ivec
 }				t_ivec;
 
 #endif // T_VECTOR_H
+

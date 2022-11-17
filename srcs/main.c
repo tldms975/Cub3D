@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/12 03:14:54 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 19:23:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include "info.h"
 #include "libft.h"
 #include <stdio.h>
+
+static void	free_info(t_info *info)
+{
+	size_t	i;
+
+	i = 0;
+	if (info->map.raw != NULL)
+	{
+		while (i < info->map.height)
+		{
+			str_free(info->map.raw[i]);
+			i++;
+		}
+		free_safe(info->map.raw);
+	}
+	free_config(info);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -30,6 +47,7 @@ int	main(int argc, char *argv[])
 		{
 			printf("SUCCESS: parse_dot_cub\n");
 		}
+		free_info(&info);
 	}
 	else
 	{

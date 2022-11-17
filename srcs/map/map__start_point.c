@@ -6,11 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:19:29 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:59:18 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "maps.h"
 
 static t_result	map__start_point__init(t_info *info, int x, int y)
 {

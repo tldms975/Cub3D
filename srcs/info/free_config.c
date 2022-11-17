@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_fcntl.c                                     :+:      :+:    :+:   */
+/*   free_config.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 01:00:35 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 18:58:41 by hdoo             ###   ########.fr       */
+/*   Created: 2022/11/16 19:07:11 by hdoo              #+#    #+#             */
+/*   Updated: 2022/11/16 20:47:32 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string_buffer.h"
-#include "fcntl.h"
-#include "stdio.h"
+#include "info.h"
 
-int	str_safe_open(t_str_buf *path, int oflag)
+void	free_config(t_info *info)
 {
-	int	fd;
-	char	*open_path;
+	size_t	i;
 
-	open_path = str_dispose(path);
-	fd = open(open_path, oflag);
-	if (fd == -1)
+	i = 0;
+	while (i < 4)
 	{
-		perror("Error: fail to open with given path: \n");
-		exit(2);
+		if (info->core.world.tex_path[i] != NULL)
+		{
+			free_safe(info->core.world.tex_path[i]);
+			info->core.world.tex_path[i] = NULL;
+		}
+		i++;
 	}
-	free_safe(open_path);
-	return (fd);
 }

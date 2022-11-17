@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:25:36 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 00:55:07 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 19:46:37 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "cub3d.h"
 
-void			parse_color(int *color, t_str_buf *line);
+t_result		parse_color(int *color, t_str_buf *line);
 int				create_trgb(int t, int r, int g, int b);
 unsigned char	get_t(int trgb);
 unsigned char	get_r(int trgb);

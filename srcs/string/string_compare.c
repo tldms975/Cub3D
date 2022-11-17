@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:15:10 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 00:30:54 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 16:56:59 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	str_ncompare(const t_str_buf *s1, const char *s2, size_t n)
 		if (s1->str[j] != s2[i++])
 			return ((unsigned char)s1->str[j] - (unsigned char)s2[--i]);
 		if (s1->str[j++] == 0)
-			break;
+			break ;
 		n--;
 	}
 	return (0);

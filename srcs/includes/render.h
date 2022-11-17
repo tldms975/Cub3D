@@ -14,10 +14,10 @@
 # define RENDER_H
 
 # include <stdlib.h>
-# include "t_world.h"
-# include "t_mlx.h"
-# include "t_keycode.h"
-# include "../libft/libft.h"
+# include "types/t_world.h"
+# include "types/t_mlx.h"
+# include "types/t_keycode.h"
+# include "libft.h"
 
 void	ft_init_buf(int (*buf)[WIN_H][WIN_W]);
 int		ft_init_render(t_mlx *tmlx, t_world *world);

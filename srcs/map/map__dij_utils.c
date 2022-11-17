@@ -6,11 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/13 11:29:08 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:26:12 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "maps.h"
 
 void	map__dij__mark_visited(t_info *info, t_coor visited[4],	size_t size)
 {
@@ -42,13 +42,14 @@ static void	map__dij__path__coor__add(t_path *open, int y, int x, int c)
 	}
 }
 
-size_t	map__dij__path__add(t_path *open, t_coor *new_coor, size_t new_size)
+t_result	map__dij__path__add(t_path *open, t_coor *new_coor, size_t new_size)
 {
 	size_t	i;
 
 	if (open == NULL)
 	{
 		ft_putstr_fd("Error: add_open_path: open_path is NULL", 2);
+		return (ERROR);
 	}
 	i = 0;
 	while (i < new_size)
@@ -64,25 +65,7 @@ size_t	map__dij__path__add(t_path *open, t_coor *new_coor, size_t new_size)
 			new_coor[i].y, new_coor[i].x, new_coor[i].c);
 		i++;
 	}
-	return (i);
-}
-
-void	map__dij__path__remove(t_path *open, t_coor curr)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < open->count)
-	{
-		if (open->path[i].x == curr.x
-			&& open->path[i].y == curr.y)
-		{
-			open->path[i].c = -1;
-			return ;
-		}
-		i++;
-	}
-	open->count--;
+	return (SUCCESS);
 }
 
 t_result	map__dij__path__select(t_path *open, t_coor *curr)
@@ -95,6 +78,8 @@ t_result	map__dij__path__select(t_path *open, t_coor *curr)
 		if (open->path[i].c != -1 && open->path[i].c != 0)
 		{
 			*curr = open->path[i];
+			open->path[i].c = -1;
+			open->count--;
 			return (SUCCESS);
 		}
 		i++;
