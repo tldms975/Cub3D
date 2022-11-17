@@ -3,16 +3,19 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${default}",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/srcs/includes",
+                "${workspaceFolder}/srcs/includes/types",
+                "${workspaceFolder}/srcs/.cache/mlx/minilibx_opengl_20191021"
             ],
             "defines": [],
             "macFrameworkPath": [
-                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "macos-clang-arm64"
+            "cppStandard": "c++17"
         }
     ],
     "version": 4

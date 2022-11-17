@@ -6,11 +6,12 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 19:23:09 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/17 19:02:14 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "render.h"
 #include "info.h"
 #include "libft.h"
 #include <stdio.h>
@@ -46,6 +47,7 @@ int	main(int argc, char *argv[])
 		else
 		{
 			printf("SUCCESS: parse_dot_cub\n");
+			ft_run_cub3d(&info);
 		}
 		free_info(&info);
 	}

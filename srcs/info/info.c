@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:30:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 21:39:22 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/17 18:33:54 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ t_result	validate_tex_path(char *path_ptr, t_str_buf *tex_path)
 	}
 	return (result);
 }
-
-t_result	
 
 t_result	init_config(t_info *info, t_str_buf *line)
 {

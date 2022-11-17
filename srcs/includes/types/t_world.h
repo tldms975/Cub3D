@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/16 16:23:09 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/17 19:25:21 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # define TEX_W 64
 # define MAP_W 24//tmp
 # define MAP_H 24//tmp
-# define MINI_W 240
-# define MINI_H 160
+# define MINI_W 180
+# define MINI_H 180
+# define T 12//w:120 T:8, w:240 T:16, w:180 T:12
 # define DARKER 8355711
 
 typedef enum e_parsing_element
@@ -83,9 +84,9 @@ typedef struct s_world
 	t_mlx		*tmlx;
 	t_image		minimap;
 	int			minimap_buf[MINI_H][MINI_W];
-	int			**map;
+	char		**map;
 	int			screen_buf[WIN_H][WIN_W];
-	int			**texture;
+	int			texture[4];
 	char		*tex_path[4];
 	t_rgb		rgb;
 	t_player	player;
@@ -94,4 +95,3 @@ typedef struct s_world
 }				t_world;
 
 #endif
-

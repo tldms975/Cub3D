@@ -14,8 +14,6 @@
 #include "render.h"
 #include <math.h>
 
-extern int map[MAP_W][MAP_H];
-
 int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 {
 	int	color;
@@ -93,7 +91,7 @@ void	ft_set_world(t_world *world)
 
 	x = 0;
 	if (world->re)
-		ft_init_buf(&world->screen_buf);
+		ft_init_screen_buf(&world->screen_buf);
 	ft_background(world);
 	while (x < WIN_W)
 	{

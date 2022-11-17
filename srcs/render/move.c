@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion.c                                           :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:11:16 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/15 21:24:31 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/17 18:10:21 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <math.h>
-extern int map[MAP_W][MAP_H];
 
-void	ft_move_left(t_player *p)
+void	ft_move_right(t_player *p)
 {
 	if (!map[(int)(p->pos.x - p->dir.y * p->move_speed)][(int)(p->pos.y)])
 		p->pos.x += -p->dir.y * p->move_speed;
@@ -22,7 +21,7 @@ void	ft_move_left(t_player *p)
 		p->pos.y += p->dir.x * p->move_speed;
 }
 
-void	ft_move_right(t_player *p)
+void	ft_move_left(t_player *p)
 {
 	if (!map[(int)(p->pos.x + p->dir.y * p->move_speed)][(int)(p->pos.y)])
 		p->pos.x += p->dir.y * p->move_speed;

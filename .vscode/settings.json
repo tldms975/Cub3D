@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"render.h": "c",
-		"t_world.h": "c",
-		"cstdio": "c"
-	}
-}
