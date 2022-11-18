@@ -36,7 +36,7 @@ void	ft_move_sight(int keycode, t_player *p);
 void	ft_load_texture(t_info *info);
 
 void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc);
-void	ft_step_dir(t_player *p,t_raycast *rc);
+void	ft_step_dir(t_player *p, t_raycast *rc);
 void	ft_init_rc(t_player *p, t_raycast *rc, int x);
 void	ft_background(t_world *world);
 
