@@ -6,16 +6,18 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/18 15:49:25 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/19 05:18:37 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include <stdio.h>
 
 int	*ft_load_image(char *path, t_mlx *tmlx)
 {
 	int		*res;
 
+	printf("path: %s\n", path);
 	tmlx->timg.img = mlx_xpm_file_to_image(tmlx->mlx, path, &tmlx->timg.w, \
 	&tmlx->timg.h);
 	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
@@ -29,14 +31,16 @@ int	*ft_load_image(char *path, t_mlx *tmlx)
 			res[tmlx->timg.w * y + x] = tmlx->timg.data[tmlx->timg.w * y + x];
 		}
 	}
-	mlx_destroy_image(tmlx->mlx, &tmlx->timg.img);
+	mlx_destroy_image(tmlx->mlx, tmlx->timg.img);
 	return (res);
 }
 
-void	ft_load_texture(t_world *world)
+void	ft_load_texture(t_info *info)
 {
 	int	i;
+	t_world	*world;
 
+	world = &info->core.world;
 	i = 0;
 	while (i < 4)
 	{

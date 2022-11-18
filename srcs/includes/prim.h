@@ -6,14 +6,14 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 05:51:41 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/03 23:13:11 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/17 17:25:56 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRIM_H
 # define PRIM_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 typedef struct s_vertex
 {

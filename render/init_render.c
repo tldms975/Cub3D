@@ -6,51 +6,48 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/19 05:26:38 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:05:51 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "render.h"
 #include <math.h>
+extern int map[MAP_W][MAP_H];
 
-static void	ft_init_minimap_buf(int (*buf)[MINI_H][MINI_W])
+void	ft_init_buf(int (*buf)[WIN_H][WIN_W])
 {
 	int	w;
 	int	h;
 
-	h = 0;
-	while (h < MINI_H)
+	w = 0;
+	while (w < WIN_H)
 	{
-		w = 0;
-		while (w < MINI_W)
+		h = 0;
+		while (h < WIN_W)
 		{
-			(*buf)[h][w] = 0;
-			w++;
+			(*buf)[w][h] = 0;
+			h++;
 		}
-		h++;
+		w++;
 	}
 }
 
-static void	ft_init_mlx(t_info *info)
+void	ft_init_mlx(t_mlx *tmlx, t_world *world)
 {
-	t_mlx	*tmlx;
-	t_world	*world;
-
-	tmlx = &info->core.mlx;
-	world = &info->core.world;
 	tmlx->mlx = mlx_init();
 	tmlx->win = mlx_new_window(tmlx->mlx, WIN_W, WIN_H, "cub3d");
 	tmlx->timg.img = mlx_new_image(tmlx->mlx, WIN_W, WIN_H);
 	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
 	&tmlx->timg.bpp, &tmlx->timg.line_len, &tmlx->timg.endian);
+	
 	world->minimap.img = mlx_new_image(tmlx->mlx, MINI_W, MINI_H);
 	world->minimap.data =  (int *)mlx_get_data_addr(world->minimap.img, \
 	&world->minimap.bpp, &world->minimap.line_len, &world->minimap.endian);
+	
 	world->tmlx = tmlx;
 }
 
-static void	ft_set_player_cardinal(t_player *p)
+void	ft_set_player_cardinal(t_player *p)
 {
 	double	degree;
 	double	old_dir_x;
@@ -74,48 +71,32 @@ static void	ft_set_player_cardinal(t_player *p)
 	return ;
 }
 
-static void	ft_init_player(t_player *p)
+void	ft_init_player(t_player *p)
 {
-	// p->pos.x =22.5;//in parse
-	// p->pos.y =22.5;//in parse
-	p->dir.y = -0.9543;
-	p->dir.x = 0.02;
-	p->plane.y = 0.0;
-	p->plane.x = 0.66;
+	p->pos.x =22.5;//in parse
+	p->pos.y =22.5;//in parse
+	p->dir.x = -0.9543;
+	p->dir.y = 0.0;
+	p->plane.x = 0.0;
+	p->plane.y = 0.66;
 	p->move_speed = 0.05;
 	p->rot_speed = 0.08;
 	ft_set_player_cardinal(p);
 }
 
-// static char	**ft_get_map(t_map *m)
-// {
-// 	char	**map;
-// 	size_t	y;
-// 	// size_t	x;
-//
-// 	map = malloc_safe(sizeof(char *) * m->height);
-// 	y = 0;
-// 	while (y < m->height)
-// 	{
-// 		// x = 0;
-// 		// while (x < m->raw[y]->length)
-// 		// {
-// 			map[y] = malloc_safe(sizeof(char) * m->raw[y]->length);
-// 			map[y] = m->raw[y]->str;
-// 			//printf("%s\n", m->raw[y]->str);
-// 			// x++;
-// 		// }
-// 		y++;
-// 	}
-// 	return (map);
-// }
-
-int	ft_init_render(t_info *info)
+int	ft_init_render(t_mlx *tmlx, t_world *world)
 {
-	ft_init_mlx(info);
-	ft_load_texture(info);
-	ft_init_player(&info->core.world.player);
-	ft_init_minimap_buf(&info->core.world.minimap_buf);
-	ft_set_minimap(info);
+	ft_init_mlx(tmlx, world);
+	ft_init_buf(&world->screen_buf);
+	world->texture = ft_init_texture();
+	tmp_load_texture(world);
+	ft_init_player(&world->player);
+	ft_set_minimap(world);
+	//parse
+	world->rgb.floor = 0x336600;
+	world->rgb.ceiling = 0x0099FF;
+	// world->map = map;
+	//
+	world->re = 0;
 	return (1);
 }

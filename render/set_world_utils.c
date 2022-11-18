@@ -6,12 +6,14 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/19 05:37:16 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 14:12:00 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <math.h>
+
+extern int map[MAP_W][MAP_H];
 
 void	ft_background(t_world *world)
 {
@@ -72,6 +74,7 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 	int	hit;
 
 	hit = 0;
+	(void)world;//for parsed map
 	while (hit == 0)
 	{
 		if (rc->side.x < rc->side.y)
@@ -86,13 +89,13 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 			rc->block.y += rc->step.y;
 			rc->is_side = 1;
 		}
-		if (world->map[rc->block.x]->str[rc->block.y] == '1')
+		if (map[rc->block.x][rc->block.y] > 0)
 		{
 			hit = 1;
 		}
 	}
 	if (rc->is_side == 0)
-		rc->d = (rc->block.x - p->pos.x + (1 - rc->step.x) / (double)2) / rc->ray.x;
+		rc->d = (rc->block.x - p->pos.x + (1 - rc->step.x) / 2) / rc->ray.x;
 	else
-		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / (double)2) / rc->ray.y;
+		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / 2) / rc->ray.y;
 }

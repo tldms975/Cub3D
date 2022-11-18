@@ -6,20 +6,19 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:58 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 19:21:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
+#include "string_buffer.h"
 # include "t_mlx.h"
 # include "t_vector.h"
 # define WIN_W 640
 # define WIN_H 480
 # define TEX_H 64
 # define TEX_W 64
-# define MAP_W 24//tmp
-# define MAP_H 24//tmp
 # define MINI_W 180
 # define MINI_H 180
 # define T 12//w:120 T:8, w:240 T:16, w:180 T:12
@@ -82,7 +81,7 @@ typedef struct s_world
 	t_mlx		*tmlx;
 	t_image		minimap;
 	int			minimap_buf[MINI_H][MINI_W];
-	char		**map;
+	t_str_buf	**map;
 	int			screen_buf[WIN_H][WIN_W];
 	int			*texture[4];
 	char		*tex_path[4];
@@ -91,6 +90,8 @@ typedef struct s_world
 	t_raycast	rc;
 	int			re;
 	t_ivec		mouse;
+	size_t		map_w;
+	size_t		map_h;
 }				t_world;
 
 #endif
