@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 21:00:53 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 15:51:02 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,23 @@ static void	ft_init_player(t_player *p)
 static char	**ft_get_map(t_map *m)
 {
 	char	**map;
-	int		h;
+	size_t	y;
+	// size_t	x;
 
-	map = m
+	map = malloc_safe(sizeof(char *) * m->height);
+	y = 0;
+	while (y < m->height)
+	{
+		// x = 0;
+		// while (x < m->raw[y]->length)
+		// {
+			map[y] = malloc_safe(sizeof(char) * m->raw[y]->length);
+			map[y] = m->raw[y]->str;
+			//printf("%s\n", m->raw[y]->str);
+			// x++;
+		// }
+		y++;
+	}
 	return (map);
 }
 
@@ -99,11 +113,6 @@ int	ft_init_render(t_mlx *tmlx, t_world *world, t_info *info)
 	ft_init_player(&world->player);
 	ft_init_minimap_buf(&world->minimap_buf);
 	ft_set_minimap(world);
-	//parse
-	// world->rgb.floor = 0x336600;
-	// world->rgb.ceiling = 0x0099FF;
-	// world->map = map;
-	//
 	world->re = 0;
 	return (1);
 }

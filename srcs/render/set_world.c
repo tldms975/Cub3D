@@ -20,7 +20,7 @@ int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 
 	dr->tex.y = (int)tex->pos & (TEX_H - 1);
 	tex->pos += tex->step;
-	color = world->texture[tex->type][TEX_H * dr->tex.y + dr->tex.x];
+	color = world->texture[tex->type][(int)(TEX_H * dr->tex.y + dr->tex.x)];
 	if (rc->is_side == 1)
 		color = (color >> 1) & DARKER;
 	return (color);
@@ -28,11 +28,20 @@ int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 
 void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 {
-	tex->type = map[rc->block.x][rc->block.y] - 1;
 	if (rc->is_side == 0)
+	{
 		tex->wall_x = world->player.pos.y + rc->d * rc->ray.y;
+		tex->type = NO;
+		if (rc->step.x > 0)
+			tex->type = SO;
+	}
 	else
+	{
 		tex->wall_x = world->player.pos.x + rc->d * rc->ray.x;
+		tex->type = WE;
+		if (rc->step.y > 0)
+			tex->type = EA;
+	}
 	tex->wall_x -= floor(tex->wall_x);
 	dr->tex.x = (int)(tex->wall_x * (double)TEX_W);
 	if ((rc->is_side == 0 && rc->ray.x > 0) \

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 19:25:21 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 17:28:58 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@
 # define T 12//w:120 T:8, w:240 T:16, w:180 T:12
 # define DARKER 8355711
 
-typedef enum e_parsing_element
+typedef enum e_card
 {
 	NO = 0,
 	SO,
 	WE,
-	EA,
-	F,
-	C
-}			t_parsing_element;
+	EA
+}			t_card;
 
 typedef struct s_rgb
 {
@@ -54,7 +52,7 @@ typedef struct s_player
 typedef struct s_texture
 {
 	double	wall_x;
-	int		type;
+	t_card	type;
 	double	step;
 	double	pos;
 }				t_texture;
@@ -86,12 +84,13 @@ typedef struct s_world
 	int			minimap_buf[MINI_H][MINI_W];
 	char		**map;
 	int			screen_buf[WIN_H][WIN_W];
-	int			texture[4];
+	int			*texture[4];
 	char		*tex_path[4];
 	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;
 	int			re;
+	t_ivec		mouse;
 }				t_world;
 
 #endif

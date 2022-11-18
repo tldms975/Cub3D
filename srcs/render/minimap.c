@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 19:12:31 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 15:08:47 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	ft_set_minimap(t_world *world)
 		{
 			if (world->map[w][h] == '0')
 				ft_fill_map_block(world, w, h, 0x9966FF);
+			else if (world->map[w][h] == ' ')
+				ft_fill_map_block(world, w, h, 0x000000);
 			else
 				ft_fill_map_block(world, w, h, 0x996633);
 			h++;

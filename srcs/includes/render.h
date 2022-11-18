@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 20:59:17 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 16:42:49 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "t_world.h"
 # include "t_mlx.h"
 # include "t_keycode.h"
+# include "mlx.h"
 # include "cub3d.h"
 # include "libft.h"
 
@@ -25,16 +26,14 @@ void	ft_run_cub3d(t_info *info);
 void	ft_init_screen_buf(int (*buf)[WIN_H][WIN_W]);
 int		ft_init_render(t_mlx *tmlx, t_world *world, t_info *info);
 
-int		ft_next_frame(t_world *world);
+int		ft_next_frame(void *w);
 
-void	ft_move_player(int keycode, t_player *p);
-void	ft_move_sight(int keycode, t_player *p);
-int		ft_event_red_cross(int keycode);
 int		ft_key_press(t_keycode keycode, t_world *world);
+int		ft_event_red_cross(int keycode);
+void	ft_move_player(int keycode, t_world *w, t_player *p);
+void	ft_move_sight(int keycode, t_player *p);
 
-void	ft_load_image(t_mlx *tmlx, int *texture, char *path, t_image *timg);
 void	ft_load_texture(t_world *world);
-int		**ft_init_texture(void);
 
 void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc);
 void	ft_step_dir(t_player *p,t_raycast *rc);

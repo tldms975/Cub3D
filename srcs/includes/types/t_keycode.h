@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:39:02 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 18:05:32 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/18 17:28:32 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef enum e_keycode
 {
 	X_EVENT_KEY_PRESS = 2,
 	X_EVENT_KEY_DESTROY_NOTIFY = 17,
+	X_EVENT_MOTIONNOTIFY = 6,
 	KEY_W = 13,
 	KEY_A = 0,
 	KEY_S = 1,
