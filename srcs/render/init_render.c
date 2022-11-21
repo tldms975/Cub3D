@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 04:00:16 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 06:16:01 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_create_minimap_buf(t_info *info)
 {
 	size_t	i;
 
-	info->core.world.minimap_w = info->map.width * 6;
-	info->core.world.minimap_h = info->map.height * 12;
+	info->core.world.minimap_w = info->map.width * 3;
+	info->core.world.minimap_h = info->map.height * 6;
 	info->core.world.minimap_buf = malloc(sizeof(int *) * (info->core.world.minimap_h));
 	i = 0;
 	while (i < info->core.world.minimap_h)
@@ -44,7 +44,6 @@ static void	ft_init_mlx(t_info *info)
 	tmlx->timg_main.img = mlx_new_image(tmlx->mlx, world->screen_w, world->screen_h);
 	tmlx->timg_main.data = (int *)mlx_get_data_addr(tmlx->timg_main.img, \
 	&tmlx->timg_main.bpp, &tmlx->timg_main.line_len, &tmlx->timg_main.endian);
-	printf("mini_w : %zu, mini_h : %zu\n", world->minimap_w, world->minimap_h);
 	tmlx->timg_mini.img = mlx_new_image(tmlx->mlx, world->minimap_w, world->minimap_h);
 	tmlx->timg_mini.data = (int *)mlx_get_data_addr(tmlx->timg_mini.img, \
 	&tmlx->timg_mini.bpp, &tmlx->timg_mini.line_len, &tmlx->timg_mini.endian);
@@ -128,8 +127,8 @@ void ft_change_map_format(t_info *info)
 
 void	set_screen_size(t_info *info)
 {
-	info->core.world.screen_w = 1920;
-	info->core.world.screen_h = 1080;
+	info->core.world.screen_w = 640;
+	info->core.world.screen_h = 480;
 }
 
 void	ft_create_screen_buf(t_info *info)
