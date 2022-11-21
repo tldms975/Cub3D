@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/18 19:21:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 19:45:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,13 @@ typedef struct s_world
 {
 	t_mlx		*tmlx;
 	t_image		minimap;
-	int			minimap_buf[MINI_H][MINI_W];
-	t_str_buf	**map;
-	int			screen_buf[WIN_H][WIN_W];
+	int			**minimap_buf;
+	size_t		minimap_w;
+	size_t		minimap_h;
+	char		**map;
+	int			**screen_buf;
+	size_t		screen_w;
+	size_t		screen_h;
 	int			*texture[4];
 	char		*tex_path[4];
 	t_rgb		rgb;

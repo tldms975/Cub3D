@@ -6,32 +6,38 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/19 05:18:37 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 19:50:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include "types/t_mlx.h"
 #include <stdio.h>
 
-int	*ft_load_image(char *path, t_mlx *tmlx)
+int	*ft_load_image(char *path, t_mlx *tmlx, int i)
 {
 	int		*res;
+	int		y;
+	int		x;
 
-	printf("path: %s\n", path);
-	tmlx->timg.img = mlx_xpm_file_to_image(tmlx->mlx, path, &tmlx->timg.w, \
-	&tmlx->timg.h);
-	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
-	&tmlx->timg.bpp, &tmlx->timg.line_len, &tmlx->timg.endian);
+	tmlx->timg_texture[i].img = mlx_xpm_file_to_image(tmlx->mlx, path, &tmlx->timg_texture[i].w, \
+	&tmlx->timg_texture[i].h);
 
-	res = (int *)malloc(sizeof(int) * (tmlx->timg.w * tmlx->timg.h));
-	for (int y = 0; y < tmlx->timg.h; y++)
+	tmlx->timg_texture[i].data = (int *)mlx_get_data_addr(tmlx->timg_texture[i].img, \
+	&tmlx->timg_texture[i].bpp, &tmlx->timg_texture[i].line_len, &tmlx->timg_texture[i].endian);
+	res = (int *)malloc(sizeof(int) * (tmlx->timg_texture[i].w * tmlx->timg_texture[i].h));
+	y = 0;
+	while (y < tmlx->timg_texture[i].h)
 	{
-		for (int x = 0; x < tmlx->timg.w; x++)
+		x = 0;
+		while (x < tmlx->timg_texture[i].w)
 		{
-			res[tmlx->timg.w * y + x] = tmlx->timg.data[tmlx->timg.w * y + x];
+			res[tmlx->timg_texture[i].w * y + x] = tmlx->timg_texture[i].data[tmlx->timg_texture[i].w * y + x];
+			x++;
 		}
+		y++;
 	}
-	mlx_destroy_image(tmlx->mlx, tmlx->timg.img);
+	mlx_destroy_image(tmlx->mlx, &tmlx->timg_texture[i].img);
 	return (res);
 }
 
@@ -44,7 +50,7 @@ void	ft_load_texture(t_info *info)
 	i = 0;
 	while (i < 4)
 	{
-		world->texture[i] = ft_load_image(world->tex_path[i], world->tmlx);
+		world->texture[i] = ft_load_image(world->tex_path[i], world->tmlx, i);
 		i++;
 	}
 }
