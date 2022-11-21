@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 19:55:34 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 21:35:11 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	ft_init_mlx(t_info *info)
 	tmlx->timg_main.img = mlx_new_image(tmlx->mlx, world->screen_w, world->screen_h);
 	tmlx->timg_main.data = (int *)mlx_get_data_addr(tmlx->timg_main.img, \
 	&tmlx->timg_main.bpp, &tmlx->timg_main.line_len, &tmlx->timg_main.endian);
+	printf("mini_w : %zu, mini_h : %zu\n", world->minimap_w, world->minimap_h);
 	tmlx->timg_mini.img = mlx_new_image(tmlx->mlx, world->minimap_w, world->minimap_h);
 	tmlx->timg_mini.data = (int *)mlx_get_data_addr(tmlx->timg_mini.img, \
 	&tmlx->timg_mini.bpp, &tmlx->timg_mini.line_len, &tmlx->timg_mini.endian);
@@ -148,12 +149,12 @@ void	ft_create_screen_buf(t_info *info)
 int	ft_init_render(t_info *info)
 {
 	set_screen_size(info);
-	ft_create_screen_buf(info);
-	ft_init_mlx(info);
 	ft_change_map_format(info);
-	ft_load_texture(info);
-	ft_init_player(&info->core.world.player);
+	ft_create_screen_buf(info);
 	ft_create_minimap_buf(info);
 	ft_set_minimap(info);
+	ft_init_mlx(info);
+	ft_load_texture(info);
+	ft_init_player(&info->core.world.player);
 	return (1);
 }

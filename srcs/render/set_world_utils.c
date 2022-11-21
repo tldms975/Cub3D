@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 20:08:40 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 21:23:00 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	ft_background(t_world *world)
 	}
 }
 
-void	ft_init_rc(t_world *world, t_raycast *rc, int x)
+void	ft_init_rc(t_world *world, t_raycast *rc, int y)
 {
 	t_player	*p;
 
 	p = &world->player;
-	rc->cam_x = 2 * x / (double)world->screen_w - 1;
-	rc->ray.x = p->dir.x + p->plane.x * rc->cam_x;
-	rc->ray.y = p->dir.y + p->plane.y * rc->cam_x;
+	rc->cam_y = 2 * y / (double)world->screen_w - 1;
+	rc->ray.x = p->dir.x + p->plane.x * rc->cam_y;
+	rc->ray.y = p->dir.y + p->plane.y * rc->cam_y;
 	rc->block.x = (int)p->pos.x;
 	rc->block.y = (int)p->pos.y;
 	rc->delta.x = fabs(1 / rc->ray.x);
@@ -89,7 +89,7 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 			rc->block.y += rc->step.y;
 			rc->is_side = 1;
 		}
-		if (world->map[rc->block.x][rc->block.y] == '1')
+		if (world->map[rc->block.y][rc->block.x] == '1')
 		{
 			hit = 1;
 		}

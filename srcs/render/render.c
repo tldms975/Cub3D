@@ -6,12 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/19 05:49:20 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 22:34:14 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <math.h>
+#include <stdio.h>
 
 int	ft_next_frame(void *i)
 {
@@ -34,11 +35,9 @@ void	ft_render(t_info *info)
 	t_mlx	*tmlx;
 
 	tmlx = info->core.world.tmlx;
-	ft_next_frame(info);
-	mlx_loop_hook(tmlx->mlx, &ft_next_frame, (void *)&info->core.world);
+	mlx_loop_hook(tmlx->mlx, &ft_next_frame, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, &info->core.world);
 	mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
-	// mlx_hook(tmlx->win, , 0, &ft_mouse_motion, 0);
 	mlx_loop(tmlx->mlx);
 }
 

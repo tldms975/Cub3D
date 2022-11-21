@@ -13,6 +13,7 @@
 
 #include "render.h"
 #include <math.h>
+#include <stdio.h>
 
 int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 {
@@ -92,24 +93,42 @@ void	ft_world_on_screen(t_info *info, t_mlx *tmlx)
 	mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->timg_main.img, 0, 0);
 }
 
+void	ft_init_screen_buf(t_info *info)
+{
+	size_t	w;
+	size_t	h;
+
+	h = 0;
+	while (h < info->core.world.screen_h)
+	{
+		w = 0;
+		while (w < info->core.world.screen_w)
+		{
+			info->core.world.screen_buf[h][w] = 0;
+			w++;
+		}
+		h++;
+	}
+}
+
 void	ft_set_world(t_info *info)
 {
 	t_raycast	rc;
 	t_texture	tex;
 	t_world		*world;
-	size_t	x;
+	size_t		y;
 
 	world = &info->core.world;
-	x = 0;
+	y = 0;
 	if (world->re)
-		ft_memset(&world->screen_buf, 0, sizeof(world->screen_buf));
+		ft_init_screen_buf(info);
 	ft_background(world);
-	while (x < info->core.world.screen_w)
+	while (y < info->core.world.screen_h)
 	{
-		ft_init_rc(world, &rc, x);
+		ft_init_rc(world, &rc, y);
 		ft_step_dir(&world->player, &rc);
 		ft_check_hit(world, &world->player, &rc);
-		ft_fill_buf(world, &rc, &tex, x);
-		x++;
+		ft_fill_buf(world, &rc, &tex, y);
+		y++;
 	}
 }

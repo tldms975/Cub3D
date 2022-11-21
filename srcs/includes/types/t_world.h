@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 19:45:09 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 21:28:30 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ typedef struct s_raycast
 	t_vec		side;
 	t_vec		delta;
 	int			is_side;
-	double		cam_x;
+	double		cam_y;
 	double		d;
 }				t_raycast;
 
 typedef struct s_world
 {
 	t_mlx		*tmlx;
-	t_image		minimap;
 	int			**minimap_buf;
 	size_t		minimap_w;
 	size_t		minimap_h;
@@ -94,8 +93,6 @@ typedef struct s_world
 	t_raycast	rc;
 	int			re;
 	t_ivec		mouse;
-	size_t		map_w;
-	size_t		map_h;
 }				t_world;
 
 #endif

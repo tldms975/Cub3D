@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 19:50:39 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 20:43:31 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	*ft_load_image(char *path, t_mlx *tmlx, int i)
 		}
 		y++;
 	}
-	mlx_destroy_image(tmlx->mlx, &tmlx->timg_texture[i].img);
+	mlx_destroy_image(tmlx->mlx, tmlx->timg_texture[i].img);
 	return (res);
 }
 

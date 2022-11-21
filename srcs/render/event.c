@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 20:27:11 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 22:34:01 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	ft_event_red_cross(int keycode)
 
 int	ft_key_press(t_keycode keycode, t_world *world)
 {
-//	t_world	*world;
-
-//	world = (t_world *)w;
 	if (keycode == KEY_ESC)
 		ft_event_close(world->tmlx);
 	else if (keycode == KEY_A || keycode == KEY_W \
