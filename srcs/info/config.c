@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/18 18:48:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/21 20:37:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include <unistd.h>
 #include <stdio.h>
 
-t_result	validate_tex_path(char *path_ptr, t_str_buf *tex_path)
+t_result	validate_tex_path(char **path_ptr, t_str_buf *tex_path)
 {
 	int			fd;
 	char		*path_raw;
 	t_result	result;
 
 	result = FAILURE;
-	if (tex_path != NULL && path_ptr == NULL)
+	if (tex_path != NULL && *path_ptr == NULL)
 	{
 		path_raw = str_dispose(str_cut(str_split(tex_path, ' ', 1), 1, BWD));
 		fd = open(path_raw, O_RDONLY);
@@ -32,11 +32,10 @@ t_result	validate_tex_path(char *path_ptr, t_str_buf *tex_path)
 		}
 		else
 		{
-			path_ptr = path_raw;
+			*path_ptr = path_raw;
 			result = SUCCESS;
 		}
 		close(fd);
-		free_safe(path_raw);
 	}
 	return (result);
 }
@@ -53,7 +52,7 @@ t_result	init_config(t_info *info, t_str_buf *line)
 	{
 		if (str_ncompare(line, cardinal[i], 2) == MATCH)
 		{
-			return (validate_tex_path(info->core.world.tex_path[i], line));
+			return (validate_tex_path(&info->core.world.tex_path[i], line));
 		}
 		i++;
 	}
@@ -89,5 +88,9 @@ bool	read_config(t_info *info)
 		component += init_config(info, str);
 	}
 	printf("component: %d\n", component);
+	printf("NO: %s\n", info->core.world.tex_path[0]);
+	printf("SO: %s\n", info->core.world.tex_path[1]);
+	printf("WE: %s\n", info->core.world.tex_path[2]);
+	printf("EA: %s\n", info->core.world.tex_path[3]);
 	return (component == 6);
 }
