@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 20:27:11 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 14:25:52 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ int	ft_event_red_cross(int keycode)
 
 int	ft_key_press(t_keycode keycode, t_world *world)
 {
-//	t_world	*world;
-
-//	world = (t_world *)w;
 	if (keycode == KEY_ESC)
 		ft_event_close(world->tmlx);
 	else if (keycode == KEY_A || keycode == KEY_W \
 	|| keycode == KEY_D || keycode == KEY_S)
-		ft_move_player(keycode, world);
+		ft_move_player(keycode, &world->player);
 	else if(keycode == KEY_ARROW_L || keycode == KEY_ARROW_R)
 		ft_move_sight(keycode, &world->player);
 	mlx_clear_window(world->tmlx->mlx, world->tmlx->win);

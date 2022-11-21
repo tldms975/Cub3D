@@ -1,8 +1,8 @@
 Q			:= $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE		:= $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory) $(if $(filter 1,$(NO_ADDITIONAL_J)),,-j $(shell sh ../assets/nproc.sh))
 
-CC			:= clang
-CCLD		:= clang
+# CC			:= clang
+CCLD		:= cc
 AR			:= ar
 ARFLAGS		:= cr$(if $(filter 1,$(V) $(VERBOSE)),v,)
 CPPFLAGS	:= $(shell find . -type d -mindepth 1 | grep -v .git | sed "s/^/-I /" | xargs)

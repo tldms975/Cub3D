@@ -6,34 +6,31 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 19:25:21 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/21 19:45:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
+#include "string_buffer.h"
 # include "t_mlx.h"
 # include "t_vector.h"
 # define WIN_W 640
 # define WIN_H 480
 # define TEX_H 64
 # define TEX_W 64
-# define MAP_W 24//tmp
-# define MAP_H 24//tmp
 # define MINI_W 180
 # define MINI_H 180
 # define T 12//w:120 T:8, w:240 T:16, w:180 T:12
 # define DARKER 8355711
 
-typedef enum e_parsing_element
+typedef enum e_card
 {
 	NO = 0,
 	SO,
 	WE,
-	EA,
-	F,
-	C
-}			t_parsing_element;
+	EA
+}			t_card;
 
 typedef struct s_rgb
 {
@@ -54,7 +51,7 @@ typedef struct s_player
 typedef struct s_texture
 {
 	double	wall_x;
-	int		type;
+	t_card	type;
 	double	step;
 	double	pos;
 }				t_texture;
@@ -83,15 +80,22 @@ typedef struct s_world
 {
 	t_mlx		*tmlx;
 	t_image		minimap;
-	int			minimap_buf[MINI_H][MINI_W];
+	int			**minimap_buf;
+	size_t		minimap_w;
+	size_t		minimap_h;
 	char		**map;
-	int			screen_buf[WIN_H][WIN_W];
-	int			texture[4];
+	int			**screen_buf;
+	size_t		screen_w;
+	size_t		screen_h;
+	int			*texture[4];
 	char		*tex_path[4];
 	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;
 	int			re;
+	t_ivec		mouse;
+	size_t		map_w;
+	size_t		map_h;
 }				t_world;
 
 #endif

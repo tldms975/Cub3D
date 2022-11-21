@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"t_mlx.h": "c",
+		"mlx.h": "c",
+		"render.h": "c"
+	}
+}

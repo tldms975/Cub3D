@@ -6,38 +6,37 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 20:08:40 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/16 14:12:00 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <math.h>
 
+extern int map[MAP_W][MAP_H];
+
 void	ft_background(t_world *world)
 {
-	size_t	y;
-	size_t	x;
+	int	y;
+	int	x;
 
 	y = 0;
-	while (y < world->screen_h / 2)
+	while (y < WIN_H / 2)
 	{
 		x = 0;
-		while (x < world->screen_w)
+		while (x < WIN_W)
 		{
 			world->screen_buf[y][x] = world->rgb.ceiling;
-			world->screen_buf[world->screen_h - y - 1][x] = world->rgb.floor;
+			world->screen_buf[WIN_H - y - 1][x] = world->rgb.floor;
 			x++;
 		}
 		y++;
 	}
 }
 
-void	ft_init_rc(t_world *world, t_raycast *rc, int x)
+void	ft_init_rc(t_player *p, t_raycast *rc, int x)
 {
-	t_player	*p;
-
-	p = &world->player;
-	rc->cam_x = 2 * x / (double)world->screen_w - 1;
+	rc->cam_x = 2 * x / (double)WIN_W - 1;
 	rc->ray.x = p->dir.x + p->plane.x * rc->cam_x;
 	rc->ray.y = p->dir.y + p->plane.y * rc->cam_x;
 	rc->block.x = (int)p->pos.x;
@@ -75,6 +74,7 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 	int	hit;
 
 	hit = 0;
+	(void)world;//for parsed map
 	while (hit == 0)
 	{
 		if (rc->side.x < rc->side.y)
@@ -89,13 +89,13 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 			rc->block.y += rc->step.y;
 			rc->is_side = 1;
 		}
-		if (world->map[rc->block.x][rc->block.y] == '1')
+		if (map[rc->block.x][rc->block.y] > 0)
 		{
 			hit = 1;
 		}
 	}
 	if (rc->is_side == 0)
-		rc->d = (rc->block.x - p->pos.x + (1 - rc->step.x) / 2.0) / rc->ray.x;
+		rc->d = (rc->block.x - p->pos.x + (1 - rc->step.x) / 2) / rc->ray.x;
 	else
-		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / 2.0) / rc->ray.y;
+		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / 2) / rc->ray.y;
 }

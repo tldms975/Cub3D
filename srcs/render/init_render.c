@@ -6,41 +6,47 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/17 21:00:53 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/21 19:55:34 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "render.h"
+#include "types/t_keycode.h"
 #include <math.h>
+#include <stdio.h>
 
-static void	ft_init_minimap_buf(int (*buf)[MINI_H][MINI_W])
+static void	ft_create_minimap_buf(t_info *info)
 {
-	int	w;
-	int	h;
+	size_t	i;
 
-	h = 0;
-	while (h < MINI_H)
+	info->core.world.minimap_w = info->map.width * 2;
+	info->core.world.minimap_h = info->map.height * 2;
+	info->core.world.minimap_buf = malloc(sizeof(int *) * (info->core.world.minimap_h));
+	i = 0;
+	while (i < info->core.world.minimap_h)
 	{
-		w = 0;
-		while (w < MINI_W)
-		{
-			(*buf)[h][w] = 0;
-			w++;
-		}
-		h++;
+		info->core.world.minimap_buf[i] = malloc(sizeof(int) * (info->core.world.minimap_w));
+		ft_memset(info->core.world.minimap_buf[i], 0, sizeof(int) * (info->core.world.minimap_w));
+		i++;
 	}
 }
 
-static void	ft_init_mlx(t_mlx *tmlx, t_world *world)
+static void	ft_init_mlx(t_info *info)
 {
+	t_mlx	*tmlx;
+	t_world	*world;
+
+	tmlx = &info->core.mlx;
+	world = &info->core.world;
 	tmlx->mlx = mlx_init();
-	tmlx->win = mlx_new_window(tmlx->mlx, WIN_W, WIN_H, "cub3d");
-	tmlx->timg.img = mlx_new_image(tmlx->mlx, WIN_W, WIN_H);
-	tmlx->timg.data = (int *)mlx_get_data_addr(tmlx->timg.img, \
-	&tmlx->timg.bpp, &tmlx->timg.line_len, &tmlx->timg.endian);
-	world->minimap.img = mlx_new_image(tmlx->mlx, MINI_W, MINI_H);
-	world->minimap.data =  (int *)mlx_get_data_addr(world->minimap.img, \
-	&world->minimap.bpp, &world->minimap.line_len, &world->minimap.endian);
+	tmlx->win = mlx_new_window(tmlx->mlx, world->screen_w, world->screen_h, "cub3d");
+	tmlx->timg_main.img = mlx_new_image(tmlx->mlx, world->screen_w, world->screen_h);
+	tmlx->timg_main.data = (int *)mlx_get_data_addr(tmlx->timg_main.img, \
+	&tmlx->timg_main.bpp, &tmlx->timg_main.line_len, &tmlx->timg_main.endian);
+	tmlx->timg_mini.img = mlx_new_image(tmlx->mlx, world->minimap_w, world->minimap_h);
+	tmlx->timg_mini.data = (int *)mlx_get_data_addr(tmlx->timg_mini.img, \
+	&tmlx->timg_mini.bpp, &tmlx->timg_mini.line_len, &tmlx->timg_mini.endian);
 	world->tmlx = tmlx;
 }
 
@@ -70,40 +76,84 @@ static void	ft_set_player_cardinal(t_player *p)
 
 static void	ft_init_player(t_player *p)
 {
-	// p->pos.x =22.5;//in parse
-	// p->pos.y =22.5;//in parse
-	p->dir.y = -0.9543;
-	p->dir.x = 0.02;
-	p->plane.y = 0.0;
-	p->plane.x = 0.66;
+	p->pos.x += 0.5; // TODO - adjust player position
+	p->pos.y += 0.5;
+	p->dir.y = -1;
+	p->dir.x = 0;
+	p->plane.y = 0.0; // TODO - explain plain
+	p->plane.x = 0.5;
 	p->move_speed = 0.05;
 	p->rot_speed = 0.08;
 	ft_set_player_cardinal(p);
 }
 
-static char	**ft_get_map(t_map *m)
-{
-	char	**map;
-	int		h;
+// static char	**ft_get_map(t_map *m)
+// {
+// 	char	**map;
+// 	size_t	y;
+// 	// size_t	x;
+//
+// 	map = malloc_safe(sizeof(char *) * m->height);
+// 	y = 0;
+// 	while (y < m->height)
+// 	{
+// 		// x = 0;
+// 		// while (x < m->raw[y]->length)
+// 		// {
+// 			map[y] = malloc_safe(sizeof(char) * m->raw[y]->length);
+// 			map[y] = m->raw[y]->str;
+// 			//printf("%s\n", m->raw[y]->str);
+// 			// x++;
+// 		// }
+// 		y++;
+// 	}
+// 	return (map);
+// }
 
-	map = m
-	return (map);
+void ft_change_map_format(t_info *info)
+{
+	size_t	i;
+
+	info->core.world.map = malloc_safe(sizeof(char *) * info->map.height);
+	i = 0;
+	while (i < info->map.height)
+	{
+		info->core.world.map[i] = malloc_safe(sizeof(char) * info->map.width);
+		ft_memset(info->core.world.map[i], ' ', info->map.width);
+		ft_memcpy(info->core.world.map[i], info->map.raw[i]->str, info->map.raw[i]->length);
+		i++;
+	}
 }
 
-int	ft_init_render(t_mlx *tmlx, t_world *world, t_info *info)
+void	set_screen_size(t_info *info)
 {
-	ft_init_mlx(tmlx, world);
-	ft_init_screen_buf(&world->screen_buf);
-	world->map = ft_get_map(&info->map);
-	ft_load_texture(world);
-	ft_init_player(&world->player);
-	ft_init_minimap_buf(&world->minimap_buf);
-	ft_set_minimap(world);
-	//parse
-	// world->rgb.floor = 0x336600;
-	// world->rgb.ceiling = 0x0099FF;
-	// world->map = map;
-	//
-	world->re = 0;
+	info->core.world.screen_w = info->map.width * 10;
+	info->core.world.screen_h = info->map.height * 10;
+}
+
+void	ft_create_screen_buf(t_info *info)
+{
+	size_t	i;
+
+	info->core.world.screen_buf = malloc_safe(sizeof(int *) * info->core.world.screen_h);
+	i = 0;
+	while (i < info->core.world.screen_h)
+	{
+		info->core.world.screen_buf[i] = malloc_safe(sizeof(int) * info->core.world.screen_w);
+		ft_memset(info->core.world.screen_buf[i], 0, sizeof(int) * info->core.world.screen_w);
+		i++;
+	}
+}
+
+int	ft_init_render(t_info *info)
+{
+	set_screen_size(info);
+	ft_create_screen_buf(info);
+	ft_init_mlx(info);
+	ft_change_map_format(info);
+	ft_load_texture(info);
+	ft_init_player(&info->core.world.player);
+	ft_create_minimap_buf(info);
+	ft_set_minimap(info);
 	return (1);
 }
