@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 21:35:11 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 04:00:16 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_create_minimap_buf(t_info *info)
 {
 	size_t	i;
 
-	info->core.world.minimap_w = info->map.width * 2;
-	info->core.world.minimap_h = info->map.height * 2;
+	info->core.world.minimap_w = info->map.width * 6;
+	info->core.world.minimap_h = info->map.height * 12;
 	info->core.world.minimap_buf = malloc(sizeof(int *) * (info->core.world.minimap_h));
 	i = 0;
 	while (i < info->core.world.minimap_h)
@@ -59,15 +59,15 @@ static void	ft_set_player_cardinal(t_player *p)
 
 	old_dir_x = p->dir.x;
 	old_plane_x = p->plane.x;
-	degree = 0.0;
+	degree = 0;
 	if (p->cardinal == 'N')
 		return ;
 	else if (p->cardinal == 'W')
-		degree = 1.5;
+		degree = M_PI / 2;
 	else if (p->cardinal == 'S')
-		degree = 3.0;
+		degree = M_PI;
 	else if (p->cardinal == 'E')
-		degree = 4.5;
+		degree = M_PI * 3 / 2;
 	p->dir.x = p->dir.x * cos(-degree) - p->dir.y * sin(-degree);
 	p->dir.y = old_dir_x * sin(-degree) + p->dir.y * cos(-degree);
 	p->plane.x = p->plane.x * cos(-degree) - p->plane.y * sin(-degree);
@@ -79,10 +79,10 @@ static void	ft_init_player(t_player *p)
 {
 	p->pos.x += 0.5; // TODO - adjust player position
 	p->pos.y += 0.5;
-	p->dir.y = -1;
-	p->dir.x = 0;
+	p->dir.y = -1.0;
+	p->dir.x = 0.0;
 	p->plane.y = 0.0; // TODO - explain plain
-	p->plane.x = 0.5;
+	p->plane.x = 0.66;
 	p->move_speed = 0.05;
 	p->rot_speed = 0.08;
 	ft_set_player_cardinal(p);
@@ -128,8 +128,8 @@ void ft_change_map_format(t_info *info)
 
 void	set_screen_size(t_info *info)
 {
-	info->core.world.screen_w = info->map.width * 10;
-	info->core.world.screen_h = info->map.height * 10;
+	info->core.world.screen_w = 1920;
+	info->core.world.screen_h = 1080;
 }
 
 void	ft_create_screen_buf(t_info *info)

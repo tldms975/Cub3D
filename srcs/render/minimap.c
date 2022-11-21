@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 21:46:37 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 00:38:59 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ void	ft_player_on_minimap(t_info *info, t_player *p)
 		j = -size / 2;
 		while (j < size / 2)
 		{
-			info->core.world.tmlx->timg_mini.data[
-				(int)((p->pos.y * size + j) * (info->core.world.minimap_w))
-				+ (int)(p->pos.x * size + i)] = player_color;
+			info->core.world.tmlx->timg_mini.data[(int)((p->pos.y * size + j) * (info->core.world.minimap_w)) + (int)(p->pos.x * size) + i] = player_color;
 			j++;
 		}
 		i++;
 	}
 }
+
 void	ft_minimap_on_screen(t_info *info, t_mlx *tmlx)
 {
 	size_t	w;
@@ -89,12 +88,12 @@ void	ft_set_minimap(t_info *info)
 		x = 0;
 		while (x < info->map.width)
 		{
-			if (info->core.world.map[y][x] == '0')
-				ft_fill_miniimap_block(info, y, x, 0x9966FF);
+			if (info->core.world.map[y][x] == '1')
+				ft_fill_miniimap_block(info, y, x, 0x996633);
 			else if (info->core.world.map[y][x] == ' ')
 				ft_fill_miniimap_block(info, y, x, 0x000000);
 			else
-				ft_fill_miniimap_block(info, y, x, 0x996633);
+				ft_fill_miniimap_block(info, y, x, 0x9966FF);
 			x++;
 		}
 		y++;

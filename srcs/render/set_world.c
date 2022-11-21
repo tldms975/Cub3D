@@ -52,14 +52,14 @@ void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 	tex->pos = (dr->start - world->screen_h / (double)(2 + dr->line_h) / 2) * tex->step;
 }
 
-void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, int x)
+void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, size_t x)
 {
 	t_draw	dr;
 	size_t	y;
 
 	dr.line_h = (int)(world->screen_h / rc->d);
-	dr.start = -dr.line_h / 2 + world->screen_h / 2;
-	dr.end = dr.line_h / 2 + world->screen_h / 2;
+	dr.start = (-dr.line_h / 2) + (world->screen_h / 2);
+	dr.end = (dr.line_h / 2) + (world->screen_h / 2);
 	if (dr.start < 0)
 		dr.start = 0;
 	if (dr.end >= (int)world->screen_h)
@@ -85,7 +85,7 @@ void	ft_world_on_screen(t_info *info, t_mlx *tmlx)
 		w = 0;
 		while (w < info->core.world.screen_w)
 		{
-			tmlx->timg_main.data[h * info->core.world.screen_w + w] = info->core.world.screen_buf[h][w];
+			tmlx->timg_main.data[(h * info->core.world.screen_w) + w] = info->core.world.screen_buf[h][w];
 			w++;
 		}
 		h++;
@@ -116,19 +116,19 @@ void	ft_set_world(t_info *info)
 	t_raycast	rc;
 	t_texture	tex;
 	t_world		*world;
-	size_t		y;
+	size_t		x;
 
 	world = &info->core.world;
-	y = 0;
+	x = 0;
 	if (world->re)
 		ft_init_screen_buf(info);
 	ft_background(world);
-	while (y < info->core.world.screen_h)
+	while (x < info->core.world.screen_w)
 	{
-		ft_init_rc(world, &rc, y);
+		ft_init_rc(world, &rc, x);
 		ft_step_dir(&world->player, &rc);
 		ft_check_hit(world, &world->player, &rc);
-		ft_fill_buf(world, &rc, &tex, y);
-		y++;
+		ft_fill_buf(world, &rc, &tex, x);
+		x++;
 	}
 }
