@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:45:19 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/22 20:55:46 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,8 @@ void	ft_set_minimap(t_info *info)
 		{
 			if (info->core.world.map[y][x] == '1')
 				ft_fill_miniimap_block(info, y, x, 0x996633);
-			else if (info->core.world.map[y][x] == ' ')
-				ft_fill_miniimap_block(info, y, x, 0x000000);
-			else if (x + 1 == info->map.raw[y]->length)
+			else if (info->core.world.map[y][x] == ' ' \
+			|| (x + 1) == info->map.raw[y]->length)
 				ft_fill_miniimap_block(info, y, x, 0x000000);
 			else
 				ft_fill_miniimap_block(info, y, x, 0x9966FF);
