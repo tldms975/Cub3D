@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 04:11:36 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 20:52:12 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_init_rc(t_world *world, t_raycast *rc, size_t x)
 	rc->delta.y = fabs(1 / rc->ray.y);
 }
 
-void	ft_step_dir(t_player *p,t_raycast *rc)
+void	ft_step_dir(t_player *p, t_raycast *rc)
 {
 	if (rc->ray.x < 0)
 	{

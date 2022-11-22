@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 06:16:01 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 19:14:30 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_create_minimap_buf(t_info *info)
 {
 	size_t	i;
 
-	info->core.world.minimap_w = info->map.width * 3;
-	info->core.world.minimap_h = info->map.height * 6;
+	info->core.world.minimap_w = ceil((double)info->map.width * 5);
+	info->core.world.minimap_h = ceil((double)info->map.height * 5);
 	info->core.world.minimap_buf = malloc(sizeof(int *) * (info->core.world.minimap_h));
 	i = 0;
 	while (i < info->core.world.minimap_h)
@@ -87,29 +87,6 @@ static void	ft_init_player(t_player *p)
 	ft_set_player_cardinal(p);
 }
 
-// static char	**ft_get_map(t_map *m)
-// {
-// 	char	**map;
-// 	size_t	y;
-// 	// size_t	x;
-//
-// 	map = malloc_safe(sizeof(char *) * m->height);
-// 	y = 0;
-// 	while (y < m->height)
-// 	{
-// 		// x = 0;
-// 		// while (x < m->raw[y]->length)
-// 		// {
-// 			map[y] = malloc_safe(sizeof(char) * m->raw[y]->length);
-// 			map[y] = m->raw[y]->str;
-// 			//printf("%s\n", m->raw[y]->str);
-// 			// x++;
-// 		// }
-// 		y++;
-// 	}
-// 	return (map);
-// }
-
 void ft_change_map_format(t_info *info)
 {
 	size_t	i;
@@ -135,12 +112,15 @@ void	ft_create_screen_buf(t_info *info)
 {
 	size_t	i;
 
-	info->core.world.screen_buf = malloc_safe(sizeof(int *) * info->core.world.screen_h);
+	info->core.world.screen_buf = malloc_safe(sizeof(int *) \
+	* info->core.world.screen_h);
 	i = 0;
 	while (i < info->core.world.screen_h)
 	{
-		info->core.world.screen_buf[i] = malloc_safe(sizeof(int) * info->core.world.screen_w);
-		ft_memset(info->core.world.screen_buf[i], 0, sizeof(int) * info->core.world.screen_w);
+		info->core.world.screen_buf[i] = malloc_safe(sizeof(int) \
+		* info->core.world.screen_w);
+		ft_memset(info->core.world.screen_buf[i], 0, sizeof(int) \
+		* info->core.world.screen_w);
 		i++;
 	}
 }

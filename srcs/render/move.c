@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:11:16 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 06:17:31 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 20:25:57 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_move_right(t_world *world)
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)(p->pos.y)][(int)(p->pos.x + p->dir.x * p->move_speed)] != '1')
-		p->pos.x += p->dir.y * p->move_speed;
-	if (world->map[(int)(p->pos.y - p->dir.y * p->move_speed)][(int)(p->pos.x)] != '1')
-		p->pos.y -= p->dir.x * p->move_speed;
+	if (world->map[(int)(p->pos.y)][(int)(p->pos.x - p->dir.y * p->move_speed)] != '1')
+		p->pos.x += -p->dir.y * p->move_speed;
+	if (world->map[(int)(p->pos.y + p->dir.x * p->move_speed)][(int)(p->pos.x)] != '1')
+		p->pos.y += p->dir.x * p->move_speed;
 }
 
 void	ft_move_left(t_world *world)
@@ -30,10 +30,10 @@ void	ft_move_left(t_world *world)
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)(p->pos.y)][(int)(p->pos.x - p->dir.x * p->move_speed)] != '1')
-		p->pos.x -= p->dir.y * p->move_speed;
-	if (world->map[(int)(p->pos.y + p->dir.y * p->move_speed)][(int)(p->pos.x)] != '1')
-		p->pos.y += p->dir.x * p->move_speed;
+	if (world->map[(int)p->pos.y][(int)(p->pos.x + p->dir.y * p->move_speed)] != '1')
+		p->pos.x += p->dir.y * p->move_speed;
+	if (world->map[(int)(p->pos.y - p->dir.x * p->move_speed)][(int)p->pos.x] != '1')
+		p->pos.y += -p->dir.x * p->move_speed;
 }
 
 void	ft_move_backward(t_world *world)
@@ -65,7 +65,7 @@ void	ft_move_player(int keycode, t_world *world)
 	else if (keycode == KEY_S)
 		ft_move_backward(world);
 	else if (keycode == KEY_A)
-		ft_move_right(world);
-	else if (keycode == KEY_D)
 		ft_move_left(world);
+	else if (keycode == KEY_D)
+		ft_move_right(world);
 }

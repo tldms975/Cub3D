@@ -6,13 +6,50 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 05:38:45 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 20:51:43 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include "types/t_mlx.h"
-#include <stdio.h>
+#include <math.h>
+
+int	ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
+{
+	int	color;
+
+	dr->tex.y = (int)tex->pos & (world->tmlx->timg_texture[tex->type].h - 1);
+	tex->pos += tex->step;
+	color = world->texture[tex->type][(int)(world->tmlx->timg_texture[tex->type].h * dr->tex.y + dr->tex.x)];
+	if (rc->is_side == 1)
+		color = (color >> 1) & DARKER;
+	return (color);
+}
+
+void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
+{
+	if (rc->is_side == 0)
+	{
+		tex->wall_x = world->player.pos.y + rc->d * rc->ray.y;
+		tex->type = NO;
+		if (rc->step.x > 0)
+			tex->type = SO;
+	}
+	else
+	{
+		tex->wall_x = world->player.pos.x + rc->d * rc->ray.x;
+		tex->type = WE;
+		if (rc->step.y > 0)
+			tex->type = EA;
+	}
+	tex->wall_x -= floor(tex->wall_x);
+	dr->tex.x = (int)(tex->wall_x * (double)world->tmlx->timg_texture[tex->type].w);
+	if ((rc->is_side == 0 && rc->ray.x > 0) \
+	|| (rc->is_side == 1 && rc->ray.y < 0))
+		dr->tex.x = world->tmlx->timg_texture[tex->type].w - dr->tex.x - 1;
+	tex->step = 1.0 * world->tmlx->timg_texture[tex->type].h  / dr->line_h;
+	tex->pos = (dr->start - world->screen_h / 2.0 + dr->line_h / 2.0) * tex->step;
+}
 
 int	*ft_load_image(char *path, t_mlx *tmlx, int i)
 {
