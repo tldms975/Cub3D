@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 03:54:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 20:58:09 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	ft_next_frame(void *i)
 {
-	t_info *info;
+	t_info	*info;
 
 	info = (t_info *)i;
 	ft_set_world(info);
@@ -36,7 +36,7 @@ void	ft_render(t_info *info)
 	mlx_loop(tmlx->mlx);
 }
 
-void ft_run_cub3d(t_info *info)
+void	ft_run_cub3d(t_info *info)
 {
 	if (ft_init_render(info))
 		ft_render(info);

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:55:46 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/22 21:01:09 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void	ft_player_on_minimap(t_info *info, t_player *p)
 		j = 0;
 		while (j < ceil((double)wsize / 2))
 		{
-			info->core.world.tmlx->timg_mini.data[(((int)(p->pos.y * hsize) + i)
-			* (info->core.world.minimap_w)) + ((int)(p->pos.x * wsize) + j)]
+			info->core.world.tmlx->timg_mini.data \
+			[(((int)(p->pos.y * hsize) + i) * (info->core.world.minimap_w)) \
+			+ ((int)(p->pos.x * wsize) + j)] \
 			= player_color;
 			j++;
 		}
@@ -78,7 +79,8 @@ void	ft_fill_miniimap_block(t_info *info, int y, int x, int color)
 		j = 0;
 		while (j < wsize)
 		{
-			info->core.world.minimap_buf[(int)(y * hsize) + i][(int)(x * wsize) + j] = color;
+			info->core.world.minimap_buf[(int)(y * hsize) + i] \
+			[(int)(x * wsize) + j] = color;
 			j++;
 		}
 		i++;

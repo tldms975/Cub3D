@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:52:16 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/22 20:57:44 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	ft_world_on_screen(t_info *info, t_mlx *tmlx)
 		w = 0;
 		while (w < info->core.world.screen_w)
 		{
-			tmlx->timg_main.data[(h * info->core.world.screen_w) + w] = info->core.world.screen_buf[h][w];
+			tmlx->timg_main.data[(h * info->core.world.screen_w) + w] \
+			= info->core.world.screen_buf[h][w];
 			w++;
 		}
 		h++;
