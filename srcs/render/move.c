@@ -65,15 +65,3 @@ void	ft_move_foreward(t_world *world)
 	[(int)(p->pos.x)] != '1')
 		p->pos.y += p->dir.y * p->move_speed;
 }
-
-void	ft_move_player(int keycode, t_world *world)
-{
-	if (keycode == KEY_W)
-		ft_move_foreward(world);
-	else if (keycode == KEY_S)
-		ft_move_backward(world);
-	else if (keycode == KEY_A)
-		ft_move_left(world);
-	else if (keycode == KEY_D)
-		ft_move_right(world);
-}

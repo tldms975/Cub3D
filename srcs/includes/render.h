@@ -32,6 +32,7 @@ int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr);
 void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr);
 
 int		ft_key_press(t_keycode keycode, t_info *info);
+int		ft_key_release(t_keycode keycode, t_info *info);
 int		ft_event_red_cross(int keycode);
 void	ft_move_player(int keycode, t_world *w);
 void	ft_move_sight(int keycode, t_player *p);
@@ -48,5 +49,6 @@ void	ft_set_minimap(t_info *info);
 
 void	ft_world_on_screen(t_info *info, t_mlx *tmlx);
 void	ft_minimap_on_screen(t_info *info, t_mlx *tmlx);
+t_result	action(t_info *info);
 
 #endif

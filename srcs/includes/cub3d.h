@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 18:56:13 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/22 06:30:16 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,11 @@ typedef struct s_map
 // every information of config
 typedef struct s_info
 {
-	t_str_buf	*cub_path;
-	t_map		map;
-	int			fd;
-	t_core		core;
+	t_str_buf		*cub_path;
+	t_map			map;
+	int				fd;
+	t_core			core;
+	unsigned int	keycode;
 }	t_info;
 
 #endif
