@@ -6,13 +6,13 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:24:25 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/01 00:26:10 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 15:04:44 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	create_trgb(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return ((unsigned)t << 24 | r << 16 | g << 8 | b);
 }
 
 unsigned char	get_t(int trgb)
