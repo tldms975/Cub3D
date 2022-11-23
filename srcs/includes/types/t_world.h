@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/23 10:18:14 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 15:12:25 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ typedef struct s_texture
 	double	pos;
 }				t_texture;
 
+typedef struct s_minimap_color
+{
+	int		bg;
+	int		fg;
+	int		wl;
+}				t_minimap_color;
 typedef struct s_draw
 {
 	int		line_h;
