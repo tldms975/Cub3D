@@ -6,7 +6,7 @@
 /*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 2022/10/27 23:11:02 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 09:44:17 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "safe_mem.h"
+#include "libft.h"
 #include "string_buffer.h"
 
 typedef struct s_tester_form

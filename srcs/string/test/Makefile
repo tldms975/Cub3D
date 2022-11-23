@@ -1,3 +1,3 @@
 BASE_PATH := ../..
 
-include $(BASE_PATH)/build/non_leaf.mk
+include ../../build/non_leaf.mk

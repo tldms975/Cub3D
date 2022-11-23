@@ -6,7 +6,7 @@
 /*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 2022/10/28 18:35:23 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 09:49:30 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "safe_mem.h"
+#include "libft.h"
 #include "string_buffer.h"
 
 typedef struct s_tester_form
@@ -35,7 +35,6 @@ int main(int argc, char** argv)
 		if (scanf(" %1000[^\t] %1000[^\n]", buff.s, buff.compare_to) != 2)
 			break;
 		result = str_compare(str_append(NULL, buff.s), buff.compare_to);
-		fprintf(stderr, "result : %d\n", result);
 		if (result == 0)
 		{
 			puts("1");
