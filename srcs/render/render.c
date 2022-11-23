@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 22:39:27 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 14:15:44 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_next_frame(void *i)
 	t_info	*info;
 
 	info = (t_info *)i;
-	printf("keycode: "INT_TO_BINARY_PATTERN, INT_TO_BINARY(info->keycode));
 	if (action(info) == SUCCESS)
 	{
 		ft_set_world(info);

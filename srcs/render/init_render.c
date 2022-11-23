@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 19:14:30 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 10:42:24 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_create_minimap_buf(t_info *info)
 {
 	size_t	i;
 
-	info->core.world.minimap_w = ceil((double)info->map.width * 5);
-	info->core.world.minimap_h = ceil((double)info->map.height * 5);
+	info->core.world.minimap_w = ceil((double)info->map.width * 8);
+	info->core.world.minimap_h = ceil((double)info->map.height * 8);
 	info->core.world.minimap_buf = malloc(sizeof(int *) * (info->core.world.minimap_h));
 	i = 0;
 	while (i < info->core.world.minimap_h)
@@ -104,8 +104,8 @@ void ft_change_map_format(t_info *info)
 
 void	set_screen_size(t_info *info)
 {
-	info->core.world.screen_w = 640;
-	info->core.world.screen_h = 480;
+	info->core.world.screen_w = WIN_W;
+	info->core.world.screen_h = WIN_H;
 }
 
 void	ft_create_screen_buf(t_info *info)

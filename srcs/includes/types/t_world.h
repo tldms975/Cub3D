@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/21 21:28:30 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/23 10:18:14 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 #include "string_buffer.h"
 # include "t_mlx.h"
 # include "t_vector.h"
-# define WIN_W 640
-# define WIN_H 480
+# ifndef WIN_W
+#  define WIN_W 2560
+# endif
+# ifndef WIN_H
+#  define WIN_H 1440
+# endif
 # define TEX_H 64
 # define TEX_W 64
 # define MINI_W 180

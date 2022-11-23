@@ -6,10 +6,11 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 21:01:09 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 14:57:32 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "colors.h"
 #include "render.h"
 #include <stdio.h>
 #include <math.h>
@@ -91,20 +92,26 @@ void	ft_set_minimap(t_info *info)
 {
 	size_t	x;
 	size_t	y;
+	int		bgcolor;
+	int		fgcolor;
+	int		wlcolor;
 
+	bgcolor = create_trgb(255, 0, 0, 0);
+	fgcolor = create_trgb(100, 90, 102, 70);
+	wlcolor = create_trgb(100, 198, 210, 202);
 	y = 0;
 	while (y < info->map.height)
 	{
 		x = 0;
-		while (x < info->map.raw[y]->length)
+		while (x < info->map.width)
 		{
 			if (info->core.world.map[y][x] == '1')
-				ft_fill_miniimap_block(info, y, x, 0x996633);
-			else if (info->core.world.map[y][x] == ' ' \
-			|| (x + 1) == info->map.raw[y]->length)
-				ft_fill_miniimap_block(info, y, x, 0x000000);
+				ft_fill_miniimap_block(info, y, x, fgcolor);
+			else if (info->core.world.map[y][x] == ' '
+					|| info->core.world.map[y][x] == '\n')
+				ft_fill_miniimap_block(info, y, x, bgcolor);
 			else
-				ft_fill_miniimap_block(info, y, x, 0x9966FF);
+				ft_fill_miniimap_block(info, y, x, wlcolor);
 			x++;
 		}
 		y++;
