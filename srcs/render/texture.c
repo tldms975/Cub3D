@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 21:06:42 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 04:46:57 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,10 @@ int	ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 	return (color);
 }
 
+
 void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, \
 t_draw *dr)
 {
-	if (rc->is_side == 0)
-	{
-		tex->wall_x = world->player.pos.y + rc->d * rc->ray.y;
-		tex->type = NO;
-		if (rc->step.x > 0)
-			tex->type = SO;
-	}
-	else
-	{
-		tex->wall_x = world->player.pos.x + rc->d * rc->ray.x;
-		tex->type = WE;
-		if (rc->step.y > 0)
-			tex->type = EA;
-	}
 	tex->wall_x -= floor(tex->wall_x);
 	dr->tex.x \
 	= (int)(tex->wall_x * (double)world->tmlx->timg_texture[tex->type].w);
@@ -90,7 +77,7 @@ void	ft_load_texture(t_info *info)
 
 	world = &info->core.world;
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		world->texture[i] = ft_load_image(world->tex_path[i], world->tmlx, i);
 		i++;

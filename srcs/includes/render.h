@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/24 11:54:58 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 04:24:25 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_move_sight_mouse(int x, t_info *info);
 
 void	ft_load_texture(t_info *info);
 
-void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc);
+void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc, t_texture *tex);
 void	ft_step_dir(t_player *p, t_raycast *rc);
 void	ft_init_rc(t_world *world, t_raycast *rc, size_t x);
 void	ft_background(t_world *world);

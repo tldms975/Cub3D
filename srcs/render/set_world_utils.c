@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:52:12 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 05:03:14 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,29 @@ void	ft_step_dir(t_player *p, t_raycast *rc)
 	}
 }
 
-void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
+void	cal_texture_type(t_world *world, t_raycast *rc, t_texture *tex)
+{
+	if (rc->is_side == 0)
+	{
+		tex->wall_x = world->player.pos.y + rc->d * rc->ray.y;
+		tex->type = NO;
+		if (rc->step.x > 0)
+			tex->type = SO;
+	}
+	else
+	{
+		tex->wall_x = world->player.pos.x + rc->d * rc->ray.x;
+		tex->type = WE;
+		if (rc->step.y > 0)
+			tex->type = EA;
+	}
+	if (world->map[rc->block.y][rc->block.x] == 'D')
+	{
+		tex->type = DOOR;
+	}
+}
+
+void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc, t_texture *tex)
 {
 	while (1)
 	{
@@ -86,7 +108,8 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 			rc->block.y += rc->step.y;
 			rc->is_side = 1;
 		}
-		if (world->map[rc->block.y][rc->block.x] == '1')
+		if (world->map[rc->block.y][rc->block.x] == '1' 
+				|| world->map[rc->block.y][rc->block.x] == 'D')
 		{
 			break ;
 		}
@@ -95,4 +118,5 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc)
 		rc->d = (rc->block.x - p->pos.x + (1 - rc->step.x) / 2.0) / rc->ray.x;
 	else
 		rc->d = (rc->block.y - p->pos.y + (1 - rc->step.y) / 2.0) / rc->ray.y;
+	cal_texture_type(world, rc, tex);
 }

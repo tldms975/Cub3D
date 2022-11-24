@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/25 01:49:00 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 04:32:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@
 # define MINI_H 180
 # define T 12//w:120 T:8, w:240 T:16, w:180 T:12
 # define DARKER 8355711
+# define BASIC_CONFIG 6
 
 typedef enum e_card
 {
 	NO = 0,
 	SO,
 	WE,
-	EA
+	EA,
+	DOOR
 }			t_card;
 
 typedef struct s_rgb
@@ -102,8 +104,8 @@ typedef struct s_world
 	int			**screen_buf;
 	size_t		screen_w;
 	size_t		screen_h;
-	int			*texture[4];
-	char		*tex_path[4];
+	int			*texture[5];
+	char		*tex_path[5];
 	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;

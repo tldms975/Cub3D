@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/24 18:05:19 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 03:57:09 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,22 @@ void	reset_mouse_pos(t_info *info)
 	}
 }
 
+void	action_by_each_keys(t_info *info)
+{
+	if (info->keycode & 1 << find_key(KEY_ESC))
+	{
+		action_internal(KEY_ESC, &info->core.world);
+	}
+	ft_move_sight(which_is_functinal(KEY_ARROW_R, KEY_ARROW_L, info->keycode),
+			&info->core.world.player);
+	action_internal(which_is_functinal(KEY_W, KEY_S, info->keycode), &info->core.world);
+	action_internal(which_is_functinal(KEY_A, KEY_D, info->keycode), &info->core.world);
+	if (info->keycode & 1 << find_key(KEY_M))
+	{
+		action_internal(KEY_M, &info->core.world);
+	}
+}
+
 t_result	action(t_info *info)
 {
 	t_result	result;
@@ -123,18 +139,7 @@ t_result	action(t_info *info)
 	result = FAILURE;
 	if (info->keycode != 0)
 	{
-		if (info->keycode & 1 << find_key(KEY_ESC))
-		{
-			action_internal(KEY_ESC, &info->core.world);
-		}
-		ft_move_sight(which_is_functinal(KEY_ARROW_R, KEY_ARROW_L, info->keycode),
-				&info->core.world.player);
-		action_internal(which_is_functinal(KEY_W, KEY_S, info->keycode), &info->core.world);
-		action_internal(which_is_functinal(KEY_A, KEY_D, info->keycode), &info->core.world);
-		if (info->keycode & 1 << find_key(KEY_M))
-		{
-			action_internal(KEY_M, &info->core.world);
-		}
+		action_by_each_keys(info);
 		result = SUCCESS;
 	}
 	if (info->core.world.mouse_on == true)

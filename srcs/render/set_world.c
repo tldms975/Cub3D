@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:57:44 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 04:25:00 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_set_world(t_info *info)
 	{
 		ft_init_rc(world, &rc, x);
 		ft_step_dir(&world->player, &rc);
-		ft_check_hit(world, &world->player, &rc);
+		ft_check_hit(world, &world->player, &rc, &tex);
 		ft_fill_buf(world, &rc, &tex, x);
 		x++;
 	}
