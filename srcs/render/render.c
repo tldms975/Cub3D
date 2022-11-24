@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/23 14:15:44 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/24 17:16:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_render(t_info *info)
 	mlx_loop_hook(tmlx->mlx, &ft_next_frame, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_RELEASE, 0, &ft_key_release, info);
+	mlx_hook(tmlx->win, X_EVENT_ON_MOUSEMOVE, 0, &ft_mouse_move, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
 	mlx_loop(tmlx->mlx);
 }

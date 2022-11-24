@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/23 15:12:25 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/24 18:06:46 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_world
 	t_raycast	rc;
 	int			re;
 	t_ivec		mouse;
+	bool		mouse_on;
 }				t_world;
 
 #endif

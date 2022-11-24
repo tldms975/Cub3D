@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/23 10:42:24 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/24 17:46:55 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	set_screen_size(t_info *info)
 {
 	info->core.world.screen_w = WIN_W;
 	info->core.world.screen_h = WIN_H;
+	info->mousecode = info->core.world.screen_w / 2;
 }
 
 void	ft_create_screen_buf(t_info *info)

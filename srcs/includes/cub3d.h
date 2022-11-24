@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/22 06:30:16 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/24 13:17:51 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_info
 	int				fd;
 	t_core			core;
 	unsigned int	keycode;
+	int				mousecode;
 }	t_info;
 
 #endif
