@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 01:10:46 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 00:23:54 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 03:10:52 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		map__redzone_create(t_info *info);
 // find player position & check duplicate start position
 t_result	map__start_point__find(t_info *info);
 t_result	map__sprite__find(t_info *info);
+t_result	map__door__validate(t_info *info);
 
 // check map is surrounded by wall based on dijkstra algorithm
 t_result	map__dij__path__release(t_info *info, t_path *open);
