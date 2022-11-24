@@ -1,5 +1,8 @@
 Q			:= $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE		:= $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory) $(if $(filter 1,$(NO_ADDITIONAL_J)),,-j $(shell sh ../assets/nproc.sh))
+ifneq (shell uname -m, x86_64)
+	MAKE	:= arch -x86_64 $(MAKE)
+endif
 
 # CC			:= clang
 CCLD		:= cc
