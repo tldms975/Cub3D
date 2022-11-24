@@ -6,12 +6,13 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 04:41:39 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 06:39:55 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 #include "info.h"
+#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -29,6 +30,7 @@ t_result	validate_tex_path(char **path_ptr, t_str_buf *tex_path)
 		if (fd == -1)
 		{
 			perror("Error: Invalid texture path");
+			result = ERROR;
 		}
 		else
 		{
@@ -66,17 +68,17 @@ t_result	init_config(t_info *info, t_str_buf *line, size_t *limits)
 	t_result	result;
 
 	result = init_config__texture(info, line, limits);
-	if (result != SUCCESS)
+	if (result == FAILURE)
 	{
 		if (str_ncompare(line, "F", 1) == MATCH)
 		{
 			return (parse_color(&info->core.world.rgb.floor,
-						str_cut(line, 2, FWD)));
+					str_cut(line, 2, FWD)));
 		}
 		else if (str_ncompare(line, "C", 1) == MATCH)
 		{
 			return (parse_color(&info->core.world.rgb.ceiling,
-						str_cut(line, 2, FWD)));
+					str_cut(line, 2, FWD)));
 		}
 		if (result != SUCCESS)
 		{
@@ -89,9 +91,10 @@ t_result	init_config(t_info *info, t_str_buf *line, size_t *limits)
 bool	read_config(t_info *info)
 {
 	size_t			component;
-	char		*line;
-	t_str_buf	*str;
+	char			*line;
+	t_str_buf		*str;
 	size_t			limits;
+	t_result		result;
 
 	component = 0;
 	limits = BASIC_CONFIG;
@@ -104,7 +107,13 @@ bool	read_config(t_info *info)
 		}
 		str = str_append(NULL, line);
 		free_safe(line);
-		component += init_config(info, str, &limits);
+		result = init_config(info, str, &limits);
+		if (result == ERROR)
+		{
+			ft_putstr_fd("Error: read_config\n", 2);
+			return (false);
+		}
+		component += result;
 	}
 	printf("component: %zu\n", component);
 	printf("NO: %s\n", info->core.world.tex_path[0]);

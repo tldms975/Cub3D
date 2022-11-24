@@ -1,10 +1,12 @@
-NO ./../assets/texture/Chirstmas theme/NO.xpm
-SO ./../assets/texture/Chirstmas theme/SO.xpm
-WE ./../assets/texture/Chirstmas theme/WE.xpm
-EA ./../assets/texture/Chirstmas theme/EA.xpm
+NO ./../assets/texture/Chirstmas theme/WALL1.xpm
+SO ./../assets/texture/Chirstmas theme/WALL2.xpm
+WE ./../assets/texture/Chirstmas theme/WALL3.xpm
+EA ./../assets/texture/Chirstmas theme/WALL4.xpm
 
-C 0,0,0
-F 0,0,0
+DOOR ./../assets/texture/Chirstmas theme/DOOR1.xpm
+
+C 19,50,48
+F 72,36, 19
 
 
 
@@ -18,7 +20,7 @@ F 0,0,0
 10000000000000000001010010001                    101
 10000000000000000000000010001                    101
 10000000000000000000000010101                    101
-10000000000000000001010010001111111111111111111111011111
-1100000111000001110000000N000000000000000000000000000001
+10000000000000000001010010001111111111111111111111D11111
+1100000111000001110000000N00D000000000000000000000000001
 10000001 1000001 100000000001111111111111111111111111111
 11111111 1111111 111111111111
