@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/24 18:06:46 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 01:49:00 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "t_mlx.h"
 # include "t_vector.h"
 # ifndef WIN_W
-#  define WIN_W 2560
+#  define WIN_W 1680
 # endif
 # ifndef WIN_H
-#  define WIN_H 1440
+#  define WIN_H 1050
 # endif
 # define TEX_H 64
 # define TEX_W 64
@@ -86,6 +86,12 @@ typedef struct s_raycast
 	double		d;
 }				t_raycast;
 
+typedef struct s_sprite
+{
+  int  id;
+  t_vec pos;
+} t_sprite;
+
 typedef struct s_world
 {
 	t_mlx		*tmlx;
@@ -104,6 +110,8 @@ typedef struct s_world
 	int			re;
 	t_ivec		mouse;
 	bool		mouse_on;
+    size_t		spr_cnt;
+    size_t		spr_capacity;
+    t_sprite	*spr;
 }				t_world;
-
 #endif

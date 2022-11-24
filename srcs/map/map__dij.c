@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 17:27:02 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/25 01:55:22 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	_offset(size_t i)
 static t_result	map__dij__check_coor(t_info *info,
 		bool precheck, size_t y, size_t x)
 {
-	const char	valid_land[] = {'0', ' '};
+	const char	valid_land[] = {'0', ' ', 'T'};
 	size_t		i;
 
 	if (info->map.redzone[y + 1][x + 1] == false)
@@ -31,7 +31,7 @@ static t_result	map__dij__check_coor(t_info *info,
 		return (ERROR);
 	}
 	i = 0;
-	while (i < sizeof(valid_land))
+	while (i < sizeof(valid_land) / sizeof(valid_land[0]))
 	{
 		if (precheck
 			&& info->map.raw[y]->str[x] == valid_land[i]

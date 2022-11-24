@@ -6,11 +6,31 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/22 19:29:35 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 01:15:33 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "maps.h"
+
+static bool	is_start_point(char target)
+{
+	const char	sp_table[] = {'N', 'W', 'E', 'S'};
+	bool	retval;
+	size_t	i;
+
+	retval = false;
+	i = 0;
+	while (i < sizeof(sp_table) / sizeof(sp_table[0]))
+	{
+		if (target == sp_table[i])
+		{
+			retval = true;
+			break ;
+		}
+		i++;
+	}
+	return (retval);
+}
 
 static t_result	map__start_point__init(t_info *info, int x, int y)
 {
@@ -22,7 +42,7 @@ static t_result	map__start_point__init(t_info *info, int x, int y)
 		ft_putstr_fd("Error: Invalid character in map\n", 2);
 		return (ERROR);
 	}
-	else if (target > 'D')
+	else if (is_start_point(target) == true)
 	{
 		if (info->core.world.player.cardinal == 0)
 		{

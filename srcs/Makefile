@@ -6,7 +6,7 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 05:12:20 by hdoo              #+#    #+#              #
-#    Updated: 2022/10/24 05:08:17 by hdoo             ###   ########.fr        #
+#    Updated: 2022/11/25 01:19:25 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ re		:
 	$Q$(MAKE) NO_ADDITIONAL_J=1 fclean
 	$Q$(MAKE) NO_ADDITIONAL_J=1
 test	:
-	$Qfind . -type d -mindepth 1 -name "test" | xargs -L1 -I {} make -C {} test
+	$Qfind . -type d -mindepth 1 -name "test" | xargs -L1 -I {} $(MAKE) -C {} test
 
 # configs
 include	config/make_mlx.mk
