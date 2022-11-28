@@ -6,12 +6,12 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/25 04:25:00 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/29 01:21:28 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
+#include <stdio.h>//for the test
 void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, size_t x)
 {
 	t_draw	dr;
@@ -72,6 +72,12 @@ void	ft_init_screen_buf(t_info *info)
 	}
 }
 
+void	ft_show_sprite(t_world *world)
+{
+	// ft_init_sprite(world);
+	printf("%zu\n", world->spr_cnt);
+}
+
 void	ft_set_world(t_info *info)
 {
 	t_raycast	rc;
@@ -90,6 +96,8 @@ void	ft_set_world(t_info *info)
 		ft_step_dir(&world->player, &rc);
 		ft_check_hit(world, &world->player, &rc, &tex);
 		ft_fill_buf(world, &rc, &tex, x);
+		world->z_buf[x] = rc.d;
 		x++;
 	}
+	ft_show_sprite(world);
 }
