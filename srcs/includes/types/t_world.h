@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/29 01:12:31 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 18:23:11 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,15 @@ typedef struct s_raycast
 
 typedef struct s_sprite
 {
-  int  id;
-  t_vec pos;
+	int		id;
+	t_vec	coor;
+	t_vec	pos;
+	t_vec	tr;
+	double	idet;
+	int		screen_x;
+	int		h;
+	int		w;
+	int		*tex[1];
 } t_sprite;
 
 typedef struct s_world
@@ -103,7 +110,7 @@ typedef struct s_world
 	int			**screen_buf;
 	size_t		screen_w;
 	size_t		screen_h;
-	int			*texture[5];
+	int			*wall_tex[5];
 	char		*tex_path[5];
 	t_rgb		rgb;
 	t_player	player;

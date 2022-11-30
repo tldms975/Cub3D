@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/25 04:24:25 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/30 19:04:41 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "mlx.h"
 # include "cub3d.h"
 # include "libft.h"
+#include <stdio.h>//for the test
 
 void	ft_run_cub3d(t_info *info);
 

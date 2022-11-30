@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map__sprite.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:19:08 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 02:09:47 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/11/30 19:35:53 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_result	map__sprite__add(t_info *info, size_t i, size_t j, size_t id)
 		world->spr = ft_realloc(world->spr,
 			(world->spr_cnt * size),
 			world->spr_capacity, &world->spr_capacity);
-		world->spr[id].pos.x = j;
-		world->spr[id].pos.y = i;
+		world->spr[id].coor.x = j;
+		world->spr[id].coor.y = i;
 		world->spr[id].id = id;
 		result = true;
 	}
