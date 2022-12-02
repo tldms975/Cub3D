@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/30 18:23:11 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 17:20:07 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ typedef struct s_minimap_color
 	int		bg;
 	int		fg;
 	int		wl;
+	int		dr;
+	int		sp;
 }				t_minimap_color;
+
 typedef struct s_draw
 {
 	int		line_h;
@@ -122,5 +125,7 @@ typedef struct s_world
 	size_t		spr_capacity;
 	t_sprite	*spr;
 	double		z_buf[WIN_W];
+	size_t		b_size_w;
+	size_t		b_size_h;
 }				t_world;
 #endif

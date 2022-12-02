@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 01:15:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/02 16:41:58 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static t_result	map__start_point__init(t_info *info, int x, int y)
 		if (info->core.world.player.cardinal == 0)
 		{
 			info->core.world.player.cardinal = target;
-			info->core.world.player.pos.x = x;
-			info->core.world.player.pos.y = y;
+			info->core.world.player.pos.x = x + 0.5;
+			info->core.world.player.pos.y = y + 0.5;
 			info->map.visited[y][x] = true;
 			return (SUCCESS);
 		}

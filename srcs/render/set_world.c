@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/30 21:07:09 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 19:00:15 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	ft_show_sprite(t_world *world)
 	while (i < world->spr_cnt)
 	{
 		s = &world->spr[world->spr[i].id];
-		s->pos.x = s->coor.x + 0.5 - p->pos.x;
-		s->pos.y = s->coor.y + 0.5 - p->pos.y;
+		s->pos.x = s->coor.x - p->pos.x;
+		s->pos.y = s->coor.y - p->pos.y;
 		printf("p: %f %f\n", p->pos.x, p->pos.y);
 		printf("s: %f %f\n", s->pos.x, s->pos.y);
 		s->idet = 1.0 / (p->plane.x * p->dir.y - p->dir.x * p->plane.y);
@@ -94,7 +94,7 @@ void	ft_show_sprite(t_world *world)
 		s->tr.x = s->idet * (p->dir.y * s->coor.x - p->dir.x * s->coor.y);
 		s->tr.y = s->idet * (-p->plane.y * s->coor.x + p->plane.x * s->coor.y);
 		// printf("%f %f\n", s->coor.x,s->coor.y);
-		printf("tr; %f %f\n", s->tr.x, s->tr.y);
+		printf("tr: %f %f\n", s->tr.x, s->tr.y);
 
 		s->screen_x = (int)((WIN_W / 2) * (1.0 + s->tr.x / s->tr.y));
 
@@ -106,14 +106,14 @@ void	ft_show_sprite(t_world *world)
 		if (dr_y.end >= WIN_H)
 			dr_y.end = WIN_H - 1;
 
-		s->w = abs((int)(WIN_W / s->tr.x));//check
+		s->w = abs((int)(WIN_H / s->tr.y));
 		dr_x.start = -s->w / 2 + s->screen_x;
 		dr_x.end = s->w / 2 + s->screen_x;
 		if (dr_x.start < 0)
 			dr_x.start = 0;
 		if (dr_x.end >= WIN_W)
 			dr_x.end = WIN_W - 1;
-		printf("h, w; %d %d\n screen_x: %d\n", s->h, s->w, s->screen_x);
+		printf("h, w; %d %d\nscreen_x: %d\n", s->h, s->w, s->screen_x);
 		printf("x: %d %d\n", dr_x.start, dr_x.end);
 		printf("y: %d %d\n", dr_y.start, dr_y.end);
 		for (int stripe = dr_x.start; stripe < dr_x.end; stripe++)
@@ -121,10 +121,10 @@ void	ft_show_sprite(t_world *world)
 			int	texX = (int)(256 * (stripe - (-s->w / 2 + s->screen_x)) * world->tmlx->timg_spr_tex->w / s->w) / 256;
 			if (s->tr.y > 0 && s->tr.y < world->z_buf[stripe] && stripe > 0 && stripe < WIN_W)
 			{
+				printf("z_buf: %f\n", world->z_buf[stripe]);
 				for (int y = dr_y.start; y < dr_y.end; y++)
 				{
 					int	d = (y) * 256 - WIN_H * 128 + s->h * 128;
-					printf("%d\n",d);
 					int	texY = ((d * world->tmlx->timg_wall_tex->h) /  s->h) / 256;
 					world->screen_buf[y][stripe] = s->tex[0][world->tmlx->timg_spr_tex->w * texY + texX];
 				}

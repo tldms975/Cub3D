@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/30 19:16:03 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 15:00:08 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	ft_render(t_info *info)
 	ft_set_world(info);
 	ft_world_on_screen(info, info->core.world.tmlx);
 	ft_minimap_on_screen(info, info->core.world.tmlx);
-	// mlx_loop_hook(tmlx->mlx, &ft_next_frame, info);
-	// mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, info);
-	// mlx_hook(tmlx->win, X_EVENT_KEY_RELEASE, 0, &ft_key_release, info);
-	// mlx_hook(tmlx->win, X_EVENT_ON_MOUSEMOVE, 0, &ft_mouse_move, info);
-	// mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
+	mlx_loop_hook(tmlx->mlx, &ft_next_frame, info);
+	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, info);
+	mlx_hook(tmlx->win, X_EVENT_KEY_RELEASE, 0, &ft_key_release, info);
+	mlx_hook(tmlx->win, X_EVENT_ON_MOUSEMOVE, 0, &ft_mouse_move, info);
+	mlx_hook(tmlx->win, X_EVENT_KEY_DESTROY_NOTIFY, 0, &ft_event_red_cross, 0);
 	mlx_loop(tmlx->mlx);
 }
 

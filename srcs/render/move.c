@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:11:16 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/22 20:59:39 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 18:51:27 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 #include <math.h>
 #include <stdio.h>
 
+static	bool	is_space(char spot)
+{
+	if (spot == '1' || spot == 'D' || spot == 'T')
+		return (0);
+	return (1);
+}
+
 void	ft_move_right(t_world *world)
 {
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)(p->pos.y)] \
-	[(int)(p->pos.x - p->dir.y * p->move_speed)] != '1')
+	if (is_space(world->map[(int)(p->pos.y)] \
+	[(int)(p->pos.x - p->dir.y * p->move_speed)]))
 		p->pos.x += -p->dir.y * p->move_speed;
-	if (world->map[(int)(p->pos.y + p->dir.x * p->move_speed)] \
-	[(int)(p->pos.x)] != '1')
+	if (is_space(world->map[(int)(p->pos.y + p->dir.x * p->move_speed)] \
+	[(int)(p->pos.x)]))
 		p->pos.y += p->dir.x * p->move_speed;
 }
 
@@ -32,11 +39,11 @@ void	ft_move_left(t_world *world)
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)p->pos.y] \
-	[(int)(p->pos.x + p->dir.y * p->move_speed)] != '1')
+	if (is_space(world->map[(int)(p->pos.y)] \
+	[(int)(p->pos.x + p->dir.y * p->move_speed)]))
 		p->pos.x += p->dir.y * p->move_speed;
-	if (world->map[(int)(p->pos.y - p->dir.x * p->move_speed)] \
-	[(int)p->pos.x] != '1')
+	if (is_space(world->map[(int)(p->pos.y - p->dir.x * p->move_speed)] \
+	[(int)(p->pos.x)]))
 		p->pos.y += -p->dir.x * p->move_speed;
 }
 
@@ -45,11 +52,11 @@ void	ft_move_backward(t_world *world)
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)(p->pos.y)] \
-	[(int)(p->pos.x - p->dir.x * p->move_speed)] != '1')
+	if (is_space(world->map[(int)(p->pos.y)] \
+	[(int)(p->pos.x - p->dir.x * p->move_speed)]))
 		p->pos.x -= p->dir.x * p->move_speed;
-	if (world->map[(int)(p->pos.y - p->dir.y * p->move_speed)] \
-	[(int)(p->pos.x)] != '1')
+	if (is_space(world->map[(int)(p->pos.y - p->dir.y * p->move_speed)] \
+	[(int)(p->pos.x)]))
 		p->pos.y -= p->dir.y * p->move_speed;
 }
 
@@ -58,10 +65,10 @@ void	ft_move_foreward(t_world *world)
 	t_player	*p;
 
 	p = &world->player;
-	if (world->map[(int)(p->pos.y)] \
-	[(int)(p->pos.x + p->dir.x * p->move_speed)] != '1')
+	if (is_space(world->map[(int)(p->pos.y)] \
+	[(int)(p->pos.x + p->dir.x * p->move_speed)]))
 		p->pos.x += p->dir.x * p->move_speed;
-	if (world->map[(int)(p->pos.y + p->dir.y * p->move_speed)] \
-	[(int)(p->pos.x)] != '1')
+	if (is_space(world->map[(int)(p->pos.y + p->dir.y * p->move_speed)] \
+	[(int)(p->pos.x)]))
 		p->pos.y += p->dir.y * p->move_speed;
 }

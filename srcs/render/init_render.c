@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/24 17:46:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/02 18:44:54 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,12 @@ static void	ft_set_player_cardinal(t_player *p)
 
 static void	ft_init_player(t_player *p)
 {
-	p->pos.x += 0.5; // TODO - adjust player position
-	p->pos.y += 0.5;
 	p->dir.y = -1.0;
 	p->dir.x = 0.0;
 	p->plane.y = 0.0; // TODO - explain plain
-	p->plane.x = 0.66;
-	p->move_speed = 0.05;
-	p->rot_speed = 0.08;
+	p->plane.x = 0.5;
+	p->move_speed = 0.04;
+	p->rot_speed = 0.05;
 	ft_set_player_cardinal(p);
 }
 
