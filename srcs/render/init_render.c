@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 18:44:54 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 21:33:06 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "render.h"
 #include "types/t_keycode.h"
 #include <math.h>
-#include <stdio.h>
 
 static void	ft_create_minimap_buf(t_info *info)
 {
@@ -76,10 +75,10 @@ static void	ft_set_player_cardinal(t_player *p)
 
 static void	ft_init_player(t_player *p)
 {
-	p->dir.y = -1.0;
 	p->dir.x = 0.0;
-	p->plane.y = 0.0; // TODO - explain plain
+	p->dir.y = -1.0;
 	p->plane.x = 0.5;
+	p->plane.y = 0.0; // TODO - explain plain
 	p->move_speed = 0.04;
 	p->rot_speed = 0.05;
 	ft_set_player_cardinal(p);

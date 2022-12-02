@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/25 03:57:09 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/02 21:52:52 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_event_red_cross(int keycode)
 
 size_t	find_key(const int keycode)
 {
-	const int	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ARROW_L, KEY_ARROW_R, KEY_ESC, KEY_M};
+	const int	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ARROW_L, KEY_ARROW_R, KEY_ESC, KEY_M, KEY_O};
 	size_t	i;
 
 	i = 0;
@@ -77,14 +77,40 @@ t_keycode	which_is_functinal(t_keycode key1, t_keycode key2, int keycode)
 	return (KEY_NONE);
 }
 
+void	ft_door(t_world *world)
+{
+	t_ivec		front;
+	t_player	*p;
+	p = &world->player;
+	front.x = world->player.pos.x;
+	front.y = world->player.pos.y;
+	if (p->plane.x > 0 && p->dir.y < 0) // N
+		front.y -= 1;
+	else if (p->plane.x < 0 && p->dir.y > 0) // S
+		front.y += 1;
+	else if (p->dir.x > 0 && p->plane.y > 0) // E
+		front.x -= 1;
+	else if (p->dir.x < 0 && p->plane.y < 0) // W
+		front.y += 1;
+	if (world->map[front.y][front.x] == 'D')
+		world->map[front.y][front.x] = 'd';
+	else if (world->map[front.y][front.x] == 'd')
+		world->map[front.y][front.x] = 'D';
+	printf("pos(%f, %f)\n", p->pos.x, p->pos.y);
+	printf("dir(%f, %f)\n", p->dir.x, p->dir.y);
+	printf("pla(%f, %f)\n", p->plane.x, p->plane.y);
+	printf("front(%d, %d) = %c\n", front.x, front.y, world->map[front.y][front.x]);
+}
+
 void	action_internal(const t_keycode key, t_world *world)
 {
-	const t_keycode	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ESC, KEY_M};
+	const t_keycode	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ESC, KEY_M, KEY_O};
 	const t_key_action	func_table[] =
 	{
 		ft_move_foreward, ft_move_left,
 		ft_move_backward, ft_move_right,
 		ft_event_close, ft_toggle_mouse,
+		ft_door
 	};
 	size_t	i;
 
@@ -165,6 +191,10 @@ int	ft_key_press(t_keycode keycode, t_info *info)
 	if (keycode == KEY_M)
 	{
 		ft_toggle_mouse(&info->core.world);
+	}
+	else if (keycode == KEY_O)
+	{
+		ft_door(&info->core.world);
 	}
 	return (EXIT_SUCCESS);
 }

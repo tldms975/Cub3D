@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:18:22 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 17:50:15 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 19:13:33 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	ft_player_on_minimap(t_info *info, t_player *p)
 
 	w = &info->core.world;
 	i = 0;
-	while (i < round((double)w->b_size_h / 2))
+	while (i < (double)w->b_size_h / 2)
 	{
 		j = 0;
-		while (j < round((double)w->b_size_w / 2))
+		while (j < (double)w->b_size_w / 2)
 		{
 			w->tmlx->timg_mini.data \
 			[(((int)(p->pos.y * w->b_size_h) + i) * (info->core.world.minimap_w)) \

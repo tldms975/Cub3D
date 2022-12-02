@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 19:00:15 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 19:26:25 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,5 @@ void	ft_set_world(t_info *info)
 		world->z_buf[x] = rc.d;
 		x++;
 	}
-	ft_show_sprite(world);
+	//ft_show_sprite(world);
 }
