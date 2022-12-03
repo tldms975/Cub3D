@@ -163,5 +163,8 @@ void	ft_set_world(t_info *info)
 		world->z_buf[x] = rc.d;
 		x++;
 	}
-	ft_show_sprite(world);
+	if (info->core.world.spr != NULL)
+	{
+		ft_show_sprite(world);
+	}
 }

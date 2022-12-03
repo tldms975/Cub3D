@@ -110,5 +110,8 @@ void	ft_load_texture(t_info *info)
 		world->wall_tex[i] = ft_load_image(world->tex_path[i], world->tmlx, i);
 		i++;
 	}
-	world->spr->tex[0] = ft_load_spr_image("./../assets/texture/jisookim/purple_window.xpm", world->tmlx, 0);
+	if (world->spr != NULL)
+	{
+		world->spr->tex[0] = ft_load_spr_image("./../assets/texture/jisookim/purple_window.xpm", world->tmlx, 0);
+	}
 }
