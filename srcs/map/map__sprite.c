@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:19:08 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/30 19:35:53 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 16:01:29 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_result	map__sprite__add(t_info *info, size_t i, size_t j, size_t id)
 			world->spr_capacity, &world->spr_capacity);
 		world->spr[id].coor.x = j;
 		world->spr[id].coor.y = i;
-		world->spr[id].id = id;
+		world->spr[id].order = id;
 		result = true;
 	}
 	return (result);
