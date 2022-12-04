@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 01:00:35 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 18:58:41 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 16:39:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	str_safe_open(t_str_buf *path, int oflag)
 {
-	int	fd;
+	int		fd;
 	char	*open_path;
 
 	open_path = str_dispose(path);

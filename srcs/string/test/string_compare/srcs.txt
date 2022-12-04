@@ -1,5 +1,0 @@
-main.c
-../../string_compare.c
-../../string_buffer.c
-../../../libft/safe_mem.c
-../../../libft/ft_strlen.c
