@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 16:47:55 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 19:08:20 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ void	ft_load_texture(t_info *info)
 		world->tmlx, &world->tmlx->timg_wall_tex[i]);
 		i++;
 	}
-	world->spr->tex = malloc_safe(sizeof(int *) * world->spr_tex_cnt);
-	world->tmlx->timg_spr_tex = malloc_safe(sizeof(t_image) * world->spr_tex_cnt);//tmp
 	i = 0;
-	if ((world->spr != NULL) && i < world->spr_tex_cnt)
+	if (!world->spr)
+		return ;
+	while (i < world->spr_tex_cnt)
 	{
-		world->spr->tex[i] = ft_load_image(world->spr_tex_path[i], \
+		world->spr_tex[i] = ft_load_image(world->spr_tex_path[i], \
 		world->tmlx, &world->tmlx->timg_spr_tex[i]);
 		i++;
 	}

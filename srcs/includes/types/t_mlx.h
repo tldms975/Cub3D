@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:40:56 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 15:51:17 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 18:52:42 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_mlx
 	void	*win;
 	t_image	timg_main;
 	t_image	timg_wall_tex[5];
-	t_image	*timg_spr_tex;
+	t_image	timg_spr_tex[5];
 	t_image	timg_mini;
 }				t_mlx;
 

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 16:54:26 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 20:28:18 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, size_t x)
 	while ((int)y < dr.end)
 	{
 		world->screen_buf[y][x] = ft_get_color(world, rc, tex, &dr);
-		world->re = 1;
+		world->re = 1;//?
 		y++;
 	}
 }
@@ -73,26 +73,26 @@ void	ft_init_screen_buf(t_info *info)
 	}
 }
 
-void	ft_draw_sprite(t_sprite *s, t_world *world, t_draw *dr_x, t_draw *dr_y)
+void	ft_draw_sprite(t_sprite *s, t_world *world)
 {
 	t_ivec	line;
 	t_ivec	tex;
 	int		d;
 	int		color;
 
-	line.x = dr_x->start;
-	while (line.x < dr_x->end)
+	line.x = s->dr_x.start;
+	while (line.x < s->dr_x.end)
 	{
 		tex.x = (int)((256 * (line.x - (-s->w / 2 + s->screen_x)) \
 		* world->tmlx->timg_spr_tex[0].w / s->w) / 256);
 		if (s->tr.y >= 0 && s->tr.y < world->z_buf[line.x])
 		{
-			line.y = dr_y->start;
-			while (line.y < dr_y->end)
+			line.y = s->dr_y.start;
+			while (line.y < s->dr_y.end)
 			{
 				d = (line.y - s->v_move_screen) * 256 - WIN_H * 128 + s->h * 128;
-				tex.y = ((d * world->tmlx->timg_spr_tex[0].h) / s->h) / 25;
-				color = s->tex[0][world->tmlx->timg_spr_tex[0].w * tex.y + tex.x];
+				tex.y = ((d * world->tmlx->timg_spr_tex[0].h) / s->h) / 256;
+				color = world->spr_tex[0][world->tmlx->timg_spr_tex[0].w * tex.y + tex.x];
 				if ((color & 0x00FFFFFF) != 0)
 					world->screen_buf[line.y][line.x] = color;
 				line.y++;
@@ -102,7 +102,7 @@ void	ft_draw_sprite(t_sprite *s, t_world *world, t_draw *dr_x, t_draw *dr_y)
 	}
 }
 
-void	ft_init_sprite(t_sprite *s, t_player *p, t_draw *dr_x, t_draw *dr_y)
+void	ft_init_sprite(t_sprite *s, t_player *p)
 {
 	s->pos.x = s->coor.x - p->pos.x;
 	s->pos.y = s->coor.y - p->pos.y;
@@ -115,72 +115,98 @@ void	ft_init_sprite(t_sprite *s, t_player *p, t_draw *dr_x, t_draw *dr_y)
 	s->v_move = 0;
 	s->v_move_screen = (int)(s->v_move / s->tr.y);
 	s->h = (int)fabs((WIN_H / s->tr.y) / s->v_div);
-	dr_y->start = -s->h / 2 + WIN_H / 2 + s->v_move_screen;
-	dr_y->end = s->h / 2 + WIN_H / 2 + s->v_move_screen;
-	if (dr_y->start < 0)
-		dr_y->start = 0;
-	if (dr_y->end >= WIN_H)
-		dr_y->end = WIN_H;
+	s->dr_y.start = -s->h / 2 + WIN_H / 2 + s->v_move_screen;
+	s->dr_y.end = s->h / 2 + WIN_H / 2 + s->v_move_screen;
+	if (s->dr_y.start < 0)
+		s->dr_y.start = 0;
+	if (s->dr_y.end >= WIN_H)
+		s->dr_y.end = WIN_H;
 	s->w = (int)fabs((WIN_H / s->tr.y) / s->u_div);
-	dr_x->start = -s->w / 2 + s->screen_x;
-	dr_x->end = s->w / 2 + s->screen_x;
-	if (dr_x->start < 0)
-		dr_x->start = 0;
-	if (dr_x->end >= WIN_W)
-		dr_x->end = WIN_W;
+	s->dr_x.start = -s->w / 2 + s->screen_x;
+	s->dr_x.end = s->w / 2 + s->screen_x;
+	if (s->dr_x.start < 0)
+		s->dr_x.start = 0;
+	if (s->dr_x.end >= WIN_W)
+		s->dr_x.end = WIN_W;
+}
+
+typedef struct s_spr_arr
+{
+	double	d;
+	int		id;
+}		t_spr_arr;
+
+void	ft_swap(t_spr_arr *a, t_spr_arr *b)
+{
+	t_spr_arr	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 int	*ft_get_sprite_order(t_sprite *s, int n)
 {
-	double	*d;
+	t_spr_arr	*arr;
 	int		*ret;
 	int		i;
 	int		j;
 
-	d = malloc_safe(sizeof(double) * n);
-	ret = malloc_safe(sizeof(int) * n);
 	i = 0;
+	ret = malloc_safe(sizeof(int) * n);
+	if (n == 1)
+	{
+		ret[i] = 0;
+		return (ret);
+	}
+	arr = malloc_safe(sizeof(t_spr_arr) * n);
 	while (i < n)
 	{
-		d[i] = pow(s[i].pos.x, 2) + pow(s[i].pos.y, 2);
+		arr[i].id = i;
+		arr[i].d = pow(s[i].pos.x, 2) + pow(s[i].pos.y, 2);
 		i++;
 	}
 	i = 0;
-	while (i < n)
+	while (i < n - 1)
 	{
-		j = 0;
-		while (j < n - 1)
+		j = i + 1;
+		while (j < n)
 		{
-			if (d[i] > d[j])
-				ret[i] = s[i].id;
-			else
-				ret[i] = s[j].id;
+			if (arr[i].d < arr[j].d)
+			{
+				ft_swap(&arr[i], &arr[j]);
+				break ;
+			}
 			j++;
 		}
 		i++;
 	}
-	free(d);
+	i = 0;
+	while (i < n)
+	{
+		ret[i] = arr[i].id;
+		i++;
+	}
+	free(arr);
 	return (ret);
 }
 
 void	ft_show_sprite(t_world *world)
 {
-	t_draw		dr_x;
-	t_draw		dr_y;
 	size_t		i;
 	int			*order;
 
 	i = 0;
 	while (i < world->spr_cnt)
 	{
-		ft_init_sprite(&world->spr[i], &world->player, &dr_x, &dr_y);
+		ft_init_sprite(&world->spr[i], &world->player);
 		i++;
 	}
 	order = ft_get_sprite_order(world->spr, world->spr_cnt);
 	i = 0;
 	while (i < world->spr_cnt)
 	{
-		ft_draw_sprite(&world->spr[order[i]], world, &dr_x, &dr_y);//가장 멀리있는거 우선순위
+		ft_draw_sprite(&world->spr[order[i]], world);
 		i++;
 	}
 	free(order);
@@ -207,7 +233,7 @@ void	ft_set_world(t_info *info)
 		world->z_buf[x] = rc.d;
 		x++;
 	}
-	if (info->core.world.spr != NULL)
+	if (info->core.world.spr)
 	{
 		ft_show_sprite(world);
 	}
