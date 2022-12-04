@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 16:10:24 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 16:37:43 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,38 @@ t_result	init_config__texture(t_info *info, t_str_buf *line, size_t *limits)
 		if (str_ncompare(line, "SPRITE", 6) == MATCH)
 		{
 			*limits += 1;
-			return (validate_tex_path(&info->core.world.spr_tex_path[info->core.world.spr_tex_cnt++], line));
+			return (validate_tex_path(
+					&info->core.world.spr_tex_path[
+						info->core.world.spr_tex_cnt++], line));
 		}
 		i++;
 	}
 	return (FAILURE);
 }
 
-t_result	init_config(t_info *info, t_str_buf *line, size_t *limits)
+t_result	init_config(t_info *info, char *line, size_t *limits)
 {
 	t_result	result;
+	t_str_buf	*str;
 
-	result = init_config__texture(info, line, limits);
+	str = str_append(NULL, line);
+	free_safe(line);
+	result = init_config__texture(info, str, limits);
 	if (result == FAILURE)
 	{
-		if (str_ncompare(line, "F", 1) == MATCH)
+		if (str_ncompare(str, "F", 1) == MATCH)
 		{
 			return (parse_color(&info->core.world.rgb.floor,
-					str_cut(line, 2, FWD)));
+					str_cut(str, 2, FWD)));
 		}
-		else if (str_ncompare(line, "C", 1) == MATCH)
+		else if (str_ncompare(str, "C", 1) == MATCH)
 		{
 			return (parse_color(&info->core.world.rgb.ceiling,
-					str_cut(line, 2, FWD)));
+					str_cut(str, 2, FWD)));
 		}
 		if (result != SUCCESS)
 		{
-			str_free(line);
+			str_free(str);
 		}
 	}
 	return (result);
@@ -97,7 +102,6 @@ bool	read_config(t_info *info)
 {
 	size_t			component;
 	char			*line;
-	t_str_buf		*str;
 	size_t			limits;
 	t_result		result;
 
@@ -110,25 +114,13 @@ bool	read_config(t_info *info)
 		{
 			break ;
 		}
-		str = str_append(NULL, line);
-		free_safe(line);
-		result = init_config(info, str, &limits);
+		result = init_config(info, line, &limits);
 		if (result == ERROR)
 		{
 			ft_putstr_fd("Error: read_config\n", 2);
 			return (false);
 		}
 		component += result;
-	}
-	printf("component: %zu\n", component);
-	printf("NO: %s\n", info->core.world.tex_path[0]);
-	printf("SO: %s\n", info->core.world.tex_path[1]);
-	printf("WE: %s\n", info->core.world.tex_path[2]);
-	printf("EA: %s\n", info->core.world.tex_path[3]);
-	printf("DOOR: %s\n", info->core.world.tex_path[4]);
-	for (size_t i = 0; i < info->core.world.spr_tex_cnt; i++)
-	{
-		printf("SPRITE%zu: %s\n", i, info->core.world.spr_tex_path[i]);
 	}
 	return (component == limits);
 }
