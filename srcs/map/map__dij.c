@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 01:55:22 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 15:15:10 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ static t_result	map__dij__check_coor(t_info *info,
 	i = 0;
 	while (i < sizeof(valid_land) / sizeof(valid_land[0]))
 	{
-		if (precheck
-			&& info->map.raw[y]->str[x] == valid_land[i]
+		if (precheck && info->map.raw[y]->str[x] == valid_land[i]
 			&& info->map.visited[y][x] == false)
-			{
-				info->map.visited[y][x] = true;
-				return (SUCCESS);
-			}
+		{
+			info->map.visited[y][x] = true;
+			return (SUCCESS);
+		}
 		i++;
 	}
 	return (FAILURE);
@@ -72,14 +71,6 @@ static int	map__dij__visit_neighbor__internal(t_info *info,
 	return (n);
 }
 
-
-
-
-/**
- * @brief visit y - 1, y + 1, x -1, x + 1
- *
- * @return number of visited
- */
 static int	map__dij__visit_neighbor(t_info *info, t_coor co, t_coor added[4])
 {
 	const bool	precheck[4] = {
