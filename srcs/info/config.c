@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 16:08:34 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 16:10:24 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ bool	read_config(t_info *info)
 	printf("WE: %s\n", info->core.world.tex_path[2]);
 	printf("EA: %s\n", info->core.world.tex_path[3]);
 	printf("DOOR: %s\n", info->core.world.tex_path[4]);
-	for (size_t i = 0; i < info->core.world.spr_cnt; i++)
+	for (size_t i = 0; i < info->core.world.spr_tex_cnt; i++)
 	{
 		printf("SPRITE%zu: %s\n", i, info->core.world.spr_tex_path[i]);
 	}
