@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 19:04:23 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 15:46:59 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct s_sprite
 	int		screen_x;
 	int		h;
 	int		w;
-	int		*tex[2];
+	int		**tex;
 	double	u_div;
 	double	v_div;
 	double	v_move;
@@ -128,6 +128,7 @@ typedef struct s_world
 	size_t		spr_cnt;
 	size_t		spr_capacity;
 	t_sprite	*spr;
+	char		*spr_tex_path[5];
 	double		z_buf[WIN_W];
 	size_t		b_size_w;
 	size_t		b_size_h;
