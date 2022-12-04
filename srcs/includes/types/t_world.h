@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 15:46:59 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 16:16:00 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,9 @@ typedef struct s_world
 	int			re;
 	t_ivec		mouse;
 	bool		mouse_on;
+	bool		minimap_on;
 	size_t		spr_cnt;
+	size_t		spr_tex_cnt;
 	size_t		spr_capacity;
 	t_sprite	*spr;
 	char		*spr_tex_path[5];

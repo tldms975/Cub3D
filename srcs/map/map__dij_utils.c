@@ -6,23 +6,11 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/16 17:26:12 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 15:16:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "maps.h"
-
-void	map__dij__mark_visited(t_info *info, t_coor visited[4],	size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		info->map.visited[visited[i].y][visited[i].x] = true;
-		i++;
-	}
-}
 
 static void	map__dij__path__coor__add(t_path *open, int y, int x, int c)
 {

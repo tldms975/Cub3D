@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 21:52:52 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 19:09:02 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_toggle_mouse(t_world *world)
 	count++;
 	if (world->mouse_on == false && count == 10)
 	{
-		printf("count: %d\n", count);
 		world->mouse_on = true;
 		mlx_mouse_hide();
 		count = 0;
@@ -49,7 +48,7 @@ int	ft_event_red_cross(int keycode)
 
 size_t	find_key(const int keycode)
 {
-	const int	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ARROW_L, KEY_ARROW_R, KEY_ESC, KEY_M, KEY_O};
+	const int	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ARROW_L, KEY_ARROW_R, KEY_ESC, KEY_M, KEY_O, KEY_TAB};
 	size_t	i;
 
 	i = 0;
@@ -102,15 +101,32 @@ void	ft_door(t_world *world)
 	printf("front(%d, %d) = %c\n", front.x, front.y, world->map[front.y][front.x]);
 }
 
+void	ft_toggle_minimap(t_world *world)
+{
+	static int	count = 0;
+
+	count++;
+	if (world->minimap_on == false && count == 10)
+	{
+		world->minimap_on = true;
+		count = 0;
+	}
+	else if (count == 10)
+	{
+		world->minimap_on = false;
+		count = 0;
+	}
+}
+
 void	action_internal(const t_keycode key, t_world *world)
 {
-	const t_keycode	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ESC, KEY_M, KEY_O};
+	const t_keycode	key_table[] = {KEY_W, KEY_A, KEY_S, KEY_D, KEY_ESC, KEY_M, KEY_O, KEY_TAB};
 	const t_key_action	func_table[] =
 	{
 		ft_move_foreward, ft_move_left,
 		ft_move_backward, ft_move_right,
 		ft_event_close, ft_toggle_mouse,
-		ft_door
+		ft_door, ft_toggle_minimap
 	};
 	size_t	i;
 
@@ -156,6 +172,10 @@ void	action_by_each_keys(t_info *info)
 	{
 		action_internal(KEY_M, &info->core.world);
 	}
+	if (info->keycode & 1 << find_key(KEY_TAB))
+	{
+		action_internal(KEY_TAB, &info->core.world);
+	}
 }
 
 t_result	action(t_info *info)
@@ -187,6 +207,7 @@ int	ft_mouse_move(int x, int y, t_info *info)
 
 int	ft_key_press(t_keycode keycode, t_info *info)
 {
+	printf("%d\n", keycode);
 	info->keycode |= (1 << find_key(keycode));
 	if (keycode == KEY_M)
 	{
@@ -195,6 +216,10 @@ int	ft_key_press(t_keycode keycode, t_info *info)
 	else if (keycode == KEY_O)
 	{
 		ft_door(&info->core.world);
+	}
+	else if(keycode == KEY_TAB)
+	{
+		ft_toggle_minimap(&info->core.world);
 	}
 	return (EXIT_SUCCESS);
 }

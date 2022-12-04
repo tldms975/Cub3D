@@ -22,9 +22,9 @@ bool	map__door__check_sidewall(t_info *info, size_t x, size_t y)
 	};
 
 	if ((precheck[0] == true && info->map.raw[y]->str[x - 1] == '1'
-		&& precheck[1] == true && info->map.raw[y]->str[x + 1] == '1') ||
-		(precheck[2] == true && info->map.raw[y - 1]->str[x] == '1'
-		&& precheck[3] == true &&  info->map.raw[y + 1]->str[x] == '1'))
+			&& precheck[1] == true && info->map.raw[y]->str[x + 1] == '1')
+		|| (precheck[2] == true && info->map.raw[y - 1]->str[x] == '1'
+			&& precheck[3] == true && info->map.raw[y + 1]->str[x] == '1'))
 	{
 		return (true);
 	}

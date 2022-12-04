@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:19:08 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/03 19:04:23 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 16:15:58 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_result	map__sprite__add(t_info *info, size_t i, size_t j, size_t id)
 	{
 		world->spr_cnt += 1;
 		world->spr = ft_realloc(world->spr,
-			(world->spr_cnt * size),
-			world->spr_capacity, &world->spr_capacity);
+				(world->spr_cnt * size),
+				world->spr_capacity, &world->spr_capacity);
 		world->spr[id].coor.x = j;
 		world->spr[id].coor.y = i;
 		world->spr[id].id = id;
@@ -50,7 +50,7 @@ t_result	map__sprite__find(t_info *info)
 		j = 0;
 		while (j < info->map.raw[i]->length)
 		{
-			id += map__sprite__add(info, i , j , id);
+			id += map__sprite__add(info, i, j, id);
 			j++;
 		}
 		i++;

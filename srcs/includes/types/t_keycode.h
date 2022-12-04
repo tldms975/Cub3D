@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:39:02 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 19:16:43 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 19:09:22 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_keycode
 	KEY_D = 2,
 	KEY_M = 46,
 	KEY_O = 31,
+	KEY_TAB = 48,
 	KEY_ESC = 53,
 	KEY_ARROW_L = 123,
 	KEY_ARROW_R = 124,

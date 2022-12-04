@@ -15,8 +15,8 @@
 static bool	is_start_point(char target)
 {
 	const char	sp_table[] = {'N', 'W', 'E', 'S'};
-	bool	retval;
-	size_t	i;
+	bool		retval;
+	size_t		i;
 
 	retval = false;
 	i = 0;
