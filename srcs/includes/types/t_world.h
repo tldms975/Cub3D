@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 16:01:29 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 19:04:23 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_raycast
 
 typedef struct s_sprite
 {
-	int		order;
+	int		id;
 	t_vec	coor;
 	t_vec	pos;
 	t_vec	tr;
@@ -100,7 +100,7 @@ typedef struct s_sprite
 	int		screen_x;
 	int		h;
 	int		w;
-	int		*tex[1];//tmp
+	int		*tex[2];
 	double	u_div;
 	double	v_div;
 	double	v_move;
