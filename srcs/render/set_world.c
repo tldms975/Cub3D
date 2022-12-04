@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 02:39:05 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 16:54:26 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ void	ft_init_sprite(t_sprite *s, t_player *p, t_draw *dr_x, t_draw *dr_y)
 	s->tr.x = s->idet * (p->dir.y * s->pos.x - p->dir.x * s->pos.y);
 	s->tr.y = s->idet * (-p->plane.y * s->pos.x + p->plane.x * s->pos.y);
 	s->screen_x = (int)((WIN_W / 2) * (1.0 + s->tr.x / s->tr.y));
-	s->u_div = 10;
-	s->v_div = 2;
-	s->v_move = WIN_H;
+	s->u_div = 1;
+	s->v_div = 1;
+	s->v_move = 0;
 	s->v_move_screen = (int)(s->v_move / s->tr.y);
 	s->h = (int)fabs((WIN_H / s->tr.y) / s->v_div);
 	dr_y->start = -s->h / 2 + WIN_H / 2 + s->v_move_screen;
@@ -137,7 +137,7 @@ int	*ft_get_sprite_order(t_sprite *s, int n)
 	int		i;
 	int		j;
 
-	d = malloc_safe(sizeof(int) * n);
+	d = malloc_safe(sizeof(double) * n);
 	ret = malloc_safe(sizeof(int) * n);
 	i = 0;
 	while (i < n)
@@ -168,7 +168,7 @@ void	ft_show_sprite(t_world *world)
 	t_draw		dr_x;
 	t_draw		dr_y;
 	size_t		i;
-	int			order[2];
+	int			*order;
 
 	i = 0;
 	while (i < world->spr_cnt)
@@ -176,16 +176,14 @@ void	ft_show_sprite(t_world *world)
 		ft_init_sprite(&world->spr[i], &world->player, &dr_x, &dr_y);
 		i++;
 	}
-	//order = ft_get_sprite_order(world->spr, world->spr_cnt);
-	order[0] = 0;
-	order[1] = 0;
+	order = ft_get_sprite_order(world->spr, world->spr_cnt);
 	i = 0;
 	while (i < world->spr_cnt)
 	{
 		ft_draw_sprite(&world->spr[order[i]], world, &dr_x, &dr_y);//가장 멀리있는거 우선순위
 		i++;
 	}
-	//free(order);
+	free(order);
 }
 
 void	ft_set_world(t_info *info)
