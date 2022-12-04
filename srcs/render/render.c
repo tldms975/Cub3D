@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/02 15:00:08 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 18:58:35 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	ft_next_frame(void *i)
 	{
 		ft_set_world(info);
 		ft_world_on_screen(info, info->core.world.tmlx);
-		ft_minimap_on_screen(info, info->core.world.tmlx);
+		if (info->core.world.minimap_on == true)
+		{
+			ft_minimap_on_screen(info, info->core.world.tmlx);
+		}
 	}
 	return (EXIT_SUCCESS);
 }
@@ -35,7 +38,6 @@ void	ft_render(t_info *info)
 	tmlx = info->core.world.tmlx;
 	ft_set_world(info);
 	ft_world_on_screen(info, info->core.world.tmlx);
-	ft_minimap_on_screen(info, info->core.world.tmlx);
 	mlx_loop_hook(tmlx->mlx, &ft_next_frame, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_PRESS, 0, &ft_key_press, info);
 	mlx_hook(tmlx->win, X_EVENT_KEY_RELEASE, 0, &ft_key_release, info);
