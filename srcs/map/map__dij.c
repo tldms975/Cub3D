@@ -36,7 +36,10 @@ static t_result	map__dij__check_coor(t_info *info,
 		if (precheck
 			&& info->map.raw[y]->str[x] == valid_land[i]
 			&& info->map.visited[y][x] == false)
-			return (SUCCESS);
+			{
+				info->map.visited[y][x] = true;
+				return (SUCCESS);
+			}
 		i++;
 	}
 	return (FAILURE);
@@ -69,21 +72,25 @@ static int	map__dij__visit_neighbor__internal(t_info *info,
 	return (n);
 }
 
+
+
+
+/**
+ * @brief visit y - 1, y + 1, x -1, x + 1
+ *
+ * @return number of visited
+ */
 static int	map__dij__visit_neighbor(t_info *info, t_coor co, t_coor added[4])
 {
 	const bool	precheck[4] = {
-		co.x > 1,
-		co.x + 1 < info->map.raw[co.y]->length,
+		co.y + 1 < info->map.height && co.x < info->map.raw[co.y + 1]->length,
 		co.y > 1 && co.x < info->map.raw[co.y - 1]->length,
-		co.y + 1 < info->map.height && co.x < info->map.raw[co.y + 1]->length
+		co.x + 1 < info->map.raw[co.y]->length,
+		co.x > 1
 	};
 	size_t		n;
 
 	n = map__dij__visit_neighbor__internal(info, precheck, added, co);
-	if (n != 5)
-	{
-		map__dij__mark_visited(info, added, n);
-	}
 	return (n);
 }
 
@@ -100,14 +107,12 @@ t_result	map__dij__path__release(t_info *info, t_path *open)
 		if (map__dij__path__select(open, &curr) == FAILURE)
 		{
 			return (FAILURE);
-			break ;
 		}
 		path_n = map__dij__visit_neighbor(info, curr, new_visited_path);
 		if (path_n == 5
 			|| map__dij__path__add(open, new_visited_path, path_n) == ERROR)
 		{
 			return (ERROR);
-			break ;
 		}
 		path_total_n += path_n;
 	}

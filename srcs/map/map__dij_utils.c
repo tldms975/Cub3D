@@ -12,17 +12,6 @@
 
 #include "maps.h"
 
-void	map__dij__mark_visited(t_info *info, t_coor visited[4],	size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		info->map.visited[visited[i].y][visited[i].x] = true;
-		i++;
-	}
-}
 
 static void	map__dij__path__coor__add(t_path *open, int y, int x, int c)
 {
