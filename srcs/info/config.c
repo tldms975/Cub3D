@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 06:39:55 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 16:08:34 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,18 @@ t_result	init_config__texture(t_info *info, t_str_buf *line, size_t *limits)
 	i = 0;
 	while (i < sizeof(texture) / sizeof(texture[0]))
 	{
-		if (str_ncompare(line, texture[i], 2) == MATCH)
+		if (str_ncompare(line, texture[i], ft_strlen(texture[i])) == MATCH)
 		{
-			if (i == 4)
+			if (i >= 4)
 			{
 				*limits += 1;
 			}
 			return (validate_tex_path(&info->core.world.tex_path[i], line));
+		}
+		if (str_ncompare(line, "SPRITE", 6) == MATCH)
+		{
+			*limits += 1;
+			return (validate_tex_path(&info->core.world.spr_tex_path[info->core.world.spr_tex_cnt++], line));
 		}
 		i++;
 	}
@@ -121,5 +126,9 @@ bool	read_config(t_info *info)
 	printf("WE: %s\n", info->core.world.tex_path[2]);
 	printf("EA: %s\n", info->core.world.tex_path[3]);
 	printf("DOOR: %s\n", info->core.world.tex_path[4]);
+	for (size_t i = 0; i < info->core.world.spr_cnt; i++)
+	{
+		printf("SPRITE%zu: %s\n", i, info->core.world.spr_tex_path[i]);
+	}
 	return (component == limits);
 }

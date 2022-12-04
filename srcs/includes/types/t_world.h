@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 18:55:58 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 16:06:22 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_raycast
 
 typedef struct s_sprite
 {
-	int		order;
+	int		id;
 	t_vec	coor;
 	t_vec	pos;
 	t_vec	tr;
@@ -100,7 +100,7 @@ typedef struct s_sprite
 	int		screen_x;
 	int		h;
 	int		w;
-	int		*tex[1];//tmp
+	int		**tex;
 	double	u_div;
 	double	v_div;
 	double	v_move;
@@ -127,8 +127,10 @@ typedef struct s_world
 	bool		mouse_on;
 	bool		minimap_on;
 	size_t		spr_cnt;
+	size_t		spr_tex_cnt;
 	size_t		spr_capacity;
 	t_sprite	*spr;
+	char		*spr_tex_path[5];
 	double		z_buf[WIN_W];
 	size_t		b_size_w;
 	size_t		b_size_h;

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 16:11:39 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 19:48:02 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	*ft_load_image(char *path, t_mlx *tmlx, int i)
 	= (int *)mlx_get_data_addr(tmlx->timg_wall_tex[i].img, \
 	&tmlx->timg_wall_tex[i].bpp, &tmlx->timg_wall_tex[i].line_len, \
 	&tmlx->timg_wall_tex[i].endian);
-	res = (int *)malloc(sizeof(int) \
+	res = (int *)malloc_safe(sizeof(int) \
 	* (tmlx->timg_wall_tex[i].w * tmlx->timg_wall_tex[i].h));
 	y = -1;
 	while (++y < tmlx->timg_wall_tex[i].h)
@@ -82,7 +82,7 @@ int	*ft_load_spr_image(char *path, t_mlx *tmlx, int i)
 	= (int *)mlx_get_data_addr(tmlx->timg_spr_tex[i].img, \
 	&tmlx->timg_spr_tex[i].bpp, &tmlx->timg_spr_tex[i].line_len, \
 	&tmlx->timg_spr_tex[i].endian);
-	res = (int *)malloc(sizeof(int) \
+	res = (int *)malloc_safe(sizeof(int) \
 	* (tmlx->timg_spr_tex[i].w * tmlx->timg_spr_tex[i].h));
 	y = -1;
 	while (++y < tmlx->timg_spr_tex[i].h)
@@ -112,6 +112,7 @@ void	ft_load_texture(t_info *info)
 	}
 	if (world->spr != NULL)
 	{
-		world->spr->tex[0] = ft_load_spr_image("./../assets/texture/jisookim/purple_window.xpm", world->tmlx, 0);
+		world->spr->tex[0] = ft_load_spr_image("./../assets/texture/xmas/Rudolph-basic.xpm", world->tmlx, 0);
+		world->spr->tex[1] = ft_load_spr_image("./../assets/texture/xmas/Rudolph-with-sunglass.xpm", world->tmlx, 1);
 	}
 }
