@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:33:21 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 16:37:08 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:31:27 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define INFO_H
 
 # include "cub3d.h"
-# define CONFIG_NUM 4
+# define COLOR_CONFIG 2
 
 t_result	init_config(t_info *info, char *line, size_t *limits);
 bool		read_config(t_info *info);

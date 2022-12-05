@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 20:24:26 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 15:32:01 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_world
 	size_t		screen_w;
 	size_t		screen_h;
 	int			*wall_tex[5];
+	size_t		wall_tex_n;
 	char		*tex_path[5];
 	t_rgb		rgb;
 	t_player	player;

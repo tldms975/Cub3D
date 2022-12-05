@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 20:28:18 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 15:07:34 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, size_t x)
 		dr.start = 0;
 	if (dr.end >= (int)world->screen_h)
 		dr.end = (int)world->screen_h - 1;
-	ft_wear_texture(world, rc, tex, &dr);
+	if (world->wall_tex[tex->type] != NULL)
+	{
+		ft_wear_texture(world, rc, tex, &dr);
+	}
 	y = dr.start;
 	while ((int)y < dr.end)
 	{
