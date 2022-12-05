@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:19:08 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 16:15:58 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 17:05:18 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_result	map__sprite__add(t_info *info, size_t i, size_t j, size_t id)
 		world->spr = ft_realloc(world->spr,
 				(world->spr_cnt * size),
 				world->spr_capacity, &world->spr_capacity);
-		world->spr[id].coor.x = j;
-		world->spr[id].coor.y = i;
+		world->spr[id].coor.x = j + 0.5;
+		world->spr[id].coor.y = i + 0.5;
 		world->spr[id].id = id;
 		result = true;
 	}
