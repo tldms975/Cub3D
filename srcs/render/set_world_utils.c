@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:10:23 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/25 05:03:14 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 17:01:45 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc, t_texture *tex)
 			rc->block.y += rc->step.y;
 			rc->is_side = 1;
 		}
-		if (world->map[rc->block.y][rc->block.x] == '1' 
+		if (world->map[rc->block.y][rc->block.x] == '1'
 				|| world->map[rc->block.y][rc->block.x] == 'D')
 		{
 			break ;

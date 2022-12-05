@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:51:52 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:03:39 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int			ft_init_render(t_info *info);
 int			ft_next_frame(void *w);
 
 int			ft_get_color(t_world *world, t_raycast *rc,
-	t_texture *tex, t_draw *dr);
+				t_texture *tex, t_draw *dr);
 void		ft_wear_texture(t_world *world, t_raycast *rc,
-	t_texture *tex, t_draw *dr);
+				t_texture *tex, t_draw *dr);
 
 int			ft_mouse_move(int x, int y, t_info *info);
 int			ft_key_press(t_keycode keycode, t_info *info);
@@ -44,7 +44,7 @@ void		ft_move_sight_mouse(int x, t_info *info);
 void		ft_load_texture(t_info *info);
 
 void		ft_check_hit(t_world *world, t_player *p,
-	t_raycast *rc, t_texture *tex);
+				t_raycast *rc, t_texture *tex);
 void		ft_step_dir(t_player *p, t_raycast *rc);
 void		ft_init_rc(t_world *world, t_raycast *rc, size_t x);
 void		ft_background(t_world *world);

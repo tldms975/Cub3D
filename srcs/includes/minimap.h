@@ -6,14 +6,13 @@
 /*   By: yui <hdoo@student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:11:01 by yui               #+#    #+#             */
-/*   Updated: 2022/12/05 16:12:11 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:02:44 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIMAP_H
 # define MINIMAP_H
-
-#include "cub3d.h"
+# include "cub3d.h"
 
 void	ft_player_on_minimap(t_info *info, t_player *p);
 void	ft_fill_miniimap_block(t_info *info, int y, int x, int color);
