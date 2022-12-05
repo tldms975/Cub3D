@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 21:34:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 02:16:12 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 #include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
+
+t_result	is_file(int fd)
+{
+	if (read(fd, NULL, 0) == -1)
+	{
+		return (ERROR);
+	}
+	return (SUCCESS);
+}
 
 t_result	validate_tex_path(char **path_ptr, t_str_buf *tex_path)
 {
@@ -27,15 +36,15 @@ t_result	validate_tex_path(char **path_ptr, t_str_buf *tex_path)
 	{
 		path_raw = str_dispose(str_cut(str_split(tex_path, ' ', 1), 1, BWD));
 		fd = open(path_raw, O_RDONLY);
-		if (fd == -1)
-		{
-			perror("Error: Invalid texture path");
-			result = ERROR;
-		}
-		else
+		if (fd != -1 && is_file(fd) == true)
 		{
 			*path_ptr = path_raw;
 			result = SUCCESS;
+		}
+		else
+		{
+			perror("Error: Invalid texture path");
+			result = ERROR;
 		}
 		close(fd);
 	}
