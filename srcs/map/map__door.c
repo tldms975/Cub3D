@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 02:13:31 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 20:13:38 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 20:16:43 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_result	map__door__find(t_info *info)
 		while (x < info->map.raw[y]->length)
 		{
 			if (info->map.raw[y]->str[x] == 'D'
-					&& map__door__check_sidewall(info, x, y) == false)
+				&& map__door__check_sidewall(info, x, y) == false)
 			{
 				ft_putstr_fd("Error: Invalid door is found\n", 2);
 				return (FAILURE);

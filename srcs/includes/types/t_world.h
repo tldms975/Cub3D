@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 17:13:24 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 20:19:31 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ typedef struct s_sprite
 	t_draw	dr_x;
 	t_draw	dr_y;
 }	t_sprite;
+
+typedef struct s_spr_arr
+{
+	double	d;
+	int		id;
+}		t_spr_arr;
 
 typedef struct s_world
 {
