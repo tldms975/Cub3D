@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 17:03:39 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:40:10 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "mlx.h"
 # include "cub3d.h"
 # include "libft.h"
+# define ANI_SPEED 20
 
 void		ft_run_cub3d(t_info *info);
 
