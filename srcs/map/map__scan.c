@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:56:26 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 22:11:31 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 02:33:51 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static t_result	map__scan(t_info *info)
 		info->map.raw = ft_realloc(info->map.raw,
 				sizeof(t_str_buf) * info->map.height + 1,
 				info->map.capacity, &info->map.capacity);
-		info->map.raw[info->map.height] = str_append(str_append(NULL, ft_strdup(" ")), line);
+		info->map.raw[info->map.height]
+			= str_append(str_append(NULL, ft_strdup(" ")), line);
 		free_safe(line);
 		if (info->map.width < info->map.raw[info->map.height]->length)
 		{
