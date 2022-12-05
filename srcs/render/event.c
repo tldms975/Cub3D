@@ -6,13 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:14:53 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 19:09:02 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 18:18:11 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "action.h"
 #include "cub3d.h"
-#include <stdio.h>
+#include <math.h>
 
 void	ft_toggle_mouse(t_world *world)
 {
@@ -83,18 +83,25 @@ void	ft_door(t_world *world)
 	p = &world->player;
 	front.x = world->player.pos.x;
 	front.y = world->player.pos.y;
-	if (p->plane.x > 0 && p->dir.y < 0) // N
-		front.y -= 1;
-	else if (p->plane.x < 0 && p->dir.y > 0) // S
-		front.y += 1;
-	else if (p->dir.x > 0 && p->plane.y > 0) // E
-		front.x -= 1;
-	else if (p->dir.x < 0 && p->plane.y < 0) // W
-		front.y += 1;
+	if (fabs(p->dir.x) < fabs(p->dir.y)) // N S
+	{
+		if (p->dir.y < 0)
+			front.y -= 1;
+		else
+			front.y += 1;
+	}
+	else // W E
+	{
+		if (p->dir.x > 0)
+			front.x += 1;
+		else
+			front.x -= 1;
+	}
 	if (world->map[front.y][front.x] == 'D')
 		world->map[front.y][front.x] = 'd';
 	else if (world->map[front.y][front.x] == 'd')
 		world->map[front.y][front.x] = 'D';
+	printf("=======================\n");
 	printf("pos(%f, %f)\n", p->pos.x, p->pos.y);
 	printf("dir(%f, %f)\n", p->dir.x, p->dir.y);
 	printf("pla(%f, %f)\n", p->plane.x, p->plane.y);
@@ -207,7 +214,6 @@ int	ft_mouse_move(int x, int y, t_info *info)
 
 int	ft_key_press(t_keycode keycode, t_info *info)
 {
-	printf("%d\n", keycode);
 	info->keycode |= (1 << find_key(keycode));
 	if (keycode == KEY_M)
 	{

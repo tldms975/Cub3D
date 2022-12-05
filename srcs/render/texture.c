@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 19:48:02 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 19:08:20 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,77 +42,49 @@ t_draw *dr)
 	= (dr->start - world->screen_h / 2.0 + dr->line_h / 2.0) * tex->step;
 }
 
-int	*ft_load_image(char *path, t_mlx *tmlx, int i)
+int	*ft_load_image(char *path, t_mlx *tmlx, t_image *img)
 {
 	int	*res;
 	int	y;
 	int	x;
 
-	tmlx->timg_wall_tex[i].img = mlx_xpm_file_to_image(tmlx->mlx, path, \
-	&tmlx->timg_wall_tex[i].w, &tmlx->timg_wall_tex[i].h);
-	tmlx->timg_wall_tex[i].data \
-	= (int *)mlx_get_data_addr(tmlx->timg_wall_tex[i].img, \
-	&tmlx->timg_wall_tex[i].bpp, &tmlx->timg_wall_tex[i].line_len, \
-	&tmlx->timg_wall_tex[i].endian);
-	res = (int *)malloc_safe(sizeof(int) \
-	* (tmlx->timg_wall_tex[i].w * tmlx->timg_wall_tex[i].h));
+	img->img = mlx_xpm_file_to_image(tmlx->mlx, path, &img->w, &img->h);
+	img->data = (int *)mlx_get_data_addr(img->img, \
+	&img->bpp, &img->line_len, &img->endian);
+	res = (int *)malloc_safe(sizeof(int) * (img->w * img->h));
 	y = -1;
-	while (++y < tmlx->timg_wall_tex[i].h)
+	while (++y < img->h)
 	{
 		x = -1;
-		while (++x < tmlx->timg_wall_tex[i].w)
+		while (++x < img->w)
 		{
-			res[tmlx->timg_wall_tex[i].w * y + x] \
-			= tmlx->timg_wall_tex[i].data[tmlx->timg_wall_tex[i].w * y + x];
+			res[img->w * y + x] = img->data[img->w * y + x];
 		}
 	}
-	mlx_destroy_image(tmlx->mlx, tmlx->timg_wall_tex[i].img);
-	return (res);
-}
-
-int	*ft_load_spr_image(char *path, t_mlx *tmlx, int i)
-{
-	int	*res;
-	int	y;
-	int	x;
-
-	tmlx->timg_spr_tex[i].img = mlx_xpm_file_to_image(tmlx->mlx, path, \
-	&tmlx->timg_spr_tex[i].w, &tmlx->timg_spr_tex[i].h);
-	tmlx->timg_spr_tex[i].data \
-	= (int *)mlx_get_data_addr(tmlx->timg_spr_tex[i].img, \
-	&tmlx->timg_spr_tex[i].bpp, &tmlx->timg_spr_tex[i].line_len, \
-	&tmlx->timg_spr_tex[i].endian);
-	res = (int *)malloc_safe(sizeof(int) \
-	* (tmlx->timg_spr_tex[i].w * tmlx->timg_spr_tex[i].h));
-	y = -1;
-	while (++y < tmlx->timg_spr_tex[i].h)
-	{
-		x = -1;
-		while (++x < tmlx->timg_spr_tex[i].w)
-		{
-			res[tmlx->timg_spr_tex[i].w * y + x] \
-			= tmlx->timg_spr_tex[i].data[tmlx->timg_spr_tex[i].w * y + x];
-		}
-	}
-	mlx_destroy_image(tmlx->mlx, tmlx->timg_spr_tex[i].img);
+	mlx_destroy_image(tmlx->mlx, img->img);
 	return (res);
 }
 
 void	ft_load_texture(t_info *info)
 {
 	t_world	*world;
-	int		i;
+	size_t	i;
 
 	world = &info->core.world;
 	i = 0;
 	while (i < 5)
 	{
-		world->wall_tex[i] = ft_load_image(world->tex_path[i], world->tmlx, i);
+		world->wall_tex[i] = ft_load_image(world->tex_path[i], \
+		world->tmlx, &world->tmlx->timg_wall_tex[i]);
 		i++;
 	}
-	if (world->spr != NULL)
+	i = 0;
+	if (!world->spr)
+		return ;
+	while (i < world->spr_tex_cnt)
 	{
-		world->spr->tex[0] = ft_load_spr_image("./../assets/texture/xmas/Rudolph-basic.xpm", world->tmlx, 0);
-		world->spr->tex[1] = ft_load_spr_image("./../assets/texture/xmas/Rudolph-with-sunglass.xpm", world->tmlx, 1);
+		world->spr_tex[i] = ft_load_image(world->spr_tex_path[i], \
+		world->tmlx, &world->tmlx->timg_spr_tex[i]);
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/04 16:06:22 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/04 20:24:26 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # ifndef WIN_H
 #  define WIN_H 1050
 # endif
-# define TEX_H 64
-# define TEX_W 64
-# define MINI_W 180
-# define MINI_H 180
 # define DARKER 8355711
 # define BASIC_CONFIG 6
 
@@ -100,11 +96,12 @@ typedef struct s_sprite
 	int		screen_x;
 	int		h;
 	int		w;
-	int		**tex;
 	double	u_div;
 	double	v_div;
 	double	v_move;
 	double	v_move_screen;
+	t_draw	dr_x;
+	t_draw	dr_y;
 } t_sprite;
 
 typedef struct s_world
@@ -130,6 +127,7 @@ typedef struct s_world
 	size_t		spr_tex_cnt;
 	size_t		spr_capacity;
 	t_sprite	*spr;
+	int			*spr_tex[5];
 	char		*spr_tex_path[5];
 	double		z_buf[WIN_W];
 	size_t		b_size_w;
