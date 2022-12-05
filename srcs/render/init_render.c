@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:28:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:49:25 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:12:09 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	ft_init_render(t_info *info)
 	ft_init_mlx(info);
 	ft_load_texture(info);
 	ft_init_player(&info->core.world.player);
+	info->core.world.frame = 0;
 	return (1);
 }

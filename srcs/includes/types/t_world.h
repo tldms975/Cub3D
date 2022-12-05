@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:41:46 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:13:24 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_world
 	t_player	player;
 	t_raycast	rc;
 	int			re;
+	size_t		frame;
 	t_ivec		mouse;
 	bool		mouse_on;
 	bool		minimap_on;

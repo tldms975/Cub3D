@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:07:34 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 17:19:16 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ void	ft_draw_sprite(t_sprite *s, t_world *world)
 	while (line.x < s->dr_x.end)
 	{
 		tex.x = (int)((256 * (line.x - (-s->w / 2 + s->screen_x)) \
-		* world->tmlx->timg_spr_tex[0].w / s->w) / 256);
+		* world->tmlx->timg_spr_tex[world->frame].w / s->w) / 256);
 		if (s->tr.y >= 0 && s->tr.y < world->z_buf[line.x])
 		{
 			line.y = s->dr_y.start;
 			while (line.y < s->dr_y.end)
 			{
 				d = (line.y - s->v_move_screen) * 256 - WIN_H * 128 + s->h * 128;
-				tex.y = ((d * world->tmlx->timg_spr_tex[0].h) / s->h) / 256;
-				color = world->spr_tex[0][world->tmlx->timg_spr_tex[0].w * tex.y + tex.x];
+				tex.y = ((d * world->tmlx->timg_spr_tex[world->frame].h) / s->h) / 256;
+				color = world->spr_tex[world->frame][world->tmlx->timg_spr_tex[world->frame].w * tex.y + tex.x];
 				if ((color & 0x00FFFFFF) != 0)
 					world->screen_buf[line.y][line.x] = color;
 				line.y++;

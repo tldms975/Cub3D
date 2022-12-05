@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:13 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 18:58:35 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 17:30:50 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@
 int	ft_next_frame(void *i)
 {
 	t_info	*info;
+	t_world	*world;
 
 	info = (t_info *)i;
+	world = &info->core.world;
+	world->frame++;
+	if (world->frame >= world->spr_tex_cnt)
+		world->frame = 0;
 	if (action(info) == SUCCESS)
 	{
 		ft_set_world(info);
-		ft_world_on_screen(info, info->core.world.tmlx);
-		if (info->core.world.minimap_on == true)
+		ft_world_on_screen(info, world->tmlx);
+		if (world->minimap_on == true)
 		{
-			ft_minimap_on_screen(info, info->core.world.tmlx);
+			ft_minimap_on_screen(info, world->tmlx);
 		}
 	}
 	return (EXIT_SUCCESS);
