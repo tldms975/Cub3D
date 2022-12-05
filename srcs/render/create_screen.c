@@ -6,7 +6,7 @@
 /*   By: yui <hdoo@student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:48:52 by yui               #+#    #+#             */
-/*   Updated: 2022/12/05 15:53:20 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/06 02:49:18 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	ft_change_map_format(t_info *info)
 void	ft_create_minimap_buf(t_info *info)
 {
 	size_t	i;
+	size_t	magnification;
 
-	info->core.world.minimap_w = ceil((double)info->map.width * 8);
-	info->core.world.minimap_h = ceil((double)info->map.height * 8);
+	magnification = info->core.world.screen_w / 3 / info->map.width;
+	info->core.world.minimap_w = ceil((double)info->map.width * magnification);
+	info->core.world.minimap_h = ceil((double)info->map.height * magnification);
 	info->core.world.minimap_buf
 		= malloc(sizeof(int *) * (info->core.world.minimap_h));
 	i = 0;
