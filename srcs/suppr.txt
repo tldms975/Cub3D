@@ -1,0 +1,6 @@
+leak:libmlx.dylib
+leak:HIToolbox
+leak:libsystem_pthread
+leak:CoreFoundation
+leak:AppKit
+leak:unknown module
