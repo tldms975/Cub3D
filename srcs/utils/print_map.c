@@ -15,22 +15,26 @@
 
 void	print_map(t_info *info, size_t x, size_t y)
 {
-	(void)x;
-	for (size_t i = 0; i < info->map.height; i++)
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < info->map.height)
 	{
 		if (i == y)
 		{
-			for (size_t j = 0; j < info->map.raw[y]->length; j++)
+			j = 0;
+			while (j < info->map.raw[y]->length)
 			{
 				if (j == x)
-				{
 					printf("%s%c%s", RED, 'X', NOCOLOR);
-				}
 				else
 					printf("%c", info->map.raw[y]->str[j]);
+				j++;
 			}
 		}
 		else
 			printf("%s", str_dispose(info->map.raw[i]));
+		i++;
 	}
 }
