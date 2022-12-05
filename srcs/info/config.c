@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 15:32:08 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 15:57:12 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ bool	read_config(t_info *info)
 		}
 		component += result;
 	}
-	info->core.world.wall_tex_n = component - COLOR_CONFIG;
+	info->core.world.wall_tex_n
+		= component - COLOR_CONFIG - info->core.world.spr_tex_cnt;
 	return (component == limits);
 }

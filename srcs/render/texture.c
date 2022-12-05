@@ -6,13 +6,14 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:32:01 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 15:57:31 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include "types/t_mlx.h"
 #include <math.h>
+#include <stdio.h>
 
 int	ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 {
@@ -23,12 +24,11 @@ int	ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr)
 	tex->pos += tex->step;
 	color = world->wall_tex[tex->type] \
 			[(int)(world->tmlx->timg_wall_tex[tex->type].h
-					* dr->tex.y + dr->tex.x)];
+				* dr->tex.y + dr->tex.x)];
 	if (rc->is_side == 1)
 		color = (color >> 1) & DARKER;
 	return (color);
 }
-
 
 void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, \
 t_draw *dr)

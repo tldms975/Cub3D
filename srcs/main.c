@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/18 18:41:34 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 15:36:53 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("Error: Wrong number of arguments: expected 1, but get %d\n", (argc - 1));
+		printf("Error: Wrong number of arguments: \
+				expected 1, but get %d\n", (argc - 1));
 	}
 	return (0);
 }

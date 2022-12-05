@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:58:00 by hdoo              #+#    #+#             */
-/*   Updated: 2022/05/19 15:01:01 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:41:56 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_pow(int base, int x)
 {
 	int	result;
-	
+
 	result = base / base;
 	while (x > 0)
 	{

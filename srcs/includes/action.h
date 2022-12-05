@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:42:31 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/22 19:43:56 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:38:11 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ void	ft_move_backward(t_world *world);
 void	ft_move_foreward(t_world *world);
 
 #endif /* !ACTION_H */
-

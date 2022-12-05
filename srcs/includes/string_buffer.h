@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:37:17 by jkong             #+#    #+#             */
-/*   Updated: 2022/11/16 16:51:44 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:38:44 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 # ifndef MATCH
 #  define MATCH 0x00
-#endif // !MATCH
+# endif // !MATCH
 
 typedef struct s_str_buf
 {
@@ -42,7 +42,7 @@ typedef enum e_cut_dir
 {
 	FWD = 1,
 	BWD = 0
-} t_cut_dir;
+}	t_cut_dir;
 
 t_str_buf	*str_append_raw(t_str_buf *buf, const char *s, size_t n);
 t_str_buf	*str_append(t_str_buf *buf, const char *s);

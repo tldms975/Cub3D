@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 12:19:50 by hdoo              #+#    #+#             */
-/*   Updated: 2022/10/29 01:55:23 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:42:55 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	addback_seg(t_file *curr)
 int	link_lines(t_file **curr, char **result)
 {
 	const int	line_size = ((*curr)->line_end - (*curr)->line_stt);
-	t_segment		*cursor;
+	t_segment	*cursor;
 	int			i;
 
 	*result = malloc(sizeof(char) * (line_size + 1));
@@ -87,7 +87,7 @@ int	link_lines(t_file **curr, char **result)
 void	free_used_segment(t_file *curr)
 {
 	t_segment		*will_free;
-	const int	need_to_clean_last_segment = (curr->is_eof \
+	const int		need_to_clean_last_segment = (curr->is_eof \
 			|| curr->line_end == curr->rd_size);
 
 	while (curr->list != FT_NULL && \

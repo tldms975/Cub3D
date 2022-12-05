@@ -6,13 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 15:32:01 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 15:41:46 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_WORLD_H
 # define T_WORLD_H
-#include "string_buffer.h"
+# include "string_buffer.h"
 # include "t_mlx.h"
 # include "t_vector.h"
 # ifndef WIN_W
@@ -37,7 +37,7 @@ typedef struct s_rgb
 {
 	int	ceiling;
 	int	floor;
-}				t_rgb;
+}			t_rgb;
 
 typedef struct s_player
 {
@@ -102,7 +102,7 @@ typedef struct s_sprite
 	double	v_move_screen;
 	t_draw	dr_x;
 	t_draw	dr_y;
-} t_sprite;
+}	t_sprite;
 
 typedef struct s_world
 {

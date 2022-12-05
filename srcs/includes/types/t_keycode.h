@@ -6,13 +6,13 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:39:02 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/03 19:09:22 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:40:35 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_KEYCODE_H
 # define T_KEYCODE_H
-#include "t_world.h"
+# include "t_world.h"
 
 typedef enum e_keycode
 {
@@ -37,7 +37,6 @@ typedef enum e_event
 	X_EVENT_KEY_DESTROY_NOTIFY = 17,
 }		t_event;
 
-typedef void (*t_key_action)(t_world *world);
+typedef void	(*t_key_action)(t_world *world);
 
 #endif
-

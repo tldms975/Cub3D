@@ -6,13 +6,13 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:48:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/12 06:24:32 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:42:25 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size,\
+void	*ft_realloc(void *ptr, size_t size,
 		const size_t old_size, size_t *size_ptr)
 {
 	void	*new_ptr;

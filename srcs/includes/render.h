@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:37:34 by sielee            #+#    #+#             */
-/*   Updated: 2022/11/30 19:04:41 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/05 15:51:52 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,38 +20,45 @@
 # include "mlx.h"
 # include "cub3d.h"
 # include "libft.h"
-#include <stdio.h>//for the test
 
-void	ft_run_cub3d(t_info *info);
+void		ft_run_cub3d(t_info *info);
 
-void	ft_init_screen_buf(t_info *info);
-int		ft_init_render(t_info *info);
+void		ft_init_screen_buf(t_info *info);
+int			ft_init_render(t_info *info);
 
-int		ft_next_frame(void *w);
+int			ft_next_frame(void *w);
 
-int		ft_get_color(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr);
-void	ft_wear_texture(t_world *world, t_raycast *rc, t_texture *tex, t_draw *dr);
+int			ft_get_color(t_world *world, t_raycast *rc,
+	t_texture *tex, t_draw *dr);
+void		ft_wear_texture(t_world *world, t_raycast *rc,
+	t_texture *tex, t_draw *dr);
 
-int		ft_mouse_move(int x, int y, t_info *info);
-int		ft_key_press(t_keycode keycode, t_info *info);
-int		ft_key_release(t_keycode keycode, t_info *info);
-int		ft_event_red_cross(int keycode);
-void	ft_move_player(int keycode, t_world *w);
-void	ft_move_sight(int keycode, t_player *p);
-void	ft_move_sight_mouse(int x, t_info *info);
+int			ft_mouse_move(int x, int y, t_info *info);
+int			ft_key_press(t_keycode keycode, t_info *info);
+int			ft_key_release(t_keycode keycode, t_info *info);
+int			ft_event_red_cross(int keycode);
+void		ft_move_player(int keycode, t_world *w);
+void		ft_move_sight(int keycode, t_player *p);
+void		ft_move_sight_mouse(int x, t_info *info);
 
-void	ft_load_texture(t_info *info);
+void		ft_load_texture(t_info *info);
 
-void	ft_check_hit(t_world *world, t_player *p, t_raycast *rc, t_texture *tex);
-void	ft_step_dir(t_player *p, t_raycast *rc);
-void	ft_init_rc(t_world *world, t_raycast *rc, size_t x);
-void	ft_background(t_world *world);
+void		ft_check_hit(t_world *world, t_player *p,
+	t_raycast *rc, t_texture *tex);
+void		ft_step_dir(t_player *p, t_raycast *rc);
+void		ft_init_rc(t_world *world, t_raycast *rc, size_t x);
+void		ft_background(t_world *world);
 
-void	ft_set_world(t_info *i);
-void	ft_set_minimap(t_info *info);
+void		ft_set_world(t_info *i);
+void		ft_set_minimap(t_info *info);
 
-void	ft_world_on_screen(t_info *info, t_mlx *tmlx);
-void	ft_minimap_on_screen(t_info *info, t_mlx *tmlx);
+void		ft_world_on_screen(t_info *info, t_mlx *tmlx);
+void		ft_minimap_on_screen(t_info *info, t_mlx *tmlx);
 t_result	action(t_info *info);
+
+void		ft_change_map_format(t_info *info);
+void		ft_create_minimap_buf(t_info *info);
+void		set_screen_size(t_info *info);
+void		ft_create_screen_buf(t_info *info);
 
 #endif
