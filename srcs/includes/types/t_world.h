@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 20:19:31 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/06 01:44:26 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ typedef struct s_world
 	size_t		spr_tex_cnt;
 	size_t		spr_capacity;
 	t_sprite	*spr;
-	int			*spr_tex[5];
-	char		*spr_tex_path[5];
+	int			*spr_tex[FRAME_LIMIT];
+	char		*spr_tex_path[FRAME_LIMIT];
 	double		z_buf[WIN_W];
 	size_t		b_size_w;
 	size_t		b_size_h;
