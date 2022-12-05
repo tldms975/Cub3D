@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:30:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/17 17:23:33 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 18:40:21 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	parse_dot_cub(t_info *info, char *arg)
 
 	retval = FAILURE;
 	info->cub_path = validate_path(arg);
-	if (info->cub_path->str != NULL)
+	if (info->cub_path != NULL)
 	{
 		info->fd = str_safe_open(info->cub_path, O_RDONLY);
 		if (read_info(info) == SUCCESS)
