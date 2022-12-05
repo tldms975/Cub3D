@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:30:59 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 18:40:21 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 21:34:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_result	read_info(t_info *info)
 	}
 	else
 	{
-		ft_putstr_fd("Error: read_color_and_texture\n", 2);
+		ft_putstr_fd("Error: Read_color_and_texture\n", 2);
 	}
 	return (result);
 }
@@ -48,7 +48,7 @@ static t_str_buf	*validate_path(char *arg)
 	}
 	else
 	{
-		ft_putstr_fd("Error: invalid file format\n", 2);
+		ft_putstr_fd("Error: Invalid file format\n", 2);
 	}
 	return (path);
 }
@@ -62,13 +62,13 @@ bool	parse_dot_cub(t_info *info, char *arg)
 	if (info->cub_path != NULL)
 	{
 		info->fd = str_safe_open(info->cub_path, O_RDONLY);
-		if (read_info(info) == SUCCESS)
+		if (info->fd != -1 && read_info(info) == SUCCESS)
 		{
 			retval = true;
 		}
 		else
 		{
-			ft_putstr_fd("Error: read_info\n", 2);
+			ft_putstr_fd("Error: Read_info\n", 2);
 		}
 	}
 	return (retval);

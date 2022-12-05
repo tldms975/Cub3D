@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:19:08 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 17:05:18 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 21:40:17 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ t_result	map__sprite__find(t_info *info)
 			j++;
 		}
 		i++;
+	}
+	if (info->core.world.spr_tex_cnt == 0 && info->core.world.spr_cnt != 0)
+	{
+		ft_putstr_fd("Error: Detect unregistered sprites\n", 2);
+		return (FAILURE);
 	}
 	return (SUCCESS);
 }

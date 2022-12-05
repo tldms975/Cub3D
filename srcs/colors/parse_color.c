@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:28:18 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 06:55:57 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 21:34:01 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_result	parse_color(int *color, t_str_buf *line)
 	}
 	else if (colors == NULL)
 	{
-		printf("Error: parse_color: split returned null\n");
+		printf("Error: Parse_color: split returned null\n");
 		result = ERROR;
 	}
 	return (result);

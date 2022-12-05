@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 15:15:10 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 21:56:59 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static t_result	map__dij__check_coor(t_info *info,
 	i = 0;
 	while (i < sizeof(valid_land) / sizeof(valid_land[0]))
 	{
-		if (precheck && info->map.raw[y]->str[x] == valid_land[i]
-			&& info->map.visited[y][x] == false)
+		if (info->map.visited[y][x] == false
+			&& precheck && info->map.raw[y]->str[x] == valid_land[i])
 		{
 			info->map.visited[y][x] = true;
 			return (SUCCESS);

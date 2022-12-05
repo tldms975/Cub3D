@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 15:57:12 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/05 21:34:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ bool	read_config(t_info *info)
 		result = init_config(info, line, &limits);
 		if (result == ERROR)
 		{
-			ft_putstr_fd("Error: read_config\n", 2);
+			ft_putstr_fd("Error: Read_config\n", 2);
 			return (false);
 		}
 		component += result;

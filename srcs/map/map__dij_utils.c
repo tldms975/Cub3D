@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/04 15:16:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 21:43:13 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_result	map__dij__path__add(t_path *open, t_coor *new_coor, size_t new_size)
 
 	if (open == NULL)
 	{
-		ft_putstr_fd("Error: add_open_path: open_path is NULL", 2);
+		ft_putstr_fd("Error: Add_open_path: open_path is NULL", 2);
 		return (ERROR);
 	}
 	i = 0;
@@ -50,7 +50,7 @@ t_result	map__dij__path__add(t_path *open, t_coor *new_coor, size_t new_size)
 					open->capacity, &open->capacity);
 		}
 		map__dij__path__coor__add(open,
-			new_coor[i].y, new_coor[i].x, new_coor[i].c);
+				new_coor[i].y, new_coor[i].x, new_coor[i].c);
 		i++;
 	}
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 23:01:09 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/25 03:11:28 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/05 21:40:01 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ static bool	map__precheck(t_info *info)
 		&& map__door__validate(info) == SUCCESS
 		&& map__dij__visit_zero(info) == SUCCESS)
 	{
-		map__sprite__find(info);
 		result = true;
+		if (map__sprite__find(info) == FAILURE)
+		{
+			result = false;
+		}
 	}
 	else
 	{
