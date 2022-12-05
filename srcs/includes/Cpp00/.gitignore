@@ -1,0 +1,5 @@
+**/*.o
+**/megaphone
+**/phonebook
+**/account
+.vscode/
