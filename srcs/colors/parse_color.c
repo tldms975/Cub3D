@@ -6,13 +6,14 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:28:18 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/06 19:23:23 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 22:03:04 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "colors.h"
 #include <stdio.h>
+#include "string_buffer.h"
 
 int	atoi_precheck(char *target)
 {
@@ -102,7 +103,7 @@ t_result	parse_color(int *color, t_str_buf *line)
 
 	line_char = str_dispose(line);
 	colors = ft_split(line_char, ',');
-	result = FAILURE;
+	result = ERROR;
 	if (colors != NULL && color != NULL)
 	{
 		result = extract_color(colors, raw_color);

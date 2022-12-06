@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:33:23 by hdoo              #+#    #+#             */
-/*   Updated: 2022/11/24 13:17:51 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 21:54:24 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_info
 	t_map			map;
 	int				fd;
 	t_core			core;
+	size_t			color_config_count;
 	unsigned int	keycode;
 	int				mousecode;
 }	t_info;

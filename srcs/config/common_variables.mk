@@ -4,12 +4,12 @@ ifneq (shell uname -m, x86_64)
 	MAKE	:= arch -x86_64 $(MAKE)
 endif
 
-# CC			:= clang
-CCLD		:= cc
+CC			:= clang
+CCLD		:= clang
 AR			:= ar
 ARFLAGS		:= cr$(if $(filter 1,$(V) $(VERBOSE)),v,)
 CPPFLAGS	:= $(shell find . -type d -mindepth 1 | grep -v .git | sed "s/^/-I /" | xargs)
-CFLAGS		:= -Wall -Wextra -Werror -std=c99 -pedantic $(CPPFLAGS)
+CFLAGS		:= -std=c99 -pedantic $(CPPFLAGS)
 
 SRCS		:= $(shell find . -name "*.c" | grep -v .cache | grep -v test | grep -v bonus | xargs)
 SRCS_LIBFT	:= $(shell find . -name "ft_*.c" | grep -v .cache  | grep -v test | xargs)

@@ -6,24 +6,15 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:37 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/06 20:08:38 by sielee           ###   ########.fr       */
+/*   Updated: 2022/12/06 22:26:43 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 #include "info.h"
 #include "libft.h"
-#include <unistd.h>
 #include <stdio.h>
-
-t_result	is_file(int fd)
-{
-	if (read(fd, NULL, 0) == -1)
-	{
-		return (ERROR);
-	}
-	return (SUCCESS);
-}
+#include <unistd.h>
 
 t_result	validate_tex_path(char **path_ptr, t_str_buf *tex_path)
 {
@@ -79,6 +70,32 @@ t_result	init_config__texture(t_info *info, t_str_buf *line, size_t *limits)
 	return (FAILURE);
 }
 
+t_result	is_valid_color(t_info *info, t_str_buf *str)
+{
+	t_result	result;
+
+	result = false;
+	if (str_ncompare(str, "F", 1) == MATCH)
+	{
+		result = (parse_color(&info->core.world.rgb.floor,
+					str_cut(str, 2, FWD)));
+	}
+	else if (str_ncompare(str, "C", 1) == MATCH)
+	{
+		result = (parse_color(&info->core.world.rgb.ceiling,
+					str_cut(str, 2, FWD)));
+	}
+	else
+	{
+		str_free(str);
+	}
+	if (result == SUCCESS)
+	{
+		info->color_config_count++;
+	}
+	return (result);
+}
+
 t_result	init_config(t_info *info, char *line, size_t *limits)
 {
 	t_result	result;
@@ -89,20 +106,7 @@ t_result	init_config(t_info *info, char *line, size_t *limits)
 	result = init_config__texture(info, str, limits);
 	if (result == FAILURE)
 	{
-		if (str_ncompare(str, "F", 1) == MATCH)
-		{
-			return (parse_color(&info->core.world.rgb.floor,
-					str_cut(str, 2, FWD)));
-		}
-		else if (str_ncompare(str, "C", 1) == MATCH)
-		{
-			return (parse_color(&info->core.world.rgb.ceiling,
-					str_cut(str, 2, FWD)));
-		}
-		if (result != SUCCESS)
-		{
-			str_free(str);
-		}
+		result = is_valid_color(info, str);
 	}
 	return (result);
 }
@@ -127,11 +131,11 @@ bool	read_config(t_info *info)
 		if (result == ERROR)
 		{
 			ft_putstr_fd("Error: Read_config\n", 2);
-			return (false);
+			break ;
 		}
 		component += result;
 	}
 	info->core.world.wall_tex_n
-		= component - COLOR_CONFIG - info->core.world.spr_tex_cnt;
+		= component - info->color_config_count - info->core.world.spr_tex_cnt;
 	return (component == limits);
 }
