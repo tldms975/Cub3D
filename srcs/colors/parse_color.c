@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:28:18 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/06 19:09:53 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 19:19:03 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ int	atoi_precheck(char *target)
 	}
 	while (target != NULL
 		&& target[i] != '\0'
-		&& target[i] != '\n'
-		&& ft_isdigit(target[i]))
+		&& target[i] != '\n')
 	{
+		if (ft_isdigit(target[i]) != 1)
+		{
+			ft_putstr_fd("Error: Ivalid input: Not an integer", 2);
+		}
 		i++;
 	}
 	return (target[i] == '\0' || target[i] == '\n');
