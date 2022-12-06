@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 02:13:31 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/06 17:33:18 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 19:30:19 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_result	map__door__validate(t_info *info)
 	t_result	result;
 
 	result = map__door__find(info);
-	printf("%zu", info->core.world.wall_tex_n);
 	if (result == SUCCESS && info->core.world.wall_tex_n == 4)
 	{
 		ft_putstr_fd("Error: No door in config file\n", 2);
@@ -76,6 +75,11 @@ t_result	map__door__validate(t_info *info)
 	}
 	else if (result == FAILURE && info->core.world.wall_tex_n == 4)
 	{
+		result = SUCCESS;
+	}
+	else if (result == FAILURE && info->core.world.wall_tex_n == 5)
+	{
+		printf("Warning: Door texture unused\n");
 		result = SUCCESS;
 	}
 	return (result);
