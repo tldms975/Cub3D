@@ -1,7 +1,7 @@
-NO ./assets/texture/jisookim/purple_window.xpm
-SO ./assets/texture/jisookim/purple_window.xpm
-WE ./assets/texture/jisookim/purple_window.xpm
-EA ./assets/texture/jisookim/purple_window.xpm
+NO ./assets/texture/Christmas theme/WALL4.xpm
+SO ./assets/texture/Christmas theme/WALL4.xpm
+WE ./assets/texture/Christmas theme/WALL4.xpm
+EA ./assets/texture/Christmas theme/WALL4.xpm
 DOOR ./assets/texture/Christmas theme/DOOR1.xpm
 SPRITE ./assets/texture/animated_rudolph/output_image-0001.xpm
 SPRITE ./assets/texture/animated_rudolph/output_image-0002.xpm
@@ -602,7 +602,6 @@ SPRITE ./assets/texture/animated_rudolph/output_image-0596.xpm
 
 C 0,0,0
 F 0,0,0
-
 
 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 10010000T1000000000000000000001001000000000000001000001000000000000001000001001000000001000001000000000000001001000001001000000000000000000000000000001
