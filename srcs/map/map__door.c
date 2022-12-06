@@ -6,12 +6,13 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 02:13:31 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/05 20:16:43 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/06 17:33:18 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "maps.h"
+#include <stdio.h>
 
 bool	map__door__check_sidewall(t_info *info, size_t x, size_t y)
 {
@@ -28,42 +29,54 @@ bool	map__door__check_sidewall(t_info *info, size_t x, size_t y)
 	{
 		return (true);
 	}
-	return (false);
+	else
+	{
+		ft_putstr_fd("Error: Invalid door is found\n", 2);
+		return (false);
+	}
 }
 
 t_result	map__door__find(t_info *info)
 {
 	size_t	x;
 	size_t	y;
+	size_t	door_count;
 
 	y = 0;
+	door_count = 0;
 	while (y < info->map.height)
 	{
 		x = 0;
 		while (x < info->map.raw[y]->length)
 		{
-			if (info->map.raw[y]->str[x] == 'D'
-				&& map__door__check_sidewall(info, x, y) == false)
+			if (info->map.raw[y]->str[x] == 'D')
 			{
-				ft_putstr_fd("Error: Invalid door is found\n", 2);
-				return (FAILURE);
+				if (map__door__check_sidewall(info, x, y) == true)
+					door_count++;
+				else
+					return (FAILURE);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (SUCCESS);
+	return (door_count > 0);
 }
 
 t_result	map__door__validate(t_info *info)
 {
-	if (info->core.world.wall_tex_n > 4)
-	{
-		return (map__door__find(info));
-	}
-	else
+	t_result	result;
+
+	result = map__door__find(info);
+	printf("%zu", info->core.world.wall_tex_n);
+	if (result == SUCCESS && info->core.world.wall_tex_n == 4)
 	{
 		ft_putstr_fd("Error: No door in config file\n", 2);
-		return (FAILURE);
+		result = FAILURE;
 	}
+	else if (result == FAILURE && info->core.world.wall_tex_n == 4)
+	{
+		result = SUCCESS;
+	}
+	return (result);
 }

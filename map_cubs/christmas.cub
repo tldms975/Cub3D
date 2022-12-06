@@ -1,10 +1,10 @@
-NO ./../assets/texture/Christmas theme/WALL1.xpm
-SO ./../assets/texture/Christmas theme/WALL2.xpm
-WE ./../assets/texture/Christmas theme/WALL3.xpm
-EA ./../assets/texture/Christmas theme/WALL4.xpm
+NO ./assets/texture/Christmas theme/WALL1.xpm
+SO ./assets/texture/Christmas theme/WALL2.xpm
+WE ./assets/texture/Christmas theme/WALL3.xpm
+EA ./assets/texture/Christmas theme/WALL4.xpm
 
-DOOR ./../assets/texture/Christmas theme/DOOR1.xpm
-SPRITE ./../assets/texture/Christmas theme/Rudolph-basic.xpm
+DOOR ./assets/texture/Christmas theme/DOOR1.xpm
+SPRITE ./assets/texture/Christmas theme/Rudolph-basic.xpm
 
 C 19,50,48
 F 72,36, 19

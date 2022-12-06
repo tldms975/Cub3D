@@ -1,9 +1,9 @@
-NO ./../assets/texture/jisookim/purple_window.xpm
-SO ./../assets/texture/jisookim/purple_window.xpm
-WE ./../assets/texture/jisookim/purple_window.xpm
-EA ./../assets/texture/jisookim/purple_window.xpm
-DOOR ./../assets/texture/Christmas theme/EA.xpm
-SPRITE ./../assets/texture/Christmas theme/Rudolph-basic.xpm
+NO ./assets/texture/jisookim/purple_window.xpm
+SO ./assets/texture/jisookim/purple_window.xpm
+WE ./assets/texture/jisookim/purple_window.xpm
+EA ./assets/texture/jisookim/purple_window.xpm
+DOOR ./assets/texture/Christmas theme/EA.xpm
+SPRITE ./assets/texture/Christmas theme/Rudolph-basic.xpm
 
 C 0,0,0
 F 0,0,0

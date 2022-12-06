@@ -1,13 +1,13 @@
-NO ./../assets/texture/NO.xpm
-SO ./../assets/texture/SO.xpm
-WE ./../assets/texture/WE.xpm
-EA ./../assets/texture/Christmas theme/EA.xpm
-DOOR ./../assets/texture/Christmas theme/EA.xpm
-SPRITE ./../assets/texture/Christmas theme/Santa1.xpm
-SPRITE ./../assets/texture/Christmas theme/Santa2.xpm
-SPRITE ./../assets/texture/Christmas theme/Santa3.xpm
-SPRITE ./../assets/texture/Christmas theme/Santa4.xpm
-SPRITE ./../assets/texture/Christmas theme/Santa5.xpm
+NO ./assets/texture/NO.xpm
+SO ./assets/texture/SO.xpm
+WE ./assets/texture/WE.xpm
+EA ./assets/texture/Christmas theme/EA.xpm
+DOOR ./assets/texture/Christmas theme/EA.xpm
+SPRITE ./assets/texture/Christmas theme/Santa1.xpm
+SPRITE ./assets/texture/Christmas theme/Santa2.xpm
+SPRITE ./assets/texture/Christmas theme/Santa3.xpm
+SPRITE ./assets/texture/Christmas theme/Santa4.xpm
+SPRITE ./assets/texture/Christmas theme/Santa5.xpm
 
 C 19,50,48
 F 72,36,19

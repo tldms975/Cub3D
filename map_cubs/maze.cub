@@ -1,8 +1,7 @@
-
-NO ./../assets/texture/NO.xpm
-SO ./../assets/texture/SO.xpm
-WE ./../assets/texture/WE.xpm
-EA ./../assets/texture/Christmas theme/EA.xpm
+NO ./assets/texture/NO.xpm
+SO ./assets/texture/SO.xpm
+WE ./assets/texture/WE.xpm
+EA ./assets/texture/Christmas theme/EA.xpm
 
 C 19,50,48
 F 72,36, 19

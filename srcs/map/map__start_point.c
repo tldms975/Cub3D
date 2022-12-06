@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 10:51:04 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/02 16:41:58 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/06 17:26:39 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_result	map__start_point__find(t_info *info)
 		{
 			if (map__start_point__init(info, j, i) == ERROR)
 			{
+				ft_putstr_fd("Error: Invalid start point\n", 2);
 				return (FAILURE);
 			}
 			j++;
