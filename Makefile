@@ -6,7 +6,7 @@
 #    By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 07:59:01 by hdoo              #+#    #+#              #
-#    Updated: 2022/11/23 09:42:29 by hdoo             ###   ########.fr        #
+#    Updated: 2022/12/06 17:34:38 by hdoo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ $(NAME):
 
 $(NAME_BONUS):
 	@$(MAKE) -C srcs $(MAKECMDGOALS)
-	@cd srcs && cp $(NAME) ..
+	@cd srcs && cp $(NAME) ../$(NAME_BONUS)
 
 bonus : $(NAME_BONUS)
 
@@ -30,7 +30,8 @@ clean :
 
 fclean :
 	@$(MAKE) -C srcs $(MAKECMDGOALS)
-	@rm $(NAME)
+	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 
 re :
 	@$(MAKE) -C srcs $(MAKECMDGOALS)
