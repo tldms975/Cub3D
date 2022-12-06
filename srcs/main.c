@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:02:50 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 21:34:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 20:39:37 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,28 @@
 #include "info.h"
 #include "libft.h"
 #include <stdio.h>
+
+static void	free_img(t_info *info)
+{
+	size_t	i;
+	t_world	*world;
+
+	world = &info->core.world;
+	i = 0;
+	while (i < info->core.world.wall_tex_n)
+	{
+		mlx_destroy_image(world->tmlx->mlx, &world->tmlx->timg_wall_tex[i].img);
+		i++;
+	}
+	i = 0;
+	if (!world->spr)
+		return ;
+	while (i < world->spr_tex_cnt)
+	{
+		mlx_destroy_image(world->tmlx->mlx, &world->tmlx->timg_spr_tex[i].img);
+		i++;
+	}
+}
 
 static void	free_info(t_info *info)
 {
@@ -31,6 +53,7 @@ static void	free_info(t_info *info)
 		free_safe(info->map.raw);
 	}
 	free_config(info);
+	free_img(info);
 }
 
 int	main(int argc, char *argv[])

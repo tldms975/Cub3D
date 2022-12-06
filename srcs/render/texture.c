@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 17:00:54 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/06 20:31:48 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	*ft_load_image(char *path, t_mlx *tmlx, t_image *img)
 			res[img->w * y + x] = img->data[img->w * y + x];
 		}
 	}
-	mlx_destroy_image(tmlx->mlx, img->img);
 	return (res);
 }
 
