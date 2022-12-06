@@ -6,7 +6,7 @@
 /*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:28:18 by hdoo              #+#    #+#             */
-/*   Updated: 2022/12/06 19:19:03 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/06 19:20:18 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	atoi_precheck(char *target)
 	{
 		if (ft_isdigit(target[i]) != 1)
 		{
-			ft_putstr_fd("Error: Ivalid input: Not an integer", 2);
+			ft_putstr_fd("Error: Ivalid input: Not an integer\n", 2);
 		}
 		i++;
 	}
