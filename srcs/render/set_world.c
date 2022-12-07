@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:25:25 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/05 20:26:07 by yui              ###   ########.fr       */
+/*   Updated: 2022/12/07 16:05:41 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_fill_buf(t_world *world, t_raycast *rc, t_texture *tex, size_t x)
 	while ((int)y < dr.end)
 	{
 		world->screen_buf[y][x] = ft_get_color(world, rc, tex, &dr);
-		world->re = 1;
 		y++;
 	}
 }
@@ -86,8 +85,7 @@ void	ft_set_world(t_info *info)
 
 	world = &info->core.world;
 	x = 0;
-	if (world->re)
-		ft_init_screen_buf(info);
+	ft_init_screen_buf(info);
 	ft_background(world);
 	while (x < info->core.world.screen_w)
 	{

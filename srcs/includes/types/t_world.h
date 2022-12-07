@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/06 21:41:42 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/07 16:04:22 by hdoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef struct s_world
 	t_rgb		rgb;
 	t_player	player;
 	t_raycast	rc;
-	int			re;
 	size_t		frame;
 	t_ivec		mouse;
 	bool		mouse_on;
