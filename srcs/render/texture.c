@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:01:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/06 20:31:48 by sielee           ###   ########seoul.kr  */
+/*   Updated: 2022/12/07 22:52:57 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_draw *dr)
 	tex->wall_x -= floor(tex->wall_x);
 	dr->tex.x
 		= (int)(tex->wall_x * (double)world->tmlx->timg_wall_tex[tex->type].w);
-	if ((rc->is_side == 0 && rc->ray.x > 0)
-		|| (rc->is_side == 1 && rc->ray.y < 0))
+	if ((rc->is_side == 0 && rc->ray.x < 0)
+		|| (rc->is_side == 1 && rc->ray.y > 0))
 	{
 		dr->tex.x = world->tmlx->timg_wall_tex[tex->type].w - dr->tex.x - 1;
 	}

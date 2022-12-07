@@ -6,7 +6,7 @@
 /*   By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:38:59 by sielee            #+#    #+#             */
-/*   Updated: 2022/12/07 16:04:22 by hdoo             ###   ########.fr       */
+/*   Updated: 2022/12/07 22:52:35 by sielee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 typedef enum e_card
 {
-	NO = 0,
-	SO,
 	WE,
 	EA,
+	NO,
+	SO,
 	DOOR
 }			t_card;
 
