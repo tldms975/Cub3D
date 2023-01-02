@@ -1,4 +1,5 @@
 # cub3d
+[![wakatime](https://wakatime.com/badge/github/ElApostles/cub3d.svg)](https://wakatime.com/badge/github/ElApostles/cub3d)
 
 ## 참조
 * (튜토리얼)https://github.com/l-yohai/cub3d
@@ -46,3 +47,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
