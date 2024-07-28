@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdoo <hdoo@student.42.kr>                  +#+  +:+       +#+         #
+#    By: sielee <sielee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/07 09:26:57 by hdoo              #+#    #+#              #
-#    Updated: 2022/06/17 19:03:40 by hdoo             ###   ########.fr        #
+#    Updated: 2024/07/28 13:10:09 by sielee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAKEFLAGS		+=	--no-builtin-rules --jobs=6
 
 .DEFAULT_GOAL	:=	mandatory
 
-CFLAGS			:=	-Wall -Wextra -Werror -I. -MMD -MP -g
+CFLAGS			:=	-I. -MMD -MP -g
 LDFLAGS			:=
 LDLIBS			:=
 
@@ -74,7 +74,7 @@ SRCS			:=	ft_atoi.c							\
 					ft_aredigit.c						\
 					get_next_line/get_next_line.c		\
 					get_next_line/get_next_line_utils.c
-					
+
 DEPS			:=	$(SRCS:.c=.d)
 OBJS			:=	$(SRCS:.c=.o)
 

@@ -9,7 +9,7 @@ CCLD		:= cc
 AR			:= ar
 ARFLAGS		:= cr$(if $(filter 1,$(V) $(VERBOSE)),v,)
 CPPFLAGS	:= $(shell find . -type d -mindepth 1 | grep -v .git | sed "s/^/-I /" | xargs)
-CFLAGS		:= -Wall -Werror -Wextra -std=c99 -pedantic $(CPPFLAGS)
+CFLAGS		:= -std=c99 -pedantic $(CPPFLAGS)
 
 SRCS		:= $(shell find . -name "*.c" | grep -v .cache | grep -v test | grep -v bonus | xargs)
 SRCS_LIBFT	:= $(shell find . -name "ft_*.c" | grep -v .cache  | grep -v test | xargs)

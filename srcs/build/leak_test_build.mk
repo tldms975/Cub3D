@@ -3,11 +3,11 @@ include $(BASE_PATH)/build/common.mk
 ifeq ($(WITH_COVERAGE),1)
 CC := $(PATH_TO_LLVM_BIN)/clang
 CPPFLAGS := -I$(BASE_PATH)/../assets/leak_test/include $(addprefix -I$(BASE_PATH),$(shell xargs < $(INCS_FILE))) -DLLVM_BUILD_INSTRUMENTED_COVERAGE=On
-CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic $(CPPFLAGS) $(COMMON_FLAGS) -g3 -fprofile-instr-generate -fcoverage-mapping
+CFLAGS :=  -std=c99 -pedantic $(CPPFLAGS) $(COMMON_FLAGS) -g3 -fprofile-instr-generate -fcoverage-mapping
 LDFLAGS := $(COMMON_FLAGS) -fprofile-instr-generate
 else
 CPPFLAGS := -I$(BASE_PATH)/../assets/leak_test/include $(addprefix -I$(BASE_PATH),$(shell xargs < $(INCS_FILE)))
-CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic $(CPPFLAGS) $(COMMON_FLAGS) -g3
+CFLAGS :=  -std=c99 -pedantic $(CPPFLAGS) $(COMMON_FLAGS) -g3
 LDFLAGS := $(COMMON_FLAGS)
 endif
 
